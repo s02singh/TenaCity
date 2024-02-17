@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		66E2546B2B807B7B00495CF2 /* TenaCityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2546A2B807B7B00495CF2 /* TenaCityApp.swift */; };
+		66E2546D2B807B7B00495CF2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2546C2B807B7B00495CF2 /* ContentView.swift */; };
+		66E2546F2B807B7F00495CF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E2546E2B807B7F00495CF2 /* Assets.xcassets */; };
+		66E254722B807B7F00495CF2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E254712B807B7F00495CF2 /* Preview Assets.xcassets */; };
+		66E2547C2B807B8000495CF2 /* TenaCityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2547B2B807B8000495CF2 /* TenaCityTests.swift */; };
+		66E254862B807B8000495CF2 /* TenaCityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E254852B807B8000495CF2 /* TenaCityUITests.swift */; };
+		66E254882B807B8000495CF2 /* TenaCityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E254872B807B8000495CF2 /* TenaCityUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		66E254782B807B8000495CF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66E2545F2B807B7B00495CF2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66E254662B807B7B00495CF2;
+			remoteInfo = TenaCity;
+		};
+		66E254822B807B8000495CF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66E2545F2B807B7B00495CF2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66E254662B807B7B00495CF2;
+			remoteInfo = TenaCity;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		66E254672B807B7B00495CF2 /* TenaCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TenaCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		66E2546A2B807B7B00495CF2 /* TenaCityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenaCityApp.swift; sourceTree = "<group>"; };
+		66E2546C2B807B7B00495CF2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		66E2546E2B807B7F00495CF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		66E254712B807B7F00495CF2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		66E254772B807B8000495CF2 /* TenaCityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TenaCityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		66E2547B2B807B8000495CF2 /* TenaCityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenaCityTests.swift; sourceTree = "<group>"; };
+		66E254812B807B8000495CF2 /* TenaCityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TenaCityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		66E254852B807B8000495CF2 /* TenaCityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenaCityUITests.swift; sourceTree = "<group>"; };
+		66E254872B807B8000495CF2 /* TenaCityUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenaCityUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		66E254642B807B7B00495CF2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66E254742B807B8000495CF2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66E2547E2B807B8000495CF2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		66E2545E2B807B7B00495CF2 = {
+			isa = PBXGroup;
+			children = (
+				66E254692B807B7B00495CF2 /* TenaCity */,
+				66E2547A2B807B8000495CF2 /* TenaCityTests */,
+				66E254842B807B8000495CF2 /* TenaCityUITests */,
+				66E254682B807B7B00495CF2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		66E254682B807B7B00495CF2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				66E254672B807B7B00495CF2 /* TenaCity.app */,
+				66E254772B807B8000495CF2 /* TenaCityTests.xctest */,
+				66E254812B807B8000495CF2 /* TenaCityUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		66E254692B807B7B00495CF2 /* TenaCity */ = {
+			isa = PBXGroup;
+			children = (
+				66E2546A2B807B7B00495CF2 /* TenaCityApp.swift */,
+				66E2546C2B807B7B00495CF2 /* ContentView.swift */,
+				66E2546E2B807B7F00495CF2 /* Assets.xcassets */,
+				66E254702B807B7F00495CF2 /* Preview Content */,
+			);
+			path = TenaCity;
+			sourceTree = "<group>";
+		};
+		66E254702B807B7F00495CF2 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				66E254712B807B7F00495CF2 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		66E2547A2B807B8000495CF2 /* TenaCityTests */ = {
+			isa = PBXGroup;
+			children = (
+				66E2547B2B807B8000495CF2 /* TenaCityTests.swift */,
+			);
+			path = TenaCityTests;
+			sourceTree = "<group>";
+		};
+		66E254842B807B8000495CF2 /* TenaCityUITests */ = {
+			isa = PBXGroup;
+			children = (
+				66E254852B807B8000495CF2 /* TenaCityUITests.swift */,
+				66E254872B807B8000495CF2 /* TenaCityUITestsLaunchTests.swift */,
+			);
+			path = TenaCityUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		66E254662B807B7B00495CF2 /* TenaCity */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66E2548B2B807B8000495CF2 /* Build configuration list for PBXNativeTarget "TenaCity" */;
+			buildPhases = (
+				66E254632B807B7B00495CF2 /* Sources */,
+				66E254642B807B7B00495CF2 /* Frameworks */,
+				66E254652B807B7B00495CF2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TenaCity;
+			productName = TenaCity;
+			productReference = 66E254672B807B7B00495CF2 /* TenaCity.app */;
+			productType = "com.apple.product-type.application";
+		};
+		66E254762B807B8000495CF2 /* TenaCityTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66E2548E2B807B8000495CF2 /* Build configuration list for PBXNativeTarget "TenaCityTests" */;
+			buildPhases = (
+				66E254732B807B8000495CF2 /* Sources */,
+				66E254742B807B8000495CF2 /* Frameworks */,
+				66E254752B807B8000495CF2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				66E254792B807B8000495CF2 /* PBXTargetDependency */,
+			);
+			name = TenaCityTests;
+			productName = TenaCityTests;
+			productReference = 66E254772B807B8000495CF2 /* TenaCityTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		66E254802B807B8000495CF2 /* TenaCityUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66E254912B807B8000495CF2 /* Build configuration list for PBXNativeTarget "TenaCityUITests" */;
+			buildPhases = (
+				66E2547D2B807B8000495CF2 /* Sources */,
+				66E2547E2B807B8000495CF2 /* Frameworks */,
+				66E2547F2B807B8000495CF2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				66E254832B807B8000495CF2 /* PBXTargetDependency */,
+			);
+			name = TenaCityUITests;
+			productName = TenaCityUITests;
+			productReference = 66E254812B807B8000495CF2 /* TenaCityUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		66E2545F2B807B7B00495CF2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					66E254662B807B7B00495CF2 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					66E254762B807B8000495CF2 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 66E254662B807B7B00495CF2;
+					};
+					66E254802B807B8000495CF2 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 66E254662B807B7B00495CF2;
+					};
+				};
+			};
+			buildConfigurationList = 66E254622B807B7B00495CF2 /* Build configuration list for PBXProject "TenaCity" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 66E2545E2B807B7B00495CF2;
+			productRefGroup = 66E254682B807B7B00495CF2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				66E254662B807B7B00495CF2 /* TenaCity */,
+				66E254762B807B8000495CF2 /* TenaCityTests */,
+				66E254802B807B8000495CF2 /* TenaCityUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		66E254652B807B7B00495CF2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66E254722B807B7F00495CF2 /* Preview Assets.xcassets in Resources */,
+				66E2546F2B807B7F00495CF2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66E254752B807B8000495CF2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66E2547F2B807B8000495CF2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		66E254632B807B7B00495CF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66E2546D2B807B7B00495CF2 /* ContentView.swift in Sources */,
+				66E2546B2B807B7B00495CF2 /* TenaCityApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66E254732B807B8000495CF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66E2547C2B807B8000495CF2 /* TenaCityTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66E2547D2B807B8000495CF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66E254882B807B8000495CF2 /* TenaCityUITestsLaunchTests.swift in Sources */,
+				66E254862B807B8000495CF2 /* TenaCityUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		66E254792B807B8000495CF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66E254662B807B7B00495CF2 /* TenaCity */;
+			targetProxy = 66E254782B807B8000495CF2 /* PBXContainerItemProxy */;
+		};
+		66E254832B807B8000495CF2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66E254662B807B7B00495CF2 /* TenaCity */;
+			targetProxy = 66E254822B807B8000495CF2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		66E254892B807B8000495CF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		66E2548A2B807B8000495CF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		66E2548C2B807B8000495CF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TenaCity/Preview Content\"";
+				DEVELOPMENT_TEAM = GP27ADN52D;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ECS189E.TenaCity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		66E2548D2B807B8000495CF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"TenaCity/Preview Content\"";
+				DEVELOPMENT_TEAM = GP27ADN52D;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ECS189E.TenaCity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		66E2548F2B807B8000495CF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GP27ADN52D;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ECS189E.TenaCityTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TenaCity.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TenaCity";
+			};
+			name = Debug;
+		};
+		66E254902B807B8000495CF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GP27ADN52D;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ECS189E.TenaCityTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TenaCity.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TenaCity";
+			};
+			name = Release;
+		};
+		66E254922B807B8000495CF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GP27ADN52D;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ECS189E.TenaCityUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TenaCity;
+			};
+			name = Debug;
+		};
+		66E254932B807B8000495CF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GP27ADN52D;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ECS189E.TenaCityUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TenaCity;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		66E254622B807B7B00495CF2 /* Build configuration list for PBXProject "TenaCity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66E254892B807B8000495CF2 /* Debug */,
+				66E2548A2B807B8000495CF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66E2548B2B807B8000495CF2 /* Build configuration list for PBXNativeTarget "TenaCity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66E2548C2B807B8000495CF2 /* Debug */,
+				66E2548D2B807B8000495CF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66E2548E2B807B8000495CF2 /* Build configuration list for PBXNativeTarget "TenaCityTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66E2548F2B807B8000495CF2 /* Debug */,
+				66E254902B807B8000495CF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66E254912B807B8000495CF2 /* Build configuration list for PBXNativeTarget "TenaCityUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66E254922B807B8000495CF2 /* Debug */,
+				66E254932B807B8000495CF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 66E2545F2B807B7B00495CF2 /* Project object */;
+}
