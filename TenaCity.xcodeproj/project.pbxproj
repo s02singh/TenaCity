@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66815B3F2B807D9100F50A96 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66815B3E2B807D9100F50A96 /* LoginView.swift */; };
+		66815B422B807F3800F50A96 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 66815B412B807F3800F50A96 /* FirebaseAnalytics */; };
+		66815B442B807F3800F50A96 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 66815B432B807F3800F50A96 /* FirebaseAppCheck */; };
+		66815B472B807FEE00F50A96 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 66815B462B807FEE00F50A96 /* GoogleSignInSwift */; };
 		66E2546B2B807B7B00495CF2 /* TenaCityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2546A2B807B7B00495CF2 /* TenaCityApp.swift */; };
 		66E2546D2B807B7B00495CF2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2546C2B807B7B00495CF2 /* ContentView.swift */; };
 		66E2546F2B807B7F00495CF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E2546E2B807B7F00495CF2 /* Assets.xcassets */; };
@@ -34,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		66815B3E2B807D9100F50A96 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		66E254672B807B7B00495CF2 /* TenaCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TenaCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E2546A2B807B7B00495CF2 /* TenaCityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenaCityApp.swift; sourceTree = "<group>"; };
 		66E2546C2B807B7B00495CF2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +56,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66815B472B807FEE00F50A96 /* GoogleSignInSwift in Frameworks */,
+				66815B442B807F3800F50A96 /* FirebaseAppCheck in Frameworks */,
+				66815B422B807F3800F50A96 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				66E2546A2B807B7B00495CF2 /* TenaCityApp.swift */,
+				66815B3E2B807D9100F50A96 /* LoginView.swift */,
 				66E2546C2B807B7B00495CF2 /* ContentView.swift */,
 				66E2546E2B807B7F00495CF2 /* Assets.xcassets */,
 				66E254702B807B7F00495CF2 /* Preview Content */,
@@ -143,6 +152,11 @@
 			dependencies = (
 			);
 			name = TenaCity;
+			packageProductDependencies = (
+				66815B412B807F3800F50A96 /* FirebaseAnalytics */,
+				66815B432B807F3800F50A96 /* FirebaseAppCheck */,
+				66815B462B807FEE00F50A96 /* GoogleSignInSwift */,
+			);
 			productName = TenaCity;
 			productReference = 66E254672B807B7B00495CF2 /* TenaCity.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +229,10 @@
 				Base,
 			);
 			mainGroup = 66E2545E2B807B7B00495CF2;
+			packageReferences = (
+				66815B402B807F3800F50A96 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				66815B452B807FEE00F50A96 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			productRefGroup = 66E254682B807B7B00495CF2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66815B3F2B807D9100F50A96 /* LoginView.swift in Sources */,
 				66E2546D2B807B7B00495CF2 /* ContentView.swift in Sources */,
 				66E2546B2B807B7B00495CF2 /* TenaCityApp.swift in Sources */,
 			);
@@ -588,6 +607,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		66815B402B807F3800F50A96 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.21.0;
+			};
+		};
+		66815B452B807FEE00F50A96 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		66815B412B807F3800F50A96 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66815B402B807F3800F50A96 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		66815B432B807F3800F50A96 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66815B402B807F3800F50A96 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		66815B462B807FEE00F50A96 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66815B452B807FEE00F50A96 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 66E2545F2B807B7B00495CF2 /* Project object */;
 }
