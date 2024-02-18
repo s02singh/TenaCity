@@ -8,15 +8,25 @@ import SwiftUI
 
 struct Home: View {
     @State private var displayName: String = ""
+    @EnvironmentObject var authManager: AuthManager
     
     var body: some View {
         VStack {
             Text("Hello \(displayName)!")
                 .padding()
                 .onAppear {
+                    if let currentUser = authManager.userName{
+                        self.displayName = currentUser
+                    }
+                    
+                    
+                    /// KEEP FOR LATER IF WE WANT MORE THAN GOOGLE
+                    /*
                     if let currentUser = Auth.auth().currentUser {
                         self.displayName = currentUser.displayName ?? ""
                     }
+                     */
+                    
                 }
             SignOutButton()
         }

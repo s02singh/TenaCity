@@ -17,6 +17,7 @@ import SwiftUI
 struct LoginScreen: View {
     @State var username: String = ""
     @State var password: String = ""
+    @EnvironmentObject var authManager: AuthManager
     
     var body: some View {
         VStack {
@@ -70,12 +71,14 @@ struct LoginScreen: View {
                         guard let user = signResult?.user,
                               let idToken = user.idToken else { return }
                         
+                        guard let profile = user.profile else{ return }
+                        authManager.userName = profile.name
                         let accessToken = user.accessToken
                         
                         let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: accessToken.tokenString)
                
                         Auth.auth().signIn(with: credential) { authResult, error in
-                            
+                           
                         }
                         print("SIGN IN")
                         UserDefaults.standard.set(true, forKey: "signIn")
