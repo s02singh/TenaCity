@@ -7,17 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		66815B3F2B807D9100F50A96 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66815B3E2B807D9100F50A96 /* LoginView.swift */; };
-		66815B422B807F3800F50A96 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 66815B412B807F3800F50A96 /* FirebaseAnalytics */; };
-		66815B442B807F3800F50A96 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 66815B432B807F3800F50A96 /* FirebaseAppCheck */; };
-		66815B472B807FEE00F50A96 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 66815B462B807FEE00F50A96 /* GoogleSignInSwift */; };
-		66E2546B2B807B7B00495CF2 /* TenaCityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2546A2B807B7B00495CF2 /* TenaCityApp.swift */; };
-		66E2546D2B807B7B00495CF2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2546C2B807B7B00495CF2 /* ContentView.swift */; };
 		66E2546F2B807B7F00495CF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E2546E2B807B7F00495CF2 /* Assets.xcassets */; };
 		66E254722B807B7F00495CF2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E254712B807B7F00495CF2 /* Preview Assets.xcassets */; };
 		66E2547C2B807B8000495CF2 /* TenaCityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2547B2B807B8000495CF2 /* TenaCityTests.swift */; };
 		66E254862B807B8000495CF2 /* TenaCityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E254852B807B8000495CF2 /* TenaCityUITests.swift */; };
 		66E254882B807B8000495CF2 /* TenaCityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E254872B807B8000495CF2 /* TenaCityUITestsLaunchTests.swift */; };
+		66E7D3BC2B81998A00A7ED66 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 66E7D3BB2B81998A00A7ED66 /* FirebaseAuth */; };
+		66E7D3BF2B819A1F00A7ED66 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 66E7D3BE2B819A1F00A7ED66 /* GoogleSignIn */; };
+		66E7D3C92B819E0600A7ED66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E7D3C22B819E0500A7ED66 /* Assets.xcassets */; };
+		66E7D3CB2B819E0600A7ED66 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 66E7D3C42B819E0500A7ED66 /* Preview Content */; };
+		66E7D3CC2B819E0600A7ED66 /* Screen in Resources */ = {isa = PBXBuildFile; fileRef = 66E7D3C52B819E0500A7ED66 /* Screen */; };
+		66E7D3DA2B819F8000A7ED66 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3D62B819F8000A7ED66 /* CustomButton.swift */; };
+		66E7D3DB2B819F8000A7ED66 /* LoginHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3D72B819F8000A7ED66 /* LoginHeader.swift */; };
+		66E7D3DD2B819F8000A7ED66 /* GoogleSiginBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3D92B819F8000A7ED66 /* GoogleSiginBtn.swift */; };
+		66E7D3DF2B81B63900A7ED66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E7D3DE2B81B63900A7ED66 /* Assets.xcassets */; };
+		66E7D3E12B81B64300A7ED66 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 66E7D3E02B81B64300A7ED66 /* Preview Content */; };
+		66E7D3EA2B81B66E00A7ED66 /* TenaCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3E92B81B66E00A7ED66 /* TenaCity.swift */; };
+		66E7D3ED2B81B6AF00A7ED66 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3EC2B81B6AF00A7ED66 /* Home.swift */; };
+		66E7D3EE2B81B6AF00A7ED66 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3EB2B81B6AF00A7ED66 /* LoginScreen.swift */; };
+		66E7D3F22B81C2D600A7ED66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3F12B81C2D600A7ED66 /* AppDelegate.swift */; };
+		66E7D3F42B81C4B100A7ED66 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3F32B81C4B100A7ED66 /* ViewExtension.swift */; };
+		66E7D3F82B81EC8B00A7ED66 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66E7D3F72B81EC8A00A7ED66 /* GoogleService-Info.plist */; };
+		66E7D3FA2B81F23600A7ED66 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3F92B81F23600A7ED66 /* AuthManager.swift */; };
+		66E7D3FC2B81F2B400A7ED66 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3FB2B81F2B400A7ED66 /* LoadingScreen.swift */; };
+		66E7D3FE2B81F3C700A7ED66 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3FD2B81F3C700A7ED66 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,10 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		66815B3E2B807D9100F50A96 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		66E254672B807B7B00495CF2 /* TenaCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TenaCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		66E2546A2B807B7B00495CF2 /* TenaCityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenaCityApp.swift; sourceTree = "<group>"; };
-		66E2546C2B807B7B00495CF2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		66E2546E2B807B7F00495CF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66E254712B807B7F00495CF2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		66E254772B807B8000495CF2 /* TenaCityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TenaCityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +59,27 @@
 		66E254812B807B8000495CF2 /* TenaCityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TenaCityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E254852B807B8000495CF2 /* TenaCityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenaCityUITests.swift; sourceTree = "<group>"; };
 		66E254872B807B8000495CF2 /* TenaCityUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenaCityUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		66E7D3C22B819E0500A7ED66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		66E7D3C42B819E0500A7ED66 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
+		66E7D3C52B819E0500A7ED66 /* Screen */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Screen; sourceTree = "<group>"; };
+		66E7D3D62B819F8000A7ED66 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomButton.swift; path = View/CustomButton.swift; sourceTree = "<group>"; };
+		66E7D3D72B819F8000A7ED66 /* LoginHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginHeader.swift; path = View/LoginHeader.swift; sourceTree = "<group>"; };
+		66E7D3D92B819F8000A7ED66 /* GoogleSiginBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleSiginBtn.swift; path = View/GoogleSiginBtn.swift; sourceTree = "<group>"; };
+		66E7D3DE2B81B63900A7ED66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		66E7D3E02B81B64300A7ED66 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
+		66E7D3E52B81B65700A7ED66 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		66E7D3E62B81B65700A7ED66 /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
+		66E7D3E72B81B65700A7ED66 /* GoogleSiginBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSiginBtn.swift; sourceTree = "<group>"; };
+		66E7D3E82B81B65700A7ED66 /* LoginHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginHeader.swift; sourceTree = "<group>"; };
+		66E7D3E92B81B66E00A7ED66 /* TenaCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TenaCity.swift; sourceTree = "<group>"; };
+		66E7D3EB2B81B6AF00A7ED66 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		66E7D3EC2B81B6AF00A7ED66 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		66E7D3F12B81C2D600A7ED66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		66E7D3F32B81C4B100A7ED66 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		66E7D3F72B81EC8A00A7ED66 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		66E7D3F92B81F23600A7ED66 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		66E7D3FB2B81F2B400A7ED66 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
+		66E7D3FD2B81F3C700A7ED66 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66815B472B807FEE00F50A96 /* GoogleSignInSwift in Frameworks */,
-				66815B442B807F3800F50A96 /* FirebaseAppCheck in Frameworks */,
-				66815B422B807F3800F50A96 /* FirebaseAnalytics in Frameworks */,
+				66E7D3BC2B81998A00A7ED66 /* FirebaseAuth in Frameworks */,
+				66E7D3BF2B819A1F00A7ED66 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,9 +132,24 @@
 		66E254692B807B7B00495CF2 /* TenaCity */ = {
 			isa = PBXGroup;
 			children = (
-				66E2546A2B807B7B00495CF2 /* TenaCityApp.swift */,
-				66815B3E2B807D9100F50A96 /* LoginView.swift */,
-				66E2546C2B807B7B00495CF2 /* ContentView.swift */,
+				66E7D3F72B81EC8A00A7ED66 /* GoogleService-Info.plist */,
+				66E7D3F92B81F23600A7ED66 /* AuthManager.swift */,
+				66E7D3FB2B81F2B400A7ED66 /* LoadingScreen.swift */,
+				66E7D3D62B819F8000A7ED66 /* CustomButton.swift */,
+				66E7D3F12B81C2D600A7ED66 /* AppDelegate.swift */,
+				66E7D3F32B81C4B100A7ED66 /* ViewExtension.swift */,
+				66E7D3FD2B81F3C700A7ED66 /* ContentView.swift */,
+				66E7D3EC2B81B6AF00A7ED66 /* Home.swift */,
+				66E7D3EB2B81B6AF00A7ED66 /* LoginScreen.swift */,
+				66E7D3D92B819F8000A7ED66 /* GoogleSiginBtn.swift */,
+				66E7D3E92B81B66E00A7ED66 /* TenaCity.swift */,
+				66E7D3DE2B81B63900A7ED66 /* Assets.xcassets */,
+				66E7D3E42B81B65700A7ED66 /* View */,
+				66E7D3E02B81B64300A7ED66 /* Preview Content */,
+				66E7D3D72B819F8000A7ED66 /* LoginHeader.swift */,
+				66E7D3C22B819E0500A7ED66 /* Assets.xcassets */,
+				66E7D3C42B819E0500A7ED66 /* Preview Content */,
+				66E7D3C52B819E0500A7ED66 /* Screen */,
 				66E2546E2B807B7F00495CF2 /* Assets.xcassets */,
 				66E254702B807B7F00495CF2 /* Preview Content */,
 			);
@@ -136,6 +181,17 @@
 			path = TenaCityUITests;
 			sourceTree = "<group>";
 		};
+		66E7D3E42B81B65700A7ED66 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				66E7D3E52B81B65700A7ED66 /* CustomButton.swift */,
+				66E7D3E62B81B65700A7ED66 /* CustomTextfield.swift */,
+				66E7D3E72B81B65700A7ED66 /* GoogleSiginBtn.swift */,
+				66E7D3E82B81B65700A7ED66 /* LoginHeader.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -153,9 +209,8 @@
 			);
 			name = TenaCity;
 			packageProductDependencies = (
-				66815B412B807F3800F50A96 /* FirebaseAnalytics */,
-				66815B432B807F3800F50A96 /* FirebaseAppCheck */,
-				66815B462B807FEE00F50A96 /* GoogleSignInSwift */,
+				66E7D3BB2B81998A00A7ED66 /* FirebaseAuth */,
+				66E7D3BE2B819A1F00A7ED66 /* GoogleSignIn */,
 			);
 			productName = TenaCity;
 			productReference = 66E254672B807B7B00495CF2 /* TenaCity.app */;
@@ -230,8 +285,8 @@
 			);
 			mainGroup = 66E2545E2B807B7B00495CF2;
 			packageReferences = (
-				66815B402B807F3800F50A96 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				66815B452B807FEE00F50A96 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				66E7D3BA2B81998A00A7ED66 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				66E7D3BD2B819A1F00A7ED66 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 66E254682B807B7B00495CF2 /* Products */;
 			projectDirPath = "";
@@ -249,8 +304,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66E7D3CC2B819E0600A7ED66 /* Screen in Resources */,
+				66E7D3F82B81EC8B00A7ED66 /* GoogleService-Info.plist in Resources */,
 				66E254722B807B7F00495CF2 /* Preview Assets.xcassets in Resources */,
+				66E7D3CB2B819E0600A7ED66 /* Preview Content in Resources */,
 				66E2546F2B807B7F00495CF2 /* Assets.xcassets in Resources */,
+				66E7D3C92B819E0600A7ED66 /* Assets.xcassets in Resources */,
+				66E7D3E12B81B64300A7ED66 /* Preview Content in Resources */,
+				66E7D3DF2B81B63900A7ED66 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,9 +336,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66815B3F2B807D9100F50A96 /* LoginView.swift in Sources */,
-				66E2546D2B807B7B00495CF2 /* ContentView.swift in Sources */,
-				66E2546B2B807B7B00495CF2 /* TenaCityApp.swift in Sources */,
+				66E7D3F42B81C4B100A7ED66 /* ViewExtension.swift in Sources */,
+				66E7D3FC2B81F2B400A7ED66 /* LoadingScreen.swift in Sources */,
+				66E7D3FE2B81F3C700A7ED66 /* ContentView.swift in Sources */,
+				66E7D3EE2B81B6AF00A7ED66 /* LoginScreen.swift in Sources */,
+				66E7D3DA2B819F8000A7ED66 /* CustomButton.swift in Sources */,
+				66E7D3ED2B81B6AF00A7ED66 /* Home.swift in Sources */,
+				66E7D3F22B81C2D600A7ED66 /* AppDelegate.swift in Sources */,
+				66E7D3DB2B819F8000A7ED66 /* LoginHeader.swift in Sources */,
+				66E7D3EA2B81B66E00A7ED66 /* TenaCity.swift in Sources */,
+				66E7D3DD2B819F8000A7ED66 /* GoogleSiginBtn.swift in Sources */,
+				66E7D3FA2B81F23600A7ED66 /* AuthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +513,7 @@
 				DEVELOPMENT_TEAM = GP27ADN52D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TenaCity/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -473,6 +543,7 @@
 				DEVELOPMENT_TEAM = GP27ADN52D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TenaCity/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -609,7 +680,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		66815B402B807F3800F50A96 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		66E7D3BA2B81998A00A7ED66 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
@@ -617,7 +688,7 @@
 				minimumVersion = 10.21.0;
 			};
 		};
-		66815B452B807FEE00F50A96 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+		66E7D3BD2B819A1F00A7ED66 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
 			requirement = {
@@ -628,20 +699,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		66815B412B807F3800F50A96 /* FirebaseAnalytics */ = {
+		66E7D3BB2B81998A00A7ED66 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 66815B402B807F3800F50A96 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
+			package = 66E7D3BA2B81998A00A7ED66 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
-		66815B432B807F3800F50A96 /* FirebaseAppCheck */ = {
+		66E7D3BE2B819A1F00A7ED66 /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 66815B402B807F3800F50A96 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAppCheck;
-		};
-		66815B462B807FEE00F50A96 /* GoogleSignInSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 66815B452B807FEE00F50A96 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
-			productName = GoogleSignInSwift;
+			package = 66E7D3BD2B819A1F00A7ED66 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
