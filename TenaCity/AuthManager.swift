@@ -8,8 +8,8 @@ import SwiftUI
 class AuthManager: ObservableObject {
     @Published var isSignIn = false
     @Published var isLoading = true
-    
     @Published var userName: String?
+    
     func checkUserSignIn() {
         if let _ = Auth.auth().currentUser {
             isSignIn = true

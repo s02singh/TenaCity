@@ -1,4 +1,5 @@
 import SwiftUI
+import FirebaseAuth
 
 struct LoadingScreen: View {
     @EnvironmentObject private var authManager: AuthManager
@@ -8,12 +9,12 @@ struct LoadingScreen: View {
         VStack {
             HStack {
                 // Company name
-                Text("Bank")
+                Text("Tena")
                     .font(.custom("AvenirNext-DemiBold", size: 60))
                     .fontWeight(.bold)
                     .foregroundColor(Color(red: 0, green: 128/255, blue: 128/255))
                 
-                Text("it")
+                Text("City")
                     .font(.custom("AvenirNext-DemiBold", size: 60))
                     .fontWeight(.bold)
                     .foregroundColor(.black)
@@ -40,12 +41,12 @@ struct LoadingScreen: View {
                 .scaleEffect(2.0)
                 .padding(.top, 20)
                 .onAppear {
-    
-                                showingHomeView = true
-                            
-                            
-                                                    
-                     
+                    
+                    if let currentUser = Auth.auth().currentUser {
+                        authManager.userName = currentUser.displayName
+                    }
+                    showingHomeView = true
+
                            // error handle
                                
                             

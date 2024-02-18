@@ -1,5 +1,6 @@
 
 import SwiftUI
+import FirebaseAuth
 
 @main
 struct TenaCity: App {
@@ -14,9 +15,13 @@ struct TenaCity: App {
                     .preferredColorScheme(.light)
                     .environmentObject(authManager)
             } else {
-                Home()
-                    .preferredColorScheme(.light)
-                    .environmentObject(authManager)
+                NavigationStack{
+                    Home()
+                        .preferredColorScheme(.light)
+                        .environmentObject(authManager)
+                }
+                .environmentObject(authManager)
+ 
             }
         }
     }

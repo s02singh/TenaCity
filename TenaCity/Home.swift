@@ -18,9 +18,13 @@ struct Home: View {
                     if let currentUser = authManager.userName{
                         self.displayName = currentUser
                     }
+                    else if let currentUser = Auth.auth().currentUser {
+                        self.displayName = currentUser.displayName ?? ""
+                        authManager.userName = currentUser.displayName
+                    }
                     
                     
-                    /// KEEP FOR LATER IF WE WANT MORE THAN GOOGLE
+                    /// KEEP FOR LATER IF WE WANT MORE THAN GOOGLE SIGNIN
                     /*
                     if let currentUser = Auth.auth().currentUser {
                         self.displayName = currentUser.displayName ?? ""
