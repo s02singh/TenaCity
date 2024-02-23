@@ -10,16 +10,7 @@ On average, it typically requires 66 days for a behavior to solidify into a habi
 - Lena Ray 
 
 ## Features
-### 1. Phone Number Verification
-
-
-### 2. Dynamic Formatting
-
-
-### 3. Splash Screen
-
-
-### 4. Home Page
+### 1. 
 
 
 ## Implementation Details
@@ -31,7 +22,15 @@ On average, it typically requires 66 days for a behavior to solidify into a habi
 - https://github.com/google/GoogleSignIn-iOS
 
 
-### Auth Manager
+### AuthManager
+- manages user authentication status and signin
+- stores signin bool and userName
+- signOut() function
+- store userID
+
+### FirestoreManager
+- has functions to write and read data from the firebase for all of our collections (User, Habit, Post, Building, Skin)
+- also has a function to populate firebase with sample data
 
 
 ### UI Design
@@ -41,7 +40,7 @@ On average, it typically requires 66 days for a behavior to solidify into a habi
 
 
 ## Views
-### 1. ContentView
+### 1. SplashScreen
 
 ### 2. LoginView
 
