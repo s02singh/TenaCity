@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		470FAB4D2B8851550049B3E1 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470FAB4C2B8851550049B3E1 /* VisitorView.swift */; };
+		479366002B88424B00519E2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 479365FF2B88424B00519E2B /* GoogleService-Info.plist */; };
+		479366022B8843B600519E2B /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 479366012B8843B600519E2B /* SplashScreen.storyboard */; };
 		66E2546F2B807B7F00495CF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E2546E2B807B7F00495CF2 /* Assets.xcassets */; };
 		66E254722B807B7F00495CF2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E254712B807B7F00495CF2 /* Preview Assets.xcassets */; };
 		66E2547C2B807B8000495CF2 /* TenaCityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2547B2B807B8000495CF2 /* TenaCityTests.swift */; };
@@ -16,7 +19,6 @@
 		66E7D3BF2B819A1F00A7ED66 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 66E7D3BE2B819A1F00A7ED66 /* GoogleSignIn */; };
 		66E7D3C92B819E0600A7ED66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E7D3C22B819E0500A7ED66 /* Assets.xcassets */; };
 		66E7D3CB2B819E0600A7ED66 /* Preview Content in Resources */ = {isa = PBXBuildFile; fileRef = 66E7D3C42B819E0500A7ED66 /* Preview Content */; };
-		66E7D3CC2B819E0600A7ED66 /* Screen in Resources */ = {isa = PBXBuildFile; fileRef = 66E7D3C52B819E0500A7ED66 /* Screen */; };
 		66E7D3DA2B819F8000A7ED66 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3D62B819F8000A7ED66 /* CustomButton.swift */; };
 		66E7D3DB2B819F8000A7ED66 /* LoginHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3D72B819F8000A7ED66 /* LoginHeader.swift */; };
 		66E7D3DD2B819F8000A7ED66 /* GoogleSiginBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3D92B819F8000A7ED66 /* GoogleSiginBtn.swift */; };
@@ -27,7 +29,6 @@
 		66E7D3EE2B81B6AF00A7ED66 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3EB2B81B6AF00A7ED66 /* LoginScreen.swift */; };
 		66E7D3F22B81C2D600A7ED66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3F12B81C2D600A7ED66 /* AppDelegate.swift */; };
 		66E7D3F42B81C4B100A7ED66 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3F32B81C4B100A7ED66 /* ViewExtension.swift */; };
-		66E7D3F82B81EC8B00A7ED66 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66E7D3F72B81EC8A00A7ED66 /* GoogleService-Info.plist */; };
 		66E7D3FA2B81F23600A7ED66 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3F92B81F23600A7ED66 /* AuthManager.swift */; };
 		66E7D3FC2B81F2B400A7ED66 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3FB2B81F2B400A7ED66 /* LoadingScreen.swift */; };
 		66E7D3FE2B81F3C700A7ED66 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3FD2B81F3C700A7ED66 /* ContentView.swift */; };
@@ -51,6 +52,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		470FAB4C2B8851550049B3E1 /* VisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
+		479365FF2B88424B00519E2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		479366012B8843B600519E2B /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
 		66E254672B807B7B00495CF2 /* TenaCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TenaCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E2546E2B807B7F00495CF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66E254712B807B7F00495CF2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -61,7 +65,6 @@
 		66E254872B807B8000495CF2 /* TenaCityUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenaCityUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		66E7D3C22B819E0500A7ED66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66E7D3C42B819E0500A7ED66 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
-		66E7D3C52B819E0500A7ED66 /* Screen */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Screen; sourceTree = "<group>"; };
 		66E7D3D62B819F8000A7ED66 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomButton.swift; path = View/CustomButton.swift; sourceTree = "<group>"; };
 		66E7D3D72B819F8000A7ED66 /* LoginHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginHeader.swift; path = View/LoginHeader.swift; sourceTree = "<group>"; };
 		66E7D3D92B819F8000A7ED66 /* GoogleSiginBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleSiginBtn.swift; path = View/GoogleSiginBtn.swift; sourceTree = "<group>"; };
@@ -76,7 +79,6 @@
 		66E7D3EC2B81B6AF00A7ED66 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		66E7D3F12B81C2D600A7ED66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66E7D3F32B81C4B100A7ED66 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
-		66E7D3F72B81EC8A00A7ED66 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		66E7D3F92B81F23600A7ED66 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		66E7D3FB2B81F2B400A7ED66 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		66E7D3FD2B81F3C700A7ED66 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		66E2545E2B807B7B00495CF2 = {
 			isa = PBXGroup;
 			children = (
+				479366012B8843B600519E2B /* SplashScreen.storyboard */,
 				66E254692B807B7B00495CF2 /* TenaCity */,
 				66E2547A2B807B8000495CF2 /* TenaCityTests */,
 				66E254842B807B8000495CF2 /* TenaCityUITests */,
@@ -132,7 +135,6 @@
 		66E254692B807B7B00495CF2 /* TenaCity */ = {
 			isa = PBXGroup;
 			children = (
-				66E7D3F72B81EC8A00A7ED66 /* GoogleService-Info.plist */,
 				66E7D3F92B81F23600A7ED66 /* AuthManager.swift */,
 				66E7D3FB2B81F2B400A7ED66 /* LoadingScreen.swift */,
 				66E7D3D62B819F8000A7ED66 /* CustomButton.swift */,
@@ -149,9 +151,10 @@
 				66E7D3D72B819F8000A7ED66 /* LoginHeader.swift */,
 				66E7D3C22B819E0500A7ED66 /* Assets.xcassets */,
 				66E7D3C42B819E0500A7ED66 /* Preview Content */,
-				66E7D3C52B819E0500A7ED66 /* Screen */,
 				66E2546E2B807B7F00495CF2 /* Assets.xcassets */,
 				66E254702B807B7F00495CF2 /* Preview Content */,
+				479365FF2B88424B00519E2B /* GoogleService-Info.plist */,
+				470FAB4C2B8851550049B3E1 /* VisitorView.swift */,
 			);
 			path = TenaCity;
 			sourceTree = "<group>";
@@ -304,14 +307,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66E7D3CC2B819E0600A7ED66 /* Screen in Resources */,
-				66E7D3F82B81EC8B00A7ED66 /* GoogleService-Info.plist in Resources */,
 				66E254722B807B7F00495CF2 /* Preview Assets.xcassets in Resources */,
+				479366022B8843B600519E2B /* SplashScreen.storyboard in Resources */,
 				66E7D3CB2B819E0600A7ED66 /* Preview Content in Resources */,
 				66E2546F2B807B7F00495CF2 /* Assets.xcassets in Resources */,
 				66E7D3C92B819E0600A7ED66 /* Assets.xcassets in Resources */,
 				66E7D3E12B81B64300A7ED66 /* Preview Content in Resources */,
 				66E7D3DF2B81B63900A7ED66 /* Assets.xcassets in Resources */,
+				479366002B88424B00519E2B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +342,7 @@
 				66E7D3F42B81C4B100A7ED66 /* ViewExtension.swift in Sources */,
 				66E7D3FC2B81F2B400A7ED66 /* LoadingScreen.swift in Sources */,
 				66E7D3FE2B81F3C700A7ED66 /* ContentView.swift in Sources */,
+				470FAB4D2B8851550049B3E1 /* VisitorView.swift in Sources */,
 				66E7D3EE2B81B6AF00A7ED66 /* LoginScreen.swift in Sources */,
 				66E7D3DA2B819F8000A7ED66 /* CustomButton.swift in Sources */,
 				66E7D3ED2B81B6AF00A7ED66 /* Home.swift in Sources */,
@@ -516,7 +520,6 @@
 				INFOPLIST_FILE = TenaCity/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -546,7 +549,6 @@
 				INFOPLIST_FILE = TenaCity/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
