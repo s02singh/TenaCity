@@ -6,7 +6,7 @@ On average, it typically requires 66 days for a behavior to solidify into a habi
 # Developers:
 - Shikhar Gupta: ShikharGupta77
 - Sahilbir Singh: s02singh
-- Divya Raj 
+- Divya Raj: goldenfries100
 - Lena Ray: lenaray
 
 ## Features
