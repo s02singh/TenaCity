@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A86732F2B8C816C00C76AD7 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A86732E2B8C816C00C76AD7 /* NavigationBar.swift */; };
 		66E2546F2B807B7F00495CF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E2546E2B807B7F00495CF2 /* Assets.xcassets */; };
 		66E254722B807B7F00495CF2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E254712B807B7F00495CF2 /* Preview Assets.xcassets */; };
 		66E2547C2B807B8000495CF2 /* TenaCityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2547B2B807B8000495CF2 /* TenaCityTests.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A86732E2B8C816C00C76AD7 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		66E254672B807B7B00495CF2 /* TenaCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TenaCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E2546E2B807B7F00495CF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66E254712B807B7F00495CF2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				66E7D3E62B81B65700A7ED66 /* CustomTextfield.swift */,
 				66E7D3E72B81B65700A7ED66 /* GoogleSiginBtn.swift */,
 				66E7D3E82B81B65700A7ED66 /* LoginHeader.swift */,
+				5A86732E2B8C816C00C76AD7 /* NavigationBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				66E7D3F22B81C2D600A7ED66 /* AppDelegate.swift in Sources */,
 				66E7D3DB2B819F8000A7ED66 /* LoginHeader.swift in Sources */,
 				66E7D3EA2B81B66E00A7ED66 /* TenaCity.swift in Sources */,
+				5A86732F2B8C816C00C76AD7 /* NavigationBar.swift in Sources */,
 				66E7D3DD2B819F8000A7ED66 /* GoogleSiginBtn.swift in Sources */,
 				66E7D3FA2B81F23600A7ED66 /* AuthManager.swift in Sources */,
 			);
