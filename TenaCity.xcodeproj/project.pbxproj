@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A86732F2B8C816C00C76AD7 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A86732E2B8C816C00C76AD7 /* NavigationBar.swift */; };
+		5A8673312B8D406800C76AD7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8673302B8D406800C76AD7 /* SettingsView.swift */; };
 		66E2546F2B807B7F00495CF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E2546E2B807B7F00495CF2 /* Assets.xcassets */; };
 		66E254722B807B7F00495CF2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E254712B807B7F00495CF2 /* Preview Assets.xcassets */; };
 		66E2547C2B807B8000495CF2 /* TenaCityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2547B2B807B8000495CF2 /* TenaCityTests.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		5A86732E2B8C816C00C76AD7 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		5A8673302B8D406800C76AD7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		66E254672B807B7B00495CF2 /* TenaCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TenaCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E2546E2B807B7F00495CF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66E254712B807B7F00495CF2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				66E7D3E72B81B65700A7ED66 /* GoogleSiginBtn.swift */,
 				66E7D3E82B81B65700A7ED66 /* LoginHeader.swift */,
 				5A86732E2B8C816C00C76AD7 /* NavigationBar.swift */,
+				5A8673302B8D406800C76AD7 /* SettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A8673312B8D406800C76AD7 /* SettingsView.swift in Sources */,
 				66E7D3F42B81C4B100A7ED66 /* ViewExtension.swift in Sources */,
 				6A5800642B87F5A200917BAC /* FirestoreManager.swift in Sources */,
 				66E7D3FC2B81F2B400A7ED66 /* LoadingScreen.swift in Sources */,
