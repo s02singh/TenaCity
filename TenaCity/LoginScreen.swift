@@ -13,11 +13,13 @@ import FirebaseAuth
 import GoogleSignIn
 import Firebase
 import SwiftUI
+import FirebaseFirestore
 
 struct LoginScreen: View {
     @State var username: String = ""
     @State var password: String = ""
     @EnvironmentObject var authManager: AuthManager
+    @ObservedObject var firestoreManager = FirestoreManager()
     
     var body: some View {
         VStack {
@@ -51,7 +53,40 @@ struct LoginScreen: View {
                 }
                 .padding(.trailing, 24)
                 
-                CustomButton()
+                Button(action: {
+                    
+                    Task {
+                        
+                        do {
+                            if let (userId, userName) = try await authManager.signIn(username: username, password: password) {
+                             
+                                UserDefaults.standard.set(userId, forKey: "userID")
+                                authManager.userID = userId
+                                authManager.userName = userName
+                                authManager.isSignIn = true
+                                UserDefaults.standard.set(true, forKey: "signIn")
+                               
+                            } else {
+                            
+                            }
+                        } catch {
+                            print("Error signing in: \(error)")
+                        }
+                            }
+                    
+                }) {
+                    HStack {
+                        Spacer()
+                        Text("Login")
+                            .foregroundColor(.white)
+                        Spacer()
+                    }
+                }
+                .padding()
+                .background(.black)
+                .cornerRadius(12)
+                .padding()
+            
                 
                 
                 GoogleSiginBtn {
@@ -80,6 +115,37 @@ struct LoginScreen: View {
                         Auth.auth().signIn(with: credential) { authResult, error in
                            
                         }
+                        let db = Firestore.firestore()
+                        let usersRef = db.collection("users")
+                        
+                        
+                        guard let userProfile = user.profile else{return}
+                        let userEmail = userProfile.email
+                        
+                        usersRef.whereField("email", isEqualTo: userEmail).getDocuments { querySnapshot, error in
+                            if let error = error {
+                                
+                                print("Error querying Firestore: \(error.localizedDescription)")
+                                return
+                            }
+                            
+                            if let document = querySnapshot?.documents.first, document.exists {
+                                // User exists
+                                print("User already exists.")
+                                if let userId = document.get("id") as? String {
+                                    // Store user ID in UserDefaults
+                                    UserDefaults.standard.set(userId, forKey: "userID")
+                                    authManager.userID = userId
+                                    print(userId)
+                                }
+                            } else {
+                                // User doesn't exist so make a new one
+                                if let profile = user.profile {
+                                    firestoreManager.createUser(email: userEmail, username: profile.name)
+                                }
+                            }
+                        }
+                        
                         print("SIGN IN")
                         UserDefaults.standard.set(true, forKey: "signIn")
                         

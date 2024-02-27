@@ -15,7 +15,7 @@ class FirestoreManager: ObservableObject {
     
     init() {
         db = Firestore.firestore()
-        populateFirestore()
+        
         /* How to fetch a user
         fetchUser(id: "LJ92RtswXZzgZFK2J6EM") { user, error in
             if let error = error {
@@ -299,6 +299,7 @@ class FirestoreManager: ObservableObject {
         }
 
     }
+    
     
     func populateFirestore() {
         // Create users

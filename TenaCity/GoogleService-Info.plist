@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>255006999383-71pvd04s9lpgj4jk195r9t3jhbqc3b46.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.255006999383-71pvd04s9lpgj4jk195r9t3jhbqc3b46</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDP7nsKP8yNbIpjDYAZHkjakGaQW8jbhKQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>255006999383</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>ECS189E.TenaCity</string>
+	<key>PROJECT_ID</key>
+	<string>tenacityapp</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tenacityapp.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:255006999383:ios:9ff3610f73ff7d73d37412</string>
+</dict>
+</plist>
