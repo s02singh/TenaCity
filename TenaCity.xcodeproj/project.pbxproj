@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5A86732F2B8C816C00C76AD7 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A86732E2B8C816C00C76AD7 /* NavigationBar.swift */; };
 		5A8673312B8D406800C76AD7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8673302B8D406800C76AD7 /* SettingsView.swift */; };
+		5A8673332B8D4DD100C76AD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A8673322B8D4DD100C76AD7 /* GoogleService-Info.plist */; };
 		66E2546F2B807B7F00495CF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E2546E2B807B7F00495CF2 /* Assets.xcassets */; };
 		66E254722B807B7F00495CF2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E254712B807B7F00495CF2 /* Preview Assets.xcassets */; };
 		66E2547C2B807B8000495CF2 /* TenaCityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2547B2B807B8000495CF2 /* TenaCityTests.swift */; };
@@ -31,7 +32,6 @@
 		66E7D3FA2B81F23600A7ED66 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3F92B81F23600A7ED66 /* AuthManager.swift */; };
 		66E7D3FC2B81F2B400A7ED66 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3FB2B81F2B400A7ED66 /* LoadingScreen.swift */; };
 		66E7D3FE2B81F3C700A7ED66 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3FD2B81F3C700A7ED66 /* ContentView.swift */; };
-		6A58005B2B87028000917BAC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A58005A2B87028000917BAC /* GoogleService-Info.plist */; };
 		6A58005D2B870C0000917BAC /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58005C2B870C0000917BAC /* Types.swift */; };
 		6A5800622B87EEE200917BAC /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6A5800612B87EEE200917BAC /* FirebaseFirestore */; };
 		6A5800642B87F5A200917BAC /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5800632B87F5A200917BAC /* FirestoreManager.swift */; };
@@ -57,6 +57,7 @@
 /* Begin PBXFileReference section */
 		5A86732E2B8C816C00C76AD7 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		5A8673302B8D406800C76AD7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		5A8673322B8D4DD100C76AD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		66E254672B807B7B00495CF2 /* TenaCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TenaCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E2546E2B807B7F00495CF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66E254712B807B7F00495CF2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		66E7D3F92B81F23600A7ED66 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		66E7D3FB2B81F2B400A7ED66 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		66E7D3FD2B81F3C700A7ED66 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		6A58005A2B87028000917BAC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6A58005C2B870C0000917BAC /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		6A5800632B87F5A200917BAC /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,7 +141,7 @@
 		66E254692B807B7B00495CF2 /* TenaCity */ = {
 			isa = PBXGroup;
 			children = (
-				6A58005A2B87028000917BAC /* GoogleService-Info.plist */,
+				5A8673322B8D4DD100C76AD7 /* GoogleService-Info.plist */,
 				66E7D3F92B81F23600A7ED66 /* AuthManager.swift */,
 				66E7D3FB2B81F2B400A7ED66 /* LoadingScreen.swift */,
 				66E7D3D62B819F8000A7ED66 /* CustomButton.swift */,
@@ -324,7 +324,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A58005B2B87028000917BAC /* GoogleService-Info.plist in Resources */,
+				5A8673332B8D4DD100C76AD7 /* GoogleService-Info.plist in Resources */,
 				66E254722B807B7F00495CF2 /* Preview Assets.xcassets in Resources */,
 				66E7D3CB2B819E0600A7ED66 /* Preview Content in Resources */,
 				66E2546F2B807B7F00495CF2 /* Assets.xcassets in Resources */,
