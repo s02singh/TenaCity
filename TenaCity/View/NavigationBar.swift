@@ -10,10 +10,10 @@ import SwiftUI
 struct NavigationBar: View {
     var left_space: CGFloat = 20
     var right_space: CGFloat = 20
-    var top_space: CGFloat = 15
-    var bottom_space: CGFloat = 15
+    var top_space: CGFloat = 30
+    var bottom_space: CGFloat = 0
+    
     var body: some View {
-        NavigationStack {
             VStack {
                 HStack {
                     Spacer()
@@ -58,12 +58,11 @@ struct NavigationBar: View {
                 .background(Color("SageGreen"))
                 .frame(width: .infinity, height: 70, alignment: .bottom)
             }
-        }
-        .navigationBarBackButtonHidden() //remove top nav bar
-        .frame(width: .infinity, height: .infinity)
     }
 }
 
-#Preview {
-    NavigationBar()
+struct NavigationBar_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationBar()
+    }
 }
