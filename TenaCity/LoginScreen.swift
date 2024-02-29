@@ -24,6 +24,11 @@ struct LoginScreen: View {
     var body: some View {
         VStack {
             VStack {
+                Image("AppLogo")
+                     .resizable()
+                     .aspectRatio(contentMode: .fit)
+                     .frame(width: 200, height: 200)
+                
                 LoginHeader()
                     .padding(.bottom)
                 
