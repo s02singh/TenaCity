@@ -34,7 +34,7 @@ struct SettingsView: View {
                     .font(.system(size: 25))
             }
             .padding(.horizontal)
-            .padding(EdgeInsets(top: 0, leading: 60, bottom: 0, trailing: 0))
+            .padding(EdgeInsets(top: 0, leading: 50, bottom: 0, trailing: 0))
             
             HStack {
                 Text("Password:")
@@ -53,7 +53,7 @@ struct SettingsView: View {
                     .font(.system(size: 25))
             }
             .padding(.horizontal)
-            .padding(EdgeInsets(top: 0, leading: 60, bottom: 0, trailing: 0))
+            .padding(EdgeInsets(top: 0, leading: 50, bottom: 0, trailing: 0))
 
             HStack {
                 Text("Email:")
@@ -65,7 +65,7 @@ struct SettingsView: View {
                     .font(.system(size: 25))
             }
             .padding(.horizontal)
-            .padding(EdgeInsets(top: 0, leading: 60, bottom: 0, trailing: 0))
+            .padding(EdgeInsets(top: 0, leading: 50, bottom: 0, trailing: 0))
             
             HStack {
                 Text("Max Streak:")
@@ -75,7 +75,7 @@ struct SettingsView: View {
                     .font(.system(size: 25))
             }
             .padding(.horizontal)
-            .padding(EdgeInsets(top: 0, leading: 60, bottom: 0, trailing: 0))
+            .padding(EdgeInsets(top: 0, leading: 50, bottom: 0, trailing: 0))
             
             Spacer()
             Button {
@@ -84,7 +84,6 @@ struct SettingsView: View {
                 Text("Save")
                     .foregroundStyle(Color("SageGreen"))
             }
-            .foregroundStyle(.pink)
         }
         .frame(height: .infinity, alignment: .center)
         NavigationBar()
