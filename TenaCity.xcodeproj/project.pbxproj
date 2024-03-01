@@ -31,6 +31,7 @@
 		66E7D3FA2B81F23600A7ED66 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3F92B81F23600A7ED66 /* AuthManager.swift */; };
 		66E7D3FC2B81F2B400A7ED66 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3FB2B81F2B400A7ED66 /* LoadingScreen.swift */; };
 		66E7D3FE2B81F3C700A7ED66 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3FD2B81F3C700A7ED66 /* ContentView.swift */; };
+		66EDB9AE2B91569B008E0338 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EDB9AD2B91569B008E0338 /* FriendsView.swift */; };
 		6A58005D2B870C0000917BAC /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58005C2B870C0000917BAC /* Types.swift */; };
 		6A5800622B87EEE200917BAC /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6A5800612B87EEE200917BAC /* FirebaseFirestore */; };
 		6A5800642B87F5A200917BAC /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5800632B87F5A200917BAC /* FirestoreManager.swift */; };
@@ -83,6 +84,7 @@
 		66E7D3F92B81F23600A7ED66 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		66E7D3FB2B81F2B400A7ED66 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		66E7D3FD2B81F3C700A7ED66 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		66EDB9AD2B91569B008E0338 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		6A58005C2B870C0000917BAC /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		6A5800632B87F5A200917BAC /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				663912452B8D805900021A07 /* GoogleService-Info.plist */,
+				66EDB9AD2B91569B008E0338 /* FriendsView.swift */,
 				66E7D3F92B81F23600A7ED66 /* AuthManager.swift */,
 				66E7D3FB2B81F2B400A7ED66 /* LoadingScreen.swift */,
 				66E7D3D62B819F8000A7ED66 /* CustomButton.swift */,
@@ -353,6 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66EDB9AE2B91569B008E0338 /* FriendsView.swift in Sources */,
 				66E7D3F42B81C4B100A7ED66 /* ViewExtension.swift in Sources */,
 				6A5800642B87F5A200917BAC /* FirestoreManager.swift in Sources */,
 				66E7D3FC2B81F2B400A7ED66 /* LoadingScreen.swift in Sources */,
