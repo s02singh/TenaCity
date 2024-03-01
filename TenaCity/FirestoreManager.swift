@@ -15,7 +15,7 @@ class FirestoreManager: ObservableObject {
     
     init() {
         db = Firestore.firestore()
-        
+        //populateFirestore()
         /* How to fetch a user
         fetchUser(id: "LJ92RtswXZzgZFK2J6EM") { user, error in
             if let error = error {
@@ -29,9 +29,9 @@ class FirestoreManager: ObservableObject {
          */
     }
 
-    func createUser(email: String, username: String) -> User {
+    func createUser(email: String, password: String, username: String) -> User {
         let userRef = db.collection("users").document()
-        let newUser = User(id: userRef.documentID, email: email, username: username, accountCreationDate: Date(), userInvitedIDs: [], habitIDs: [], friendIDs: [])
+        let newUser = User(id: userRef.documentID, email: email, password: password, username: username, accountCreationDate: Date(), userInvitedIDs: [], habitIDs: [], friendIDs: [])
         userRef.setData(newUser.dictionary) { error in
             if let error = error {
                 print("Error adding document: \(error)")
@@ -42,9 +42,9 @@ class FirestoreManager: ObservableObject {
         return newUser
     }
 
-    func createHabit(name: String, building: Building) -> Habit {
+    func createHabit(name: String, building: Building, goal: Int, identifier: String) -> Habit {
         let habitRef = db.collection("habits").document()
-        let newHabit = Habit(id: habitRef.documentID, name: name, buildingID: building.id, dates: [], streak: 0, note: "", isPublic: false)
+        let newHabit = Habit(id: habitRef.documentID, name: name, buildingID: building.id, dates: [], streak: 0, note: "", isPublic: false, goal: goal, progress: 0, identifier: identifier)
         habitRef.setData(newHabit.dictionary) { error in
             if let error = error {
                 print("Error adding document: \(error)")
@@ -67,9 +67,9 @@ class FirestoreManager: ObservableObject {
         }
     }
 
-    func createBuilding(levels: [Skin]) -> Building {
+    func createBuilding(name: String, levels: [Skin]) -> Building {
         let buildingRef = db.collection("buildings").document()
-        let newBuilding = Building(id: buildingRef.documentID, levelsIDs: levels.map { $0.id })
+        let newBuilding = Building(id: buildingRef.documentID, name: name, levelsIDs: levels.map { $0.id })
         buildingRef.setData(newBuilding.dictionary) { error in
             if let error = error {
                 print("Error adding document: \(error)")
@@ -110,6 +110,7 @@ class FirestoreManager: ObservableObject {
             if let userData = document.data(),
                let id = userData["id"] as? String,
                let email = userData["email"] as? String,
+               let password = userData["password"] as? String,
                let username = userData["username"] as? String,
                let accountCreationTimestamp = userData["accountCreationDate"] as? Timestamp,
                let userInvitedIDs = userData["userInvitedIDs"] as? [String],
@@ -117,6 +118,7 @@ class FirestoreManager: ObservableObject {
                let friendIDs = userData["friendIDs"] as? [String] {
                    let user = User(id: id,
                                    email: email,
+                                   password: password,
                                    username: username,
                                    accountCreationDate: accountCreationTimestamp.dateValue(),
                                    userInvitedIDs: userInvitedIDs,
@@ -153,14 +155,20 @@ class FirestoreManager: ObservableObject {
                let dates = habitData["dates"] as? [Date],
                let streak = habitData["streak"] as? Int,
                let note = habitData["note"] as? String,
-               let isPublic = habitData["isPublic"] as? Bool {
+               let isPublic = habitData["isPublic"] as? Bool,
+               let goal = habitData["goal"] as? Int,
+               let progress = habitData["progress"] as? Int,
+               let identifier = habitData["identifier"] as? String {
                    let habit = Habit(id: id,
                                      name: name,
                                      buildingID: buildingID,
                                      dates: dates,
                                      streak: streak,
                                      note: note,
-                                     isPublic: isPublic)
+                                     isPublic: isPublic,
+                                     goal: goal,
+                                     progress: progress,
+                                     identifier: identifier)
                    
                    completion(habit, nil)
             } else {
@@ -169,6 +177,7 @@ class FirestoreManager: ObservableObject {
             }
         }
     }
+
 
     // Fetch Post
     func fetchPost(id: String, completion: @escaping (Post?, Error?) -> Void) {
@@ -224,8 +233,10 @@ class FirestoreManager: ObservableObject {
 
             if let buildingData = document.data(),
                let id = buildingData["id"] as? String,
+               let name = buildingData["name"] as? String,
                let levelsIDs = buildingData["levelsIDs"] as? [String] {
                    let building = Building(id: id,
+                                           name: name,
                                            levelsIDs: levelsIDs)
                    
                    completion(building, nil)
@@ -303,31 +314,30 @@ class FirestoreManager: ObservableObject {
     
     func populateFirestore() {
         // Create users
-        let user1 = createUser(email: "user1@abc.com", username: "fakeUser1")
-        let user2 = createUser(email: "user2@abc.com", username: "fakeUser2")
-        let user3 = createUser(email: "user3@abc.com", username: "fakeUser3")
+        let user1 = createUser(email: "abc@gmail.com", password: "Abc123", username: "user1")
         
         // Create building skins
         let houseSkin = createSkin(url: "https://media.istockphoto.com/id/1358860685/vector/house-icon-pixel-art-front-view-a-small-hut-vector-simple-flat-graphic-illustration-the.jpg?s=612x612&w=0&k=20&c=qodGeD6HSaJKRrZhglbSjXnGnrdXVZsyAlwdlcPaDZw=")
         let skyscraperSkin = createSkin(url: "https://static.vecteezy.com/system/resources/previews/011/453/045/original/skyscraper-pixel-art-style-free-vector.jpg")
         
         // Create building with skins
-        let building = createBuilding(levels: [houseSkin, skyscraperSkin])
+        let building1 = createBuilding(name: "Normal", levels: [houseSkin, skyscraperSkin])
+        let building2 = createBuilding(name: "Backwards", levels: [skyscraperSkin, houseSkin])
+
         
         // Create habits
-        let habit1User1 = createHabit(name: "Exercise", building: building)
-        let habit2User1 = createHabit(name: "Meditation", building: building)
-        let habit1User2 = createHabit(name: "Reading", building: building)
+        let habit1 = createHabit(name: "Gym", building: building1, goal: 1, identifier: "minutes")
+        let habit2 = createHabit(name: "Steps", building: building2, goal: 10000, identifier: "steps")
         
         // Make user1 and user2 friends
-        addFriend(user: user1, friend: user2)
+        //addFriend(user: user1, friend: user2)
         
         // Create Post
-        createPost(description: "My first post", user: user1, habit: habit1User1)
+        //createPost(description: "My first post", user: user1, habit: habit1User1)
         
         // Add habits
-        addHabitToUser(user: user1, habit: habit1User1)
-        addHabitToUser(user: user1, habit: habit2User1)
-        addHabitToUser(user: user2, habit: habit1User2)
+        addHabitToUser(user: user1, habit: habit1)
+        addHabitToUser(user: user1, habit: habit2)
+        //addHabitToUser(user: user2, habit: habit1User2)
     }
 }

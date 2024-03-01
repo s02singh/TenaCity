@@ -33,6 +33,8 @@
 		6A58005D2B870C0000917BAC /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A58005C2B870C0000917BAC /* Types.swift */; };
 		6A5800622B87EEE200917BAC /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6A5800612B87EEE200917BAC /* FirebaseFirestore */; };
 		6A5800642B87F5A200917BAC /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5800632B87F5A200917BAC /* FirestoreManager.swift */; };
+		6AADAF192B903AF60006D5BE /* BuildingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AADAF182B903AF60006D5BE /* BuildingView.swift */; };
+		6AADAF1B2B9167660006D5BE /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AADAF1A2B9167660006D5BE /* HealthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,9 @@
 		66E7D3FD2B81F3C700A7ED66 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6A58005C2B870C0000917BAC /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		6A5800632B87F5A200917BAC /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		6AADAF182B903AF60006D5BE /* BuildingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingView.swift; sourceTree = "<group>"; };
+		6AADAF1A2B9167660006D5BE /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		6AADAF1C2B9168080006D5BE /* TenaCity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TenaCity.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +142,7 @@
 		66E254692B807B7B00495CF2 /* TenaCity */ = {
 			isa = PBXGroup;
 			children = (
+				6AADAF1C2B9168080006D5BE /* TenaCity.entitlements */,
 				663912452B8D805900021A07 /* GoogleService-Info.plist */,
 				66E7D3F92B81F23600A7ED66 /* AuthManager.swift */,
 				66E7D3FB2B81F2B400A7ED66 /* LoadingScreen.swift */,
@@ -146,10 +152,12 @@
 				6A58005C2B870C0000917BAC /* Types.swift */,
 				66E7D3F32B81C4B100A7ED66 /* ViewExtension.swift */,
 				66E7D3FD2B81F3C700A7ED66 /* ContentView.swift */,
+				6AADAF1A2B9167660006D5BE /* HealthManager.swift */,
 				66E7D3EC2B81B6AF00A7ED66 /* Home.swift */,
 				66E7D3EB2B81B6AF00A7ED66 /* LoginScreen.swift */,
 				66E7D3D92B819F8000A7ED66 /* GoogleSiginBtn.swift */,
 				66E7D3E92B81B66E00A7ED66 /* TenaCity.swift */,
+				6AADAF182B903AF60006D5BE /* BuildingView.swift */,
 				66E7D3DE2B81B63900A7ED66 /* Assets.xcassets */,
 				66E7D3E42B81B65700A7ED66 /* View */,
 				66E7D3E02B81B64300A7ED66 /* Preview Content */,
@@ -351,7 +359,9 @@
 			files = (
 				66E7D3F42B81C4B100A7ED66 /* ViewExtension.swift in Sources */,
 				6A5800642B87F5A200917BAC /* FirestoreManager.swift in Sources */,
+				6AADAF192B903AF60006D5BE /* BuildingView.swift in Sources */,
 				66E7D3FC2B81F2B400A7ED66 /* LoadingScreen.swift in Sources */,
+				6AADAF1B2B9167660006D5BE /* HealthManager.swift in Sources */,
 				66E7D3FE2B81F3C700A7ED66 /* ContentView.swift in Sources */,
 				6A58005D2B870C0000917BAC /* Types.swift in Sources */,
 				66E7D3EE2B81B6AF00A7ED66 /* LoginScreen.swift in Sources */,
@@ -522,13 +532,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TenaCity/TenaCity.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TenaCity/Preview Content\"";
-				DEVELOPMENT_TEAM = GP27ADN52D;
+				DEVELOPMENT_TEAM = FK7V74L7WY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TenaCity/Info.plist;
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Please allow this to track your steps, miles, and calories";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow this to track your steps, miles, and calories";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Please allow this to track your steps, miles, and calories";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -539,7 +553,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ECS189E.TenaCity.V2;
+				PRODUCT_BUNDLE_IDENTIFIER = ECS189E.TenaCity.V3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -552,13 +566,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TenaCity/TenaCity.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TenaCity/Preview Content\"";
-				DEVELOPMENT_TEAM = GP27ADN52D;
+				DEVELOPMENT_TEAM = FK7V74L7WY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TenaCity/Info.plist;
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Please allow this to track your steps, miles, and calories";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow this to track your steps, miles, and calories";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Please allow this to track your steps, miles, and calories";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -569,7 +587,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ECS189E.TenaCity.V2;
+				PRODUCT_BUNDLE_IDENTIFIER = ECS189E.TenaCity.V3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
