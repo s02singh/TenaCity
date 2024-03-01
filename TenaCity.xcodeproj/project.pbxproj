@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		47F816BF2B913BBF00C313F6 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47F816BE2B913BBF00C313F6 /* SplashScreen.storyboard */; };
+		47F816C12B91418F00C313F6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F816C02B91418F00C313F6 /* SettingsView.swift */; };
 		663912462B8D805900021A07 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 663912452B8D805900021A07 /* GoogleService-Info.plist */; };
 		66E2546F2B807B7F00495CF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E2546E2B807B7F00495CF2 /* Assets.xcassets */; };
 		66E254722B807B7F00495CF2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E254712B807B7F00495CF2 /* Preview Assets.xcassets */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		47F816BE2B913BBF00C313F6 /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
+		47F816C02B91418F00C313F6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		663912452B8D805900021A07 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		66E254672B807B7B00495CF2 /* TenaCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TenaCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E2546E2B807B7F00495CF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				66E2546E2B807B7F00495CF2 /* Assets.xcassets */,
 				66E254702B807B7F00495CF2 /* Preview Content */,
 				47F816BE2B913BBF00C313F6 /* SplashScreen.storyboard */,
+				47F816C02B91418F00C313F6 /* SettingsView.swift */,
 			);
 			path = TenaCity;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				6A58005D2B870C0000917BAC /* Types.swift in Sources */,
 				66E7D3EE2B81B6AF00A7ED66 /* LoginScreen.swift in Sources */,
 				66E7D3DA2B819F8000A7ED66 /* CustomButton.swift in Sources */,
+				47F816C12B91418F00C313F6 /* SettingsView.swift in Sources */,
 				66E7D3ED2B81B6AF00A7ED66 /* Home.swift in Sources */,
 				66E7D3F22B81C2D600A7ED66 /* AppDelegate.swift in Sources */,
 				66E7D3DB2B819F8000A7ED66 /* LoginHeader.swift in Sources */,

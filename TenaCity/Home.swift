@@ -10,6 +10,7 @@ struct Home: View {
     @State private var displayName: String = ""
     @EnvironmentObject var authManager: AuthManager
     @State private var newPassword: String = ""
+    @State private var showingSettings: Bool = false
         
         var body: some View {
             VStack {
@@ -34,6 +35,21 @@ struct Home: View {
                         
                     }
                 SignOutButton()
+                
+                Spacer()
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        print(authManager.userID)
+                        showingSettings = true
+                    }) {
+                        Image(systemName: "gearshape.fill")
+                    }
+                    .sheet(isPresented: $showingSettings) {
+                        SettingsView(username: $displayName, userID: authManager.userID ?? "", firestoreManager: FirestoreManager())
+                    }
+                }
             }
         
         

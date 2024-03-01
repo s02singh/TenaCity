@@ -330,4 +330,18 @@ class FirestoreManager: ObservableObject {
         addHabitToUser(user: user1, habit: habit2User1)
         addHabitToUser(user: user2, habit: habit1User2)
     }
+    
+    func updateUser(username: String, id: String, completion: @escaping(Error?) -> Void) {
+        let userRef = db.collection("users").document(id)
+        
+        userRef.updateData(["username": username]) { error in
+            if let error = error {
+                print("Error updating username: \(error)")
+                completion(error)
+            } else {
+                print("Username updated successfully")
+                completion(nil)
+            }
+        }
+    }
 }
