@@ -4,7 +4,7 @@ import SwiftUI
 struct LoginHeader: View {
     var body: some View {
         VStack {
-            Text("Welcome to TenaCity")
+            Text("Welcome to TenaCity!")
                 .multilineTextAlignment(.center)
         }
     }
