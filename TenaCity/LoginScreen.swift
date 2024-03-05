@@ -146,7 +146,7 @@ struct LoginScreen: View {
                             } else {
                                 // User doesn't exist so make a new one
                                 if let profile = user.profile {
-                                    firestoreManager.createUser(email: userEmail, username: profile.name)
+                                    firestoreManager.createUser(email: userEmail, password: "TODO", username: profile.name)
                                 }
                             }
                         }

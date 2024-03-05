@@ -8,6 +8,7 @@ struct TenaCity: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var authManager = AuthManager()
     @StateObject var firestoreManager = FirestoreManager()
+    @StateObject var healthManager = HealthManager()
 
     
     var body: some Scene {
@@ -21,9 +22,10 @@ struct TenaCity: App {
                     Home()
                         .preferredColorScheme(.light)
                         .environmentObject(authManager)
+                        .environmentObject(healthManager)
                 }
                 .environmentObject(authManager)
- 
+
             }
         }
     }

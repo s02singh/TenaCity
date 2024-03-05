@@ -11,6 +11,7 @@ import Foundation
 struct User {
     let id: String
     let email: String
+    let password: String
     let username: String
     let accountCreationDate: Date
     var userInvitedIDs: [String]
@@ -27,6 +28,9 @@ struct Habit {
     var streak: Int
     var note: String
     var isPublic: Bool
+    var goal: Int           // # of progress user wants on habit
+    var progress: Int       // # of progress towards goal for the day, resets daily
+    var identifier: String  // eg. "Steps", "Hours", "etc"
 }
 
 // Post
@@ -42,6 +46,7 @@ struct Post {
 // Building
 struct Building {
     let id: String
+    let name: String
     var levelsIDs: [String] // Skin ids
 }
 
@@ -57,6 +62,7 @@ extension User {
         return [
             "id": id,
             "email": email,
+            "password": password,
             "username": username,
             "accountCreationDate": accountCreationDate,
             "userInvitedIDs": userInvitedIDs,
@@ -76,7 +82,10 @@ extension Habit {
             "dates": dates,
             "streak": streak,
             "note": note,
-            "isPublic": isPublic
+            "isPublic": isPublic,
+            "goal": goal,
+            "progress": progress,
+            "identifier": identifier
         ]
     }
 }
@@ -100,6 +109,7 @@ extension Building {
     var dictionary: [String: Any] {
         return [
             "id": id,
+            "name": name,
             "levelsIDs": levelsIDs
         ]
     }

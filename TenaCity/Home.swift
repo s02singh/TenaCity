@@ -10,6 +10,7 @@ struct Home: View {
     @State private var displayName: String = ""
     @EnvironmentObject var authManager: AuthManager
     @State private var newPassword: String = ""
+    @EnvironmentObject var healthManager: HealthManager
     @State private var isNavigatingToFriends = false
         
         var body: some View {
@@ -64,6 +65,10 @@ struct Home: View {
                     .cornerRadius(10)
             }
             .padding()
+            
+            NavigationLink(destination: BuildingView().environmentObject(healthManager)) {
+                Text("Go to Building View")
+            }
         }
     }
     

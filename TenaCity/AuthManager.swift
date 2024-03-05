@@ -11,6 +11,26 @@ class AuthManager: ObservableObject {
     @Published var isLoading = true
     @Published var userName: String?
     @Published var userID: String?
+    @Published var user: User?
+    @ObservedObject var firestoreManager = FirestoreManager()
+    
+    init() {
+        if let savedUserID = UserDefaults.standard.string(forKey: "userID") {
+            self.userID = savedUserID
+            firestoreManager.fetchUser(id: userID ?? "") { user, error in
+                if let error = error {
+                    print("Error fetching user: \(error.localizedDescription)")
+                } else if let fetchedUser = user {
+                    self.user = fetchedUser
+                } else {
+                    print("User not found.")
+                }
+            }
+            
+        } else {
+            print("No user saved")
+        }
+    }
     
     func checkUserSignIn() {
         if let _ = Auth.auth().currentUser {
@@ -22,22 +42,23 @@ class AuthManager: ObservableObject {
     }
     
     func signIn(username: String, password: String) async throws -> (userId: String, username: String)?{
-
+        print(username)
         let users = try await Firestore.firestore().collection("users").whereField("username", isEqualTo: username).getDocuments()
          
-        print("in here")
         let documents = users.documents
-            if let user = documents.first?.data() {
-                if let storedPassword = user["password"] as? String {
-                    if comparePasswords(password: password, storedPassword: storedPassword) {
-                        if let userId = documents.first?.documentID, let userName = user["username"] as? String {
-                            print(userName)
-                            print(userId)
-                            return (userId, userName)
-                        }
+        print(documents)
+        if let user = documents.first?.data() {
+            if let storedPassword = user["password"] as? String {
+                if comparePasswords(password: password, storedPassword: storedPassword) {
+                    if let userId = documents.first?.documentID, let userName = user["username"] as? String {
+                        print(userName)
+                        print(userId)
+                        self.userID = userID
+                        return (userId, userName)
                     }
                 }
             }
+        }
         return nil
       }
     
