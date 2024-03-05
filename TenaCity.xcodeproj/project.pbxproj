@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		5A211A3A2B97DD450044F801 /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 663912452B8D805900021A07 /* GoogleService-Info.plist */; };
 		5A211A3B2B97DD450044F801 /* Assets.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3DE2B81B63900A7ED66 /* Assets.xcassets */; };
+		5AA3BB452B97E3F000E64B93 /* LoginHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3E82B81B65700A7ED66 /* LoginHeader.swift */; };
+		5AA3BB462B97E3F500E64B93 /* GoogleSiginBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3E72B81B65700A7ED66 /* GoogleSiginBtn.swift */; };
+		5AA3BB472B97E3F700E64B93 /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3E62B81B65700A7ED66 /* CustomTextfield.swift */; };
+		5AA3BB482B97E3FA00E64B93 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3E52B81B65700A7ED66 /* CustomButton.swift */; };
 		66E2547C2B807B8000495CF2 /* TenaCityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2547B2B807B8000495CF2 /* TenaCityTests.swift */; };
 		66E254862B807B8000495CF2 /* TenaCityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E254852B807B8000495CF2 /* TenaCityUITests.swift */; };
 		66E254882B807B8000495CF2 /* TenaCityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E254872B807B8000495CF2 /* TenaCityUITestsLaunchTests.swift */; };
 		66E7D3BC2B81998A00A7ED66 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 66E7D3BB2B81998A00A7ED66 /* FirebaseAuth */; };
 		66E7D3BF2B819A1F00A7ED66 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 66E7D3BE2B819A1F00A7ED66 /* GoogleSignIn */; };
-		66E7D3DA2B819F8000A7ED66 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3D62B819F8000A7ED66 /* CustomButton.swift */; };
-		66E7D3DD2B819F8000A7ED66 /* GoogleSiginBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3D92B819F8000A7ED66 /* GoogleSiginBtn.swift */; };
 		66E7D3EA2B81B66E00A7ED66 /* TenaCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3E92B81B66E00A7ED66 /* TenaCity.swift */; };
 		66E7D3ED2B81B6AF00A7ED66 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3EC2B81B6AF00A7ED66 /* Home.swift */; };
 		66E7D3EE2B81B6AF00A7ED66 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3EB2B81B6AF00A7ED66 /* LoginScreen.swift */; };
@@ -59,8 +61,6 @@
 		66E254852B807B8000495CF2 /* TenaCityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenaCityUITests.swift; sourceTree = "<group>"; };
 		66E254872B807B8000495CF2 /* TenaCityUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenaCityUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		66E7D3C42B819E0500A7ED66 /* Preview Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Preview Content"; sourceTree = "<group>"; };
-		66E7D3D62B819F8000A7ED66 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomButton.swift; path = View/CustomButton.swift; sourceTree = "<group>"; };
-		66E7D3D92B819F8000A7ED66 /* GoogleSiginBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GoogleSiginBtn.swift; path = View/GoogleSiginBtn.swift; sourceTree = "<group>"; };
 		66E7D3DE2B81B63900A7ED66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66E7D3E52B81B65700A7ED66 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		66E7D3E62B81B65700A7ED66 /* CustomTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextfield.swift; sourceTree = "<group>"; };
@@ -110,6 +110,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5AA3BB442B97E34900E64B93 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66E7D3EC2B81B6AF00A7ED66 /* Home.swift */,
+				66E7D3FD2B81F3C700A7ED66 /* ContentView.swift */,
+				6AADAF182B903AF60006D5BE /* BuildingView.swift */,
+				66E7D3FB2B81F2B400A7ED66 /* LoadingScreen.swift */,
+				66E7D3EB2B81B6AF00A7ED66 /* LoginScreen.swift */,
+				66EDB9AD2B91569B008E0338 /* FriendsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		66E2545E2B807B7B00495CF2 = {
 			isa = PBXGroup;
 			children = (
@@ -134,24 +147,18 @@
 		66E254692B807B7B00495CF2 /* TenaCity */ = {
 			isa = PBXGroup;
 			children = (
+				66E7D3E42B81B65700A7ED66 /* Components */,
+				5AA3BB442B97E34900E64B93 /* Views */,
 				6AADAF1C2B9168080006D5BE /* TenaCity.entitlements */,
 				663912452B8D805900021A07 /* GoogleService-Info.plist */,
 				66E7D3F92B81F23600A7ED66 /* AuthManager.swift */,
-				66E7D3FB2B81F2B400A7ED66 /* LoadingScreen.swift */,
-				66E7D3D62B819F8000A7ED66 /* CustomButton.swift */,
 				66E7D3F12B81C2D600A7ED66 /* AppDelegate.swift */,
 				6A5800632B87F5A200917BAC /* FirestoreManager.swift */,
 				6A58005C2B870C0000917BAC /* Types.swift */,
 				66E7D3F32B81C4B100A7ED66 /* ViewExtension.swift */,
-				66E7D3FD2B81F3C700A7ED66 /* ContentView.swift */,
 				6AADAF1A2B9167660006D5BE /* HealthManager.swift */,
-				66E7D3EC2B81B6AF00A7ED66 /* Home.swift */,
-				66E7D3EB2B81B6AF00A7ED66 /* LoginScreen.swift */,
-				66E7D3D92B819F8000A7ED66 /* GoogleSiginBtn.swift */,
 				66E7D3E92B81B66E00A7ED66 /* TenaCity.swift */,
-				6AADAF182B903AF60006D5BE /* BuildingView.swift */,
 				66E7D3DE2B81B63900A7ED66 /* Assets.xcassets */,
-				66E7D3E42B81B65700A7ED66 /* View */,
 				66E7D3C42B819E0500A7ED66 /* Preview Content */,
 				47F816BE2B913BBF00C313F6 /* SplashScreen.storyboard */,
 			);
@@ -175,16 +182,15 @@
 			path = TenaCityUITests;
 			sourceTree = "<group>";
 		};
-		66E7D3E42B81B65700A7ED66 /* View */ = {
+		66E7D3E42B81B65700A7ED66 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				66EDB9AD2B91569B008E0338 /* FriendsView.swift */,
 				66E7D3E52B81B65700A7ED66 /* CustomButton.swift */,
 				66E7D3E62B81B65700A7ED66 /* CustomTextfield.swift */,
 				66E7D3E72B81B65700A7ED66 /* GoogleSiginBtn.swift */,
 				66E7D3E82B81B65700A7ED66 /* LoginHeader.swift */,
 			);
-			path = View;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		6A5800602B87EEE200917BAC /* Frameworks */ = {
@@ -323,6 +329,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AA3BB462B97E3F500E64B93 /* GoogleSiginBtn.swift in Sources */,
+				5AA3BB482B97E3FA00E64B93 /* CustomButton.swift in Sources */,
 				5A211A3A2B97DD450044F801 /* GoogleService-Info.plist in Sources */,
 				5A211A3B2B97DD450044F801 /* Assets.xcassets in Sources */,
 				66EDB9AE2B91569B008E0338 /* FriendsView.swift in Sources */,
@@ -330,15 +338,15 @@
 				6A5800642B87F5A200917BAC /* FirestoreManager.swift in Sources */,
 				6AADAF192B903AF60006D5BE /* BuildingView.swift in Sources */,
 				66E7D3FC2B81F2B400A7ED66 /* LoadingScreen.swift in Sources */,
+				5AA3BB472B97E3F700E64B93 /* CustomTextfield.swift in Sources */,
 				6AADAF1B2B9167660006D5BE /* HealthManager.swift in Sources */,
 				66E7D3FE2B81F3C700A7ED66 /* ContentView.swift in Sources */,
 				6A58005D2B870C0000917BAC /* Types.swift in Sources */,
 				66E7D3EE2B81B6AF00A7ED66 /* LoginScreen.swift in Sources */,
-				66E7D3DA2B819F8000A7ED66 /* CustomButton.swift in Sources */,
 				66E7D3ED2B81B6AF00A7ED66 /* Home.swift in Sources */,
 				66E7D3F22B81C2D600A7ED66 /* AppDelegate.swift in Sources */,
 				66E7D3EA2B81B66E00A7ED66 /* TenaCity.swift in Sources */,
-				66E7D3DD2B819F8000A7ED66 /* GoogleSiginBtn.swift in Sources */,
+				5AA3BB452B97E3F000E64B93 /* LoginHeader.swift in Sources */,
 				66E7D3FA2B81F23600A7ED66 /* AuthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,7 +512,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TenaCity/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = V3G5XWB274;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TenaCity/Info.plist;
@@ -538,7 +546,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TenaCity/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = V3G5XWB274;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TenaCity/Info.plist;
