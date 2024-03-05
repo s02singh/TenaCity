@@ -11,6 +11,7 @@ struct Home: View {
     @EnvironmentObject var authManager: AuthManager
     @State private var newPassword: String = ""
     @EnvironmentObject var healthManager: HealthManager
+    @State private var isNavigatingToFriends = false
         
         var body: some View {
             VStack {
@@ -23,6 +24,7 @@ struct Home: View {
                         else if let currentUser = Auth.auth().currentUser {
                             self.displayName = currentUser.displayName ?? ""
                             authManager.userName = currentUser.displayName
+                            authManager.userID = UserDefaults.standard.object(forKey: "userID") as? String
                         }
                         
                         
@@ -34,7 +36,13 @@ struct Home: View {
                          */
                         
                     }
+                FriendsViewButton(isNavigatingToFriends: $isNavigatingToFriends)
+                
+                
                 SignOutButton()
+            }
+            .navigationDestination(isPresented: $isNavigatingToFriends) {
+                FriendsView().environmentObject(authManager)
             }
         
         
@@ -112,6 +120,22 @@ struct SignOutButton: View {
                 .background(Color.red)
                 .cornerRadius(10)
         }
+        .padding()
+    }
+}
+
+struct FriendsViewButton: View {
+    @Binding var isNavigatingToFriends: Bool
+    
+    var body: some View {
+        Button("Friends View") {
+            isNavigatingToFriends = true
+        }
+        .font(.headline)
+        .foregroundColor(.white)
+        .padding()
+        .background(Color.blue)
+        .cornerRadius(10)
         .padding()
     }
 }
