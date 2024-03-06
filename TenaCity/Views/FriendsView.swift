@@ -22,46 +22,50 @@ struct FriendsView: View {
     
     var body: some View {
         VStack {
-            Text("My Friends")
-                .font(.system(size: 24, weight: .bold, design: .default))
-                .foregroundColor(Color.blue)
-                .padding(.top, 20)
-            
-            Text("\(friends.count) friends")
-                .font(.caption)
-                .foregroundColor(.gray)
-                .padding(.bottom, 10)
-            
-            ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]) {
-                    ForEach(friends) { friend in
-                        Button(action: {
-                            selectedFriend = friend
-                        }) {
-                            VStack {
-                                AsyncImage(url: URL(string: friend.houseIconURL)) { image in
-                                    image.resizable()
-                                } placeholder: {
-                                    ProgressView()
+            VStack {
+                Text("My Friends")
+                    .font(.system(size: 24, weight: .bold, design: .default))
+                    .foregroundColor(Color.blue)
+                    .padding(.top, 20)
+                
+                Text("\(friends.count) friends")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                    .padding(.bottom, 10)
+                
+                ScrollView {
+                    LazyVGrid(columns: [GridItem(.adaptive(minimum: 100))]) {
+                        ForEach(friends) { friend in
+                            Button(action: {
+                                selectedFriend = friend
+                            }) {
+                                VStack {
+                                    AsyncImage(url: URL(string: friend.houseIconURL)) { image in
+                                        image.resizable()
+                                    } placeholder: {
+                                        ProgressView()
+                                    }
+                                    .frame(width: 150, height: 150)
+                                    .cornerRadius(12)
+                                    
+                                    Text(friend.username)
+                                        .font(.headline)
+                                        .lineLimit(1)
                                 }
-                                .frame(width: 150, height: 150)
-                                .cornerRadius(12)
-                                
-                                Text(friend.username)
-                                    .font(.headline)
-                                    .lineLimit(1)
                             }
                         }
                     }
                 }
             }
-        }
-        .padding()
-        .sheet(item: $selectedFriend) { friend in
-            MenuView(friend: friend)
-        }
-        .onAppear {
-            loadFriends()
+            .padding()
+            .sheet(item: $selectedFriend) { friend in
+                MenuView(friend: friend)
+            }
+            .onAppear {
+                loadFriends()
+            }
+            Spacer()
+            NavigationBar()
         }
     }
     

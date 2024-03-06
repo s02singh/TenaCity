@@ -10,54 +10,72 @@ import SwiftUI
 struct NavigationBar: View {
     var left_space: CGFloat = 20
     var right_space: CGFloat = 20
-    var top_space: CGFloat = 30
+    var top_space: CGFloat = 15
     var bottom_space: CGFloat = 0
     
+    @State var store: Bool = false
+    @State var friends: Bool = false
+    @State var buildings: Bool = false
+    @State var settings: Bool = false
+    
+    @EnvironmentObject var authManager: AuthManager
+    
     var body: some View {
-            VStack {
-                HStack {
-                    Spacer()
-                    Button {
-                        //link to view
-                    } label: {
-                        Spacer()
-                        Image(systemName: "storefront")
-//                            .resizable()
-                            .foregroundColor(.white)
-                            .padding(EdgeInsets(top: top_space, leading: left_space, bottom: bottom_space, trailing: right_space))
-                    }
-                    Spacer()
-                    Button {
-                        //link to view
-                    } label: {
-                        Image(systemName: "person.2")
-//                            .resizable()
-                            .foregroundColor(.white)
-                            .padding(EdgeInsets(top: top_space, leading: left_space, bottom: bottom_space, trailing: right_space))
-                    }
-                    Spacer()
-                    Button {
-                        //link to view
-                    } label: {
-                        Image(systemName: "building.2")
-//                            .resizable()
-                            .foregroundColor(.white)
-                            .padding(EdgeInsets(top: top_space, leading: left_space, bottom: bottom_space, trailing: right_space))
-                    }
-                    Spacer()
-                    Button {
-                        //link to view
-                    } label: {
-                        Image(systemName: "gearshape")
-//                            .resizable()
-                            .foregroundColor(.white)
-                            .padding(EdgeInsets(top: top_space, leading: left_space, bottom: bottom_space, trailing: right_space))
-                    }
-                    Spacer()
+        VStack {
+            HStack {
+                Spacer()
+                Button {
+                    store = true
+                } label: {
+                    Image(systemName: "storefront")
+                    //                            .resizable()
+                        .foregroundColor(.white)
+                        .padding(EdgeInsets(top: top_space, leading: left_space, bottom: bottom_space, trailing: right_space))
                 }
-                .background(Color("SageGreen"))
+                Spacer()
+                Button {
+                    friends = true
+                } label: {
+                    Image(systemName: "person.2")
+                    //                            .resizable()
+                        .foregroundColor(.white)
+                        .padding(EdgeInsets(top: top_space, leading: left_space, bottom: bottom_space, trailing: right_space))
+                }
+                Spacer()
+                Button {
+                    buildings = true
+                } label: {
+                    Image(systemName: "building.2")
+                    //                            .resizable()
+                        .foregroundColor(.white)
+                        .padding(EdgeInsets(top: top_space, leading: left_space, bottom: bottom_space, trailing: right_space))
+                }
+                Spacer()
+                Button {
+                    settings = true
+                } label: {
+                    Image(systemName: "gearshape")
+                    //                            .resizable()
+                        .foregroundColor(.white)
+                        .padding(EdgeInsets(top: top_space, leading: left_space, bottom: bottom_space, trailing: right_space))
+                }
+                Spacer()
             }
-            .frame(width: .infinity, height: 50, alignment: .bottom)
+            .background(Color("SageGreen"))
+        }
+        .frame(maxHeight: 60, alignment: .bottom)
+        //            .navigationDestination(isPresented: store, destination: {
+        //                  StoreView()
+        //              })
+            .navigationDestination(isPresented: $friends, destination: {
+                FriendsView()
+            })
+            .navigationDestination(isPresented: $buildings, destination: {
+                BuildingView()
+            })
+//            .navigationDestination(isPresented: settings, destination: {
+        //                  SettingsView()
+        //              })
     }
 }
 

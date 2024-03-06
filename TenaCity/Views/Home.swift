@@ -13,7 +13,8 @@ struct Home: View {
     @EnvironmentObject var healthManager: HealthManager
     @State private var isNavigatingToFriends = false
         
-        var body: some View {
+    var body: some View {
+        VStack {
             VStack {
                 Text("Hello \(displayName)!")
                     .padding()
@@ -30,46 +31,47 @@ struct Home: View {
                         
                         /// KEEP FOR LATER IF WE WANT MORE THAN GOOGLE SIGNIN
                         /*
-                        if let currentUser = Auth.auth().currentUser {
-                            self.displayName = currentUser.displayName ?? ""
-                        }
+                         if let currentUser = Auth.auth().currentUser {
+                         self.displayName = currentUser.displayName ?? ""
+                         }
                          */
                         
                     }
                 FriendsViewButton(isNavigatingToFriends: $isNavigatingToFriends)
-                
                 
                 SignOutButton()
             }
             .navigationDestination(isPresented: $isNavigatingToFriends) {
                 FriendsView().environmentObject(authManager)
             }
-        
-        
-        VStack {
-            TextField("New Password", text: $newPassword)
-                .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding(.horizontal)
             
-            Button(action: {
-              
-                
-                self.setPassword(newPassword: newPassword)
-                
-            }) {
-                Text("Set Password")
-                    .foregroundColor(.white)
+            VStack {
+                TextField("New Password", text: $newPassword)
                     .padding()
-                    .background(Color.blue)
-                    .cornerRadius(10)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal)
+                
+                Button(action: {
+                    
+                    self.setPassword(newPassword: newPassword)
+                    
+                }) {
+                    Text("Set Password")
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                }
+                .padding()
+                
+                NavigationLink(destination: BuildingView().environmentObject(healthManager)) {
+                    Text("Go to Building View")
+                }
             }
-            .padding()
-            
-            NavigationLink(destination: BuildingView().environmentObject(healthManager)) {
-                Text("Go to Building View")
-            }
+            Spacer()
+            NavigationBar()
         }
+        .ignoresSafeArea(.keyboard)
     }
     
     private func setPassword(newPassword: String) {
