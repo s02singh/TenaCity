@@ -22,7 +22,7 @@ struct NavigationBar: View {
                     } label: {
                         Spacer()
                         Image(systemName: "storefront")
-                            .resizable()
+//                            .resizable()
                             .foregroundColor(.white)
                             .padding(EdgeInsets(top: top_space, leading: left_space, bottom: bottom_space, trailing: right_space))
                     }
@@ -31,7 +31,7 @@ struct NavigationBar: View {
                         //link to view
                     } label: {
                         Image(systemName: "person.2")
-                            .resizable()
+//                            .resizable()
                             .foregroundColor(.white)
                             .padding(EdgeInsets(top: top_space, leading: left_space, bottom: bottom_space, trailing: right_space))
                     }
@@ -40,7 +40,7 @@ struct NavigationBar: View {
                         //link to view
                     } label: {
                         Image(systemName: "building.2")
-                            .resizable()
+//                            .resizable()
                             .foregroundColor(.white)
                             .padding(EdgeInsets(top: top_space, leading: left_space, bottom: bottom_space, trailing: right_space))
                     }
@@ -49,15 +49,15 @@ struct NavigationBar: View {
                         //link to view
                     } label: {
                         Image(systemName: "gearshape")
-                            .resizable()
+//                            .resizable()
                             .foregroundColor(.white)
                             .padding(EdgeInsets(top: top_space, leading: left_space, bottom: bottom_space, trailing: right_space))
                     }
                     Spacer()
                 }
                 .background(Color("SageGreen"))
-                .frame(width: .infinity, height: 70, alignment: .bottom)
             }
+            .frame(width: .infinity, height: 50, alignment: .bottom)
     }
 }
 
