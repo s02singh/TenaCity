@@ -65,7 +65,7 @@ struct FriendsView: View {
                 loadFriends()
             }
             Spacer()
-            NavigationBar()
+//            NavigationBar()
         }
     }
     

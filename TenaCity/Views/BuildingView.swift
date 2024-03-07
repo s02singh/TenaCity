@@ -85,7 +85,7 @@ struct BuildingView: View {
                     .padding()
             }
             Spacer()
-            NavigationBar()
+//            NavigationBar()
         }
     }
 }

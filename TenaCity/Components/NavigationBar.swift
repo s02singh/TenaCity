@@ -67,12 +67,12 @@ struct NavigationBar: View {
         //            .navigationDestination(isPresented: store, destination: {
         //                  StoreView()
         //              })
-            .navigationDestination(isPresented: $friends, destination: {
-                FriendsView()
-            })
-            .navigationDestination(isPresented: $buildings, destination: {
-                BuildingView()
-            })
+        .navigationDestination(isPresented: $friends, destination: {
+            FriendsView()
+        })
+        .navigationDestination(isPresented: $buildings, destination: {
+            BuildingView()
+        })
 //            .navigationDestination(isPresented: settings, destination: {
         //                  SettingsView()
         //              })
