@@ -29,8 +29,8 @@ struct Home: View {
                     }
                 }
             
-            Group {
-                TabView (selection: $viewState) {
+            TabView (selection: $viewState) {
+                Group {
                     Text("Store")
                         .tabItem() {
                             Image(systemName: "storefront")
@@ -55,10 +55,10 @@ struct Home: View {
                         }
                         .tag(4)
                 }
+                .toolbarBackground(.visible, for: .tabBar)
+                .toolbarBackground(Color("SageGreen"), for: .tabBar)
+                .toolbarColorScheme(.dark, for: .tabBar)
             }
-            .toolbarBackground(.visible, for: .tabBar)
-            .toolbarBackground(Color("SageGreen"), for: .tabBar)
-            .toolbarColorScheme(.dark, for: .tabBar)
             
         }
         .ignoresSafeArea(.keyboard)
