@@ -127,7 +127,7 @@ class FirestoreManager: ObservableObject {
                    
                    completion(user, nil)
             } else {
-                let dataError = NSError(domain: "DataUnwrapError", code: 1, userInfo: nil)
+                let dataError = NSError(domain: "DataUnwrapError", code: 1, userInfo: ["reason": "User data could not be unwrapped"])
                 completion(nil, dataError)
             }
         }

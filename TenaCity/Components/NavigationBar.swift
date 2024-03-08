@@ -86,9 +86,10 @@ struct NavigationBar: View {
             .navigationDestination(isPresented: $group, destination: {
                 GroupHabitView()
             })
-//            .navigationDestination(isPresented: settings, destination: {
-        //                  SettingsView()
-        //              })
+            .navigationDestination(isPresented: $settings, destination: {
+                          SettingsView()
+                    .environmentObject(authManager)
+                      })
     }
 }
 
