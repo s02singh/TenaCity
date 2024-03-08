@@ -12,9 +12,9 @@ struct BuildingView: View {
     @ObservedObject var firestoreManager = FirestoreManager()
     @State var buildings: [(Habit?, Skin?)] = []
     @EnvironmentObject var healthManager: HealthManager
+    @State var isShowingCreateHabitView = false
     
     var body: some View {
-        
         if let user = authManager.user {
             let _ = print(user.habitIDs)
             ScrollView {
@@ -71,21 +71,38 @@ struct BuildingView: View {
                                     }
                                 }
                             } else {
-                                print("Error fetching habit")
+                                print("Error fetching habit: \(error)")
                                 buildings.append((nil, nil))
                             }
                         }
                     }
 
                 }
+                Button(action: {
+                    isShowingCreateHabitView = true
+                }) {
+                    HStack {
+                        Image(systemName: "plus")
+                        Text("Create Habit")
+                            .font(.headline)
+                    }
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+                }
             }
             .padding()
+            .sheet(isPresented: $isShowingCreateHabitView) {
+                CreateHabitView()
+            }
         } else {
             Text("User data not available")
                 .padding()
         }
     }
 }
+
 
 #Preview {
     BuildingView()
