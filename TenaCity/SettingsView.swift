@@ -16,13 +16,15 @@ struct SettingsView: View {
     let streakCount = 0
     let userID: String
     
+    @EnvironmentObject var authManager: AuthManager
     @ObservedObject var firestoreManager: FirestoreManager
     @State private var isDataLoaded = false
     
-    init(username: Binding<String>, userID: String, firestoreManager: FirestoreManager) {
+    init(username: Binding<String>, userID: String, authManager: AuthManager, firestoreManager: FirestoreManager) {
             self._username = username
             self._originalUsername = State(initialValue: username.wrappedValue)
-            self.userID = userID
+            self.userID = UserDefaults.standard.string(forKey: "userID") ?? ""
+            self.authManager = authManager
             self.firestoreManager = firestoreManager
     }
     
@@ -33,7 +35,7 @@ struct SettingsView: View {
                     isTextFieldFocused = false
                 }
             
-            Text("\(username)'s City")
+            Text("\(authManager.userName ?? "")'s City")
                 .font(.title)
                 .padding()
             
@@ -98,6 +100,8 @@ struct SettingsView: View {
             isTextFieldFocused = false
         }
         .onAppear {
+            print("hi")
+            print(userID)
             firestoreManager.fetchUser(id: "aNidfr4ppzmPzKB3MbFw") { user, error in
                 if let error = error {
                     print("Error fetching user: \(error.localizedDescription)")
