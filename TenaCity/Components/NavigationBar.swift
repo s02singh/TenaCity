@@ -17,6 +17,7 @@ struct NavigationBar: View {
     @State var friends: Bool = false
     @State var buildings: Bool = false
     @State var settings: Bool = false
+    @State var group: Bool = false
     
     @EnvironmentObject var authManager: AuthManager
     
@@ -52,6 +53,15 @@ struct NavigationBar: View {
                 }
                 Spacer()
                 Button {
+                    group = true
+                } label: {
+                    Image(systemName: "person.3")
+                    //                            .resizable()
+                        .foregroundColor(.white)
+                        .padding(EdgeInsets(top: top_space, leading: left_space, bottom: bottom_space, trailing: right_space))
+                }
+                Spacer()
+                Button {
                     settings = true
                 } label: {
                     Image(systemName: "gearshape")
@@ -72,6 +82,9 @@ struct NavigationBar: View {
             })
             .navigationDestination(isPresented: $buildings, destination: {
                 BuildingView()
+            })
+            .navigationDestination(isPresented: $group, destination: {
+                GroupHabitView()
             })
 //            .navigationDestination(isPresented: settings, destination: {
         //                  SettingsView()
