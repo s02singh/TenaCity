@@ -127,7 +127,7 @@ class FirestoreManager: ObservableObject {
                    
                    completion(user, nil)
             } else {
-                let dataError = NSError(domain: "DataUnwrapError", code: 1, userInfo: nil)
+                let dataError = NSError(domain: "DataUnwrapError", code: 1, userInfo: ["reason": "User data could not be unwrapped"])
                 completion(nil, dataError)
             }
         }
@@ -339,5 +339,28 @@ class FirestoreManager: ObservableObject {
         addHabitToUser(user: user1, habit: habit1)
         addHabitToUser(user: user1, habit: habit2)
         //addHabitToUser(user: user2, habit: habit1User2)
+    }
+    
+    func updateUsername(userID: String, newUsername: String, completion: @escaping (Error?) -> Void) {
+        let userDocument = db.collection("users").document(userID)
+        
+        userDocument.updateData(["username": newUsername]) { error in
+            if let error = error {
+                completion(error)
+                return
+            }
+            
+            completion(nil)
+        }
+    }
+    
+    func updatePassword(userID: String, newPassword: String, completion: @escaping (Error?) -> Void) {
+        Auth.auth().currentUser?.updatePassword(to: newPassword) { error in
+            if let error = error {
+                completion(error)
+            }
+            
+            completion(nil)
+        }
     }
 }

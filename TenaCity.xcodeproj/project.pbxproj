@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47FD49752B9AE2E9000E39C7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FD49742B9AE2E9000E39C7 /* SettingsView.swift */; };
+		47FD49772B9AF06D000E39C7 /* SyncContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FD49762B9AF06C000E39C7 /* SyncContacts.swift */; };
 		5A211A3A2B97DD450044F801 /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = 663912452B8D805900021A07 /* GoogleService-Info.plist */; };
 		5A211A3B2B97DD450044F801 /* Assets.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3DE2B81B63900A7ED66 /* Assets.xcassets */; };
 		5AA3BB452B97E3F000E64B93 /* LoginHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3E82B81B65700A7ED66 /* LoginHeader.swift */; };
@@ -55,6 +57,8 @@
 
 /* Begin PBXFileReference section */
 		47F816BE2B913BBF00C313F6 /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
+		47FD49742B9AE2E9000E39C7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		47FD49762B9AF06C000E39C7 /* SyncContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncContacts.swift; sourceTree = "<group>"; };
 		5AA3BB492B97E89E00E64B93 /* NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		663912452B8D805900021A07 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		66814C212B9A91C400664B50 /* GroupHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupHabitView.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 				66E7D3FB2B81F2B400A7ED66 /* LoadingScreen.swift */,
 				66E7D3EB2B81B6AF00A7ED66 /* LoginScreen.swift */,
 				66EDB9AD2B91569B008E0338 /* FriendsView.swift */,
+				47FD49742B9AE2E9000E39C7 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,6 +200,7 @@
 				5AA3BB492B97E89E00E64B93 /* NavigationBar.swift */,
 				66E7D3E72B81B65700A7ED66 /* GoogleSiginBtn.swift */,
 				66E7D3E82B81B65700A7ED66 /* LoginHeader.swift */,
+				47FD49762B9AF06C000E39C7 /* SyncContacts.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -351,11 +357,13 @@
 				6A58005D2B870C0000917BAC /* Types.swift in Sources */,
 				66E7D3EE2B81B6AF00A7ED66 /* LoginScreen.swift in Sources */,
 				66E7D3ED2B81B6AF00A7ED66 /* Home.swift in Sources */,
+				47FD49772B9AF06D000E39C7 /* SyncContacts.swift in Sources */,
 				5AA3BB4A2B97E89E00E64B93 /* NavigationBar.swift in Sources */,
 				66E7D3F22B81C2D600A7ED66 /* AppDelegate.swift in Sources */,
 				66E7D3EA2B81B66E00A7ED66 /* TenaCity.swift in Sources */,
 				5AA3BB452B97E3F000E64B93 /* LoginHeader.swift in Sources */,
 				66E7D3FA2B81F23600A7ED66 /* AuthManager.swift in Sources */,
+				47FD49752B9AE2E9000E39C7 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

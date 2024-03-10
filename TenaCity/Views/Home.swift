@@ -49,7 +49,7 @@ struct Home: View {
                         }
                         .tag(3)
                     
-                    Text("Settings")
+                    SettingsView()
                         .tabItem() {
                             Image(systemName: "gearshape")
                         }
