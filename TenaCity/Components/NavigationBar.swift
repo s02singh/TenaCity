@@ -88,7 +88,6 @@ struct NavigationBar: View {
             })
             .navigationDestination(isPresented: $settings, destination: {
                           SettingsView()
-                    .environmentObject(authManager)
                       })
     }
 }

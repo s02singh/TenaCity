@@ -8,46 +8,99 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @EnvironmentObject var authManager: AuthManager
-    @State private var user: User?
+    @ObservedObject var authManager = AuthManager()
+    @ObservedObject var firestoreManager = FirestoreManager()
+    @State private var username = ""
+    @State private var password = ""
+    @State private var email = ""
+    @State private var isEditingUsername = false
+    @State private var isEditingPasswrod = false
+    @FocusState private var focusedField: Field?
+    @State private var isPasswordVisible = false
+    
+    enum Field {
+        case username, password
+    }
     
     var body: some View {
         VStack {
-            if let user = user {
-                Text("Username: \(user.username)")
-                Text("Email: \(user.email)")
-            } else {
-                ProgressView()
+            Text("\(authManager.userName ?? "User")'s City")
+                .font(.title)
+                .padding()
+            
+            TextField("Username", text: $username)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding(.horizontal, 20)
+                .padding(.bottom, 10)
+                .onAppear {
+                    username = authManager.userName ?? ""
+                }
+            
+            ZStack {
+                if isPasswordVisible {
+                    TextField("Password", text: $password)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                } else {
+                    SecureField("Password", text: $password)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                    }
+                Button(action: {
+                    isPasswordVisible.toggle()
+                }) {
+                    Image(systemName: isPasswordVisible ? "eye.slash.fill" : "eye.fill")
+                        .foregroundColor(.blue)
+                        .padding(.leading, 300)
+                }
+                .padding(.trailing, 20)
             }
-        }
-        .onAppear {
-            fetchUserInfo()
-        }
-    }
-    
-    private func fetchUserInfo() {
-        guard let userID = authManager.userID else {
-            return
-        }
-        
-        authManager.firestoreManager.fetchUser(id: userID) { user, error in
-            if let error = error {
-                print("Error fetching user: \(error.localizedDescription)")
-            } else if let fetchedUser = user {
-                self.user = fetchedUser
-            } else {
-                print("User not found.")
+            .padding(.horizontal, 20)
+            .padding(.bottom, 10)
+            .focused($focusedField, equals: .password)
+            .onTapGesture {
+                focusedField = .password
             }
+            
+            TextField("Email", text: .constant(authManager.user?.email ?? ""))
+                .disabled(true)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding(.horizontal, 20)
+            
+            Button("Save") {
+                if !username.isEmpty {
+                    firestoreManager.updateUsername(userID: authManager.userID ?? "", newUsername: username) { error in
+                        if let error = error {
+                            print("Error updating username: \(error.localizedDescription)")
+                        } else {
+                            authManager.userName = username
+                        }
+                    }
+                }
+                
+                if !password.isEmpty {
+                    firestoreManager.updatePassword(userID: authManager.userID ?? "", newPassword: password) { error in
+                        if let error = error {
+                            print("Error updating password \(error.localizedDescription)")
+                        } else {
+                            
+                        }
+                        
+                    }
+                }
+            }
+            .padding()
+            
+            
+        }
+        .onTapGesture {
+            focusedField = nil
         }
     }
 }
 
-//struct SettingsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SettingsView(username: .constant("John Doe"), firestoreManager: FirestoreManager())
-//    }
-//}
-
-//#Preview {
-//    SettingsView(username: .constant("John Doe"))
-//}
+struct SettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        SettingsView()
+    }
+}
