@@ -68,6 +68,9 @@ struct GroupHabitView: View {
             
         }
         .sheet(item: $selectedHabit, onDismiss: {
+            fetchPublicHabits {
+                numHabits = publicHabits.count
+            }
                        
         }) { habit in
             HabitDetailSheet(habit: habit)
