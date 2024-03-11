@@ -9,6 +9,7 @@ struct GroupHabitView: View {
     @State private var isHabitDetailSheetPresented = false
     @State var numHabits = 0
     @State private var isFetchingHabits = false
+    @State private var isCreateHabitPresented = false
     
     // Made a grid for the habits, we can change later
     let columns = [
@@ -54,12 +55,31 @@ struct GroupHabitView: View {
             }
             .padding()
             Spacer()
-            NavigationBar()
+            Button(action: {
+                isCreateHabitPresented = true
+            }) {
+                Text("Create Group Habit")
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+            }
+            .padding()
+            
         }
         .sheet(item: $selectedHabit, onDismiss: {
+            fetchPublicHabits {
+                numHabits = publicHabits.count
+            }
                        
         }) { habit in
             HabitDetailSheet(habit: habit)
+        }
+        
+        .sheet(isPresented: $isCreateHabitPresented, onDismiss: {
+            
+        }) {
+            CreateGroupHabitSheet()
         }
     }
     
@@ -409,3 +429,272 @@ struct ContributionRow: View {
     }
 }
 
+
+struct CreateGroupHabitSheet: View {
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var authManager: AuthManager
+    @State private var selectedFriends: Set<String> = []
+    @State private var habitName: String = ""
+    @State private var goal: String = ""
+    @State private var selectedIdentifier: String = ""
+    @State private var selectedBuilding: String = ""
+    @State private var skyscraperImage: UIImage?
+    @State private var houseImage: UIImage?
+    @State private var buildingType: String = "Skyscraper" // Default selection
+    @State private var friends: [String: String] = [:]
+    
+    var body: some View {
+        NavigationView {
+            Form {
+                Section(header: Text("Habit Details").font(.headline)) {
+                    TextField("Habit Name", text: $habitName)
+                    TextField("Goal", text: $goal)
+                    Picker("Identifier", selection: $selectedIdentifier) {
+                        Text("Steps").tag("Steps")
+                        Text("Hours").tag("Hours")
+                        // Add more when we get them
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    
+                    Picker("Building Type", selection: $buildingType) {
+                        Text("Skyscraper").tag("Skyscraper")
+                        Text("House").tag("House")
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    
+                    if buildingType == "Skyscraper" {
+                        if let buildingImage = skyscraperImage {
+                            HStack {
+                                Spacer()
+                                Image(uiImage: buildingImage)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 150, height: 150)
+                                    .cornerRadius(12)
+                                    .padding(.bottom, 7)
+                                Spacer()
+                            }
+                            .onAppear {
+                                fetchBuildingImage(imageURL: "https://static.vecteezy.com/system/resources/previews/011/453/045/original/skyscraper-pixel-art-style-free-vector.jpg", index: 0)
+                            }
+                        } else {
+                            ProgressView()
+                                .padding()
+                        }
+                    } else {
+                        if let buildingImage = houseImage {
+                            HStack {
+                                Spacer()
+                                Image(uiImage: buildingImage)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 150, height: 150)
+                                    .cornerRadius(12)
+                                    .padding(.bottom, 7)
+                                Spacer()
+                            }
+                            .onAppear {
+                                fetchBuildingImage(imageURL: "https://media.istockphoto.com/id/1358860685/vector/house-icon-pixel-art-front-view-a-small-hut-vector-simple-flat-graphic-illustration-the.jpg?s=612x612&w=0&k=20&c=qodGeD6HSaJKRrZhglbSjXnGnrdXVZsyAlwdlcPaDZw=", index: 1)
+                            }
+                        } else {
+                            ProgressView()
+                                .padding()
+                        }
+                    }
+                }
+                Section(header: Text("Select Friends").font(.headline)) {
+                    List {
+                        ForEach(friends.sorted(by: { $0.value < $1.value }), id: \.key) { friendID, friendName in
+                            Toggle(isOn: Binding<Bool>(
+                                get: {
+                                    self.selectedFriends.contains(friendID)
+                                },
+                                set: { newValue in
+                                    if newValue {
+                                        self.selectedFriends.insert(friendID)
+                                    } else {
+                                        self.selectedFriends.remove(friendID)
+                                    }
+                                }
+                            )) {
+                                Text(friendName)
+                            }
+                        }
+                    }
+                }
+
+            }
+            .navigationBarTitle("Create Group Habit", displayMode: .inline)
+            .navigationBarItems(
+                leading:
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Text("Cancel").foregroundColor(.red)
+                    },
+                trailing:
+                    Button(action: {
+                        saveGroupHabit()
+                    }) {
+                        Text("Save")
+                    }
+            )
+        }
+        .onAppear{
+            fetchFriends()
+            fetchBuildingImage(imageURL: "https://static.vecteezy.com/system/resources/previews/011/453/045/original/skyscraper-pixel-art-style-free-vector.jpg", index: 0)
+            fetchBuildingImage(imageURL: "https://media.istockphoto.com/id/1358860685/vector/house-icon-pixel-art-front-view-a-small-hut-vector-simple-flat-graphic-illustration-the.jpg?s=612x612&w=0&k=20&c=qodGeD6HSaJKRrZhglbSjXnGnrdXVZsyAlwdlcPaDZw=", index: 1)
+        }
+        .accentColor(.blue)
+    }
+    
+    func fetchBuildingImage(imageURL: String, index: Int) {
+        guard let url = URL(string: imageURL) else {
+            print("Invalid URL")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let data = data, let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    if(index == 0){
+                        skyscraperImage = image
+                    }
+                    else{
+                        houseImage = image
+                    }
+                    
+                }
+            } else {
+                print("Failed to fetch image: \(error?.localizedDescription ?? "Unknown error")")
+         
+            }
+        }.resume()
+    }
+
+    func fetchFriends() {
+        guard let currentUserID = authManager.userID else {
+            return
+        }
+        
+        let db = Firestore.firestore()
+        
+        db.collection("users").document(currentUserID).getDocument { document, error in
+            if let error = error {
+                print("Error getting user document: \(error)")
+                return
+            }
+            
+            guard let friendIDs = document?.data()?["friendIDs"] as? [String] else {
+                print("No friend IDs found for the user")
+                return
+            }
+            
+            var friendsMap: [String: String] = [:]
+            
+            let dispatchGroup = DispatchGroup()
+            
+            for friendID in friendIDs {
+                dispatchGroup.enter()
+                db.collection("users").document(friendID).getDocument { friendDocument, friendError in
+                    defer {
+                        dispatchGroup.leave()
+                    }
+                    
+                    if let friendError = friendError {
+                        print("Error getting friend document: \(friendError)")
+                        return
+                    }
+                    
+                    guard let username = friendDocument?.data()?["username"] as? String else {
+                        print("No username found for friend with ID: \(friendID)")
+                        return
+                    }
+                    
+                    friendsMap[friendID] = username
+                }
+            }
+            
+            dispatchGroup.notify(queue: .main) {
+                self.friends = friendsMap
+            }
+        }
+    }
+
+        
+    
+    func saveGroupHabit() {
+        guard let currentUserID = authManager.userID else {
+            print("Current user ID not available")
+            return
+        }
+
+        let db = Firestore.firestore()
+
+        // Convert goal to Int
+        guard let goalValue = Int(goal) else {
+            print("Invalid goal value")
+            return
+        }
+
+        // Get contributions ready
+        var contributions: [String: Any] = [:]
+        for friendID in selectedFriends {
+            contributions[friendID] = 0
+        }
+        
+        contributions[currentUserID] = 0
+        var buildingID = ""
+        if(buildingType == "Skyscraper"){
+            buildingID = "F0bfX9zU8KUmMh5tlnQ4"
+        }
+        else{buildingID = "t61IP0alWTc4cIbUwcIL"}
+        // habit data
+        let habitData: [String: Any] = [
+            "name": habitName,
+            "buildingID": buildingID,
+            "progress": 0,
+            "goal": goalValue,
+            "note": [:],
+            "contributions": contributions,
+            "isPublic": true,
+            "identifier": selectedIdentifier
+        ]
+
+        // Add the habit to Firestore
+
+        let newDocument = db.collection("habits").document()
+        newDocument.setData(habitData) { error in
+            if let error = error {
+                print("Error adding habit: \(error.localizedDescription)")
+            } else {
+                print("New habit created with ID: \(newDocument.documentID)")
+                db.collection("users").document(currentUserID).updateData([
+                               "habitIDs": FieldValue.arrayUnion([newDocument.documentID])
+                           ]) { error in
+                               if let error = error {
+                                   print("Error updating habitIDs for current user: \(error.localizedDescription)")
+                               } else {
+                                   print("Habit ID added to current user's habitIDs")
+                               }
+                           }
+                           // Update habitIDs field for selected friends
+                           for friendID in self.selectedFriends {
+                               db.collection("users").document(friendID).updateData([
+                                   "habitIDs": FieldValue.arrayUnion([newDocument.documentID])
+                               ]) { error in
+                                   if let error = error {
+                                       print("Error updating habitIDs for friend \(friendID): \(error.localizedDescription)")
+                                   } else {
+                                       print("Habit ID added to habitIDs of friend \(friendID)")
+                                   }
+                               }
+                           }
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        }
+
+        
+    }
+
+}

@@ -27,6 +27,7 @@ struct Habit: Hashable {
     var dates: [Date]
     var streak: Int
     var note: [String: String]
+    var contributions: [String: Any]
     var isPublic: Bool
     var goal: Int           // # of progress user wants on habit
     var progress: Int       // # of progress towards goal for the day, resets daily

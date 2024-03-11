@@ -10,24 +10,12 @@ struct TenaCity: App {
     @StateObject var firestoreManager = FirestoreManager()
     @StateObject var healthManager = HealthManager()
     @StateObject var locationManager = LocationManager()
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
-    
     var body: some Scene {
         WindowGroup {
-            if !isSignIn {
-                LoginScreen()
-                    .preferredColorScheme(.light)
-                    .environmentObject(authManager)
-            } else {
-                NavigationStack{
-                    Home()
-                        .preferredColorScheme(.light)
-                        .environmentObject(authManager)
-                        .environmentObject(healthManager)
-                }
-                .environmentObject(authManager)
-
-            }
+            Splash()
+                .preferredColorScheme(.light)
         }
     }
 }

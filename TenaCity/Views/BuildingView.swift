@@ -39,6 +39,38 @@ struct BuildingView: View {
                                         placeholder: {
                                             ProgressView()
                                         }
+        VStack {
+            if let user = authManager.user {
+                let _ = print(user.habitIDs)
+                ScrollView {
+                    Text("Habits")
+                    if buildings.count == user.habitIDs.count {
+                        ForEach(user.habitIDs, id: \.self) { habitID in
+                            if let building = buildings.first(where: { $0.0?.id == habitID }) {
+                                if let habit = building.0, let skin = building.1 {
+                                    VStack {
+                                        Text("Habit Name: \(habit.name)")
+                                        Text("Goal: \(habit.goal) \(habit.identifier)")
+                                        Text("Progress: \(habit.progress) \(habit.identifier)")
+                                        Text("Streak: \(habit.streak) days")
+                                        //Text("Note: \(habit.note)")
+                                        AsyncImage(
+                                            url: URL(string: skin.url),
+                                            content: { image in
+                                                image.resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .frame(maxWidth: 100, maxHeight: 200)
+                                            },
+                                            placeholder: {
+                                                ProgressView()
+                                            }
+                                        )
+                                    }
+                                    .padding(10)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(Color.blue, lineWidth: 2)
+>>>>>>> 35da87f8fb87650b35b605f0a751bd930d429bc8
                                     )
                                 }
                                 .padding(10)

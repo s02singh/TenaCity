@@ -24,7 +24,7 @@ struct LoginScreen: View {
     var body: some View {
         VStack {
             VStack {
-                Image("AppLogo")
+                Image("TenaCityLogo")
                      .resizable()
                      .aspectRatio(contentMode: .fit)
                      .frame(width: 200, height: 200)
@@ -141,6 +141,15 @@ struct LoginScreen: View {
                                     // Store user ID in UserDefaults
                                     UserDefaults.standard.set(userId, forKey: "userID")
                                     authManager.userID = userId
+                                    firestoreManager.fetchUser(id: userId) { user, error in
+                                        if let error = error {
+                                            print("Error fetching user: \(error.localizedDescription)")
+                                        } else if let fetchedUser = user {
+                                            authManager.user = fetchedUser
+                                        } else {
+                                            print("User not found.")
+                                        }
+                                    }
                                     print(userId)
                                 }
                             } else {

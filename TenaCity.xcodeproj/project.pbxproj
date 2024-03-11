@@ -17,6 +17,8 @@
 		5AA3BB482B97E3FA00E64B93 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3E52B81B65700A7ED66 /* CustomButton.swift */; };
 		5AA3BB4A2B97E89E00E64B93 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA3BB492B97E89E00E64B93 /* NavigationBar.swift */; };
 		66814C222B9A91C400664B50 /* GroupHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66814C212B9A91C400664B50 /* GroupHabitView.swift */; };
+		66CBD3EC2B9EAE7D0091E141 /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CBD3EB2B9EAE7D0091E141 /* Splash.swift */; };
+		66CBD3EE2B9EAFC40091E141 /* TenaCityRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CBD3ED2B9EAFC40091E141 /* TenaCityRoot.swift */; };
 		66E2547C2B807B8000495CF2 /* TenaCityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E2547B2B807B8000495CF2 /* TenaCityTests.swift */; };
 		66E254862B807B8000495CF2 /* TenaCityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E254852B807B8000495CF2 /* TenaCityUITests.swift */; };
 		66E254882B807B8000495CF2 /* TenaCityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E254872B807B8000495CF2 /* TenaCityUITestsLaunchTests.swift */; };
@@ -64,6 +66,8 @@
 		5AA3BB492B97E89E00E64B93 /* NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		663912452B8D805900021A07 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		66814C212B9A91C400664B50 /* GroupHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupHabitView.swift; sourceTree = "<group>"; };
+		66CBD3EB2B9EAE7D0091E141 /* Splash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splash.swift; sourceTree = "<group>"; };
+		66CBD3ED2B9EAFC40091E141 /* TenaCityRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenaCityRoot.swift; sourceTree = "<group>"; };
 		66E254672B807B7B00495CF2 /* TenaCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TenaCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E254772B807B8000495CF2 /* TenaCityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TenaCityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E2547B2B807B8000495CF2 /* TenaCityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TenaCityTests.swift; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				66E7D3EC2B81B6AF00A7ED66 /* Home.swift */,
+				66CBD3EB2B9EAE7D0091E141 /* Splash.swift */,
 				66814C212B9A91C400664B50 /* GroupHabitView.swift */,
 				66E7D3FD2B81F3C700A7ED66 /* ContentView.swift */,
 				6AADAF182B903AF60006D5BE /* BuildingView.swift */,
@@ -134,6 +139,7 @@
 				66E7D3EB2B81B6AF00A7ED66 /* LoginScreen.swift */,
 				66EDB9AD2B91569B008E0338 /* FriendsView.swift */,
 				47FD49742B9AE2E9000E39C7 /* SettingsView.swift */,
+				66CBD3ED2B9EAFC40091E141 /* TenaCityRoot.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -351,6 +357,7 @@
 				5AA3BB482B97E3FA00E64B93 /* CustomButton.swift in Sources */,
 				6A0DA1C62B9E5EF200B4A301 /* LocationManager.swift in Sources */,
 				5A211A3A2B97DD450044F801 /* GoogleService-Info.plist in Sources */,
+				66CBD3EE2B9EAFC40091E141 /* TenaCityRoot.swift in Sources */,
 				5A211A3B2B97DD450044F801 /* Assets.xcassets in Sources */,
 				66814C222B9A91C400664B50 /* GroupHabitView.swift in Sources */,
 				66EDB9AE2B91569B008E0338 /* FriendsView.swift in Sources */,
@@ -358,6 +365,7 @@
 				6A5800642B87F5A200917BAC /* FirestoreManager.swift in Sources */,
 				6AADAF192B903AF60006D5BE /* BuildingView.swift in Sources */,
 				66E7D3FC2B81F2B400A7ED66 /* LoadingScreen.swift in Sources */,
+				66CBD3EC2B9EAE7D0091E141 /* Splash.swift in Sources */,
 				5AA3BB472B97E3F700E64B93 /* CustomTextfield.swift in Sources */,
 				6AADAF1B2B9167660006D5BE /* HealthManager.swift in Sources */,
 				66E7D3FE2B81F3C700A7ED66 /* ContentView.swift in Sources */,

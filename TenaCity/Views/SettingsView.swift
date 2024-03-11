@@ -5,6 +5,8 @@
 //  Created by Lena Ray on 2/29/24.
 //
 
+import GoogleSignIn
+import Firebase
 import SwiftUI
 
 struct SettingsView: View {
@@ -78,6 +80,7 @@ struct SettingsView: View {
                     }
                 }
                 
+                
                 if !password.isEmpty {
                     firestoreManager.updatePassword(userID: authManager.userID ?? "", newPassword: password) { error in
                         if let error = error {
@@ -91,11 +94,37 @@ struct SettingsView: View {
             }
             .padding()
             
+            Spacer()
+            SignOutButton()
+            
             
         }
         .onTapGesture {
             focusedField = nil
         }
+    }
+}
+
+struct SignOutButton: View {
+    var body: some View {
+        Button(action: {
+            let firebaseAuth = Auth.auth()
+            do {
+              try firebaseAuth.signOut()
+              UserDefaults.standard.set(false, forKey: "signIn")
+              UserDefaults.standard.set(nil, forKey: "userID")
+            } catch let signOutError as NSError {
+              print("Error signing out: %@", signOutError)
+            }
+        }) {
+            Text("Sign Out")
+                .font(.headline)
+                .foregroundColor(.white)
+                .padding()
+                .background(Color.red)
+                .cornerRadius(10)
+        }
+        .padding()
     }
 }
 
