@@ -10,7 +10,6 @@ struct TenaCity: App {
     @StateObject var firestoreManager = FirestoreManager()
     @StateObject var healthManager = HealthManager()
     @StateObject var locationManager = LocationManager()
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     var body: some Scene {
         WindowGroup {

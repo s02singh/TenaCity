@@ -45,6 +45,7 @@ class FirestoreManager: ObservableObject {
     func createHabit(name: String, building: Building, goal: Int, identifier: String) -> Habit {
         let habitRef = db.collection("habits").document()
         let newHabit = Habit(id: habitRef.documentID, name: name, buildingID: building.id, dates: [], streak: 0, note: [:], contributions: [:], isPublic: false, goal: goal, progress: 0, identifier: identifier)
+        print(newHabit.dictionary)
         habitRef.setData(newHabit.dictionary) { error in
             if let error = error {
                 print("Error adding document: \(error)")
@@ -69,7 +70,7 @@ class FirestoreManager: ObservableObject {
 
     func createBuilding(name: String, levels: [Skin]) -> Building {
         let buildingRef = db.collection("buildings").document()
-        let newBuilding = Building(id: buildingRef.documentID, name: name, levelsIDs: levels.map { $0.id })
+        let newBuilding = Building(id: buildingRef.documentID, name: name, thumbnail: "", levelsIDs: levels.map { $0.id })
         buildingRef.setData(newBuilding.dictionary) { error in
             if let error = error {
                 print("Error adding document: \(error)")
@@ -175,6 +176,7 @@ class FirestoreManager: ObservableObject {
                    completion(habit, nil)
             } else {
                 let dataError = NSError(domain: "DataUnwrapError", code: 1, userInfo: nil)
+                print("error getting habit with id \(id)")
                 completion(nil, dataError)
             }
         }
@@ -236,9 +238,11 @@ class FirestoreManager: ObservableObject {
             if let buildingData = document.data(),
                let id = buildingData["id"] as? String,
                let name = buildingData["name"] as? String,
+               let thumbnail = buildingData["thumbnail"] as? String,
                let levelsIDs = buildingData["levelsIDs"] as? [String] {
                    let building = Building(id: id,
                                            name: name,
+                                           thumbnail: thumbnail,
                                            levelsIDs: levelsIDs)
                    
                    completion(building, nil)
@@ -327,9 +331,11 @@ class FirestoreManager: ObservableObject {
                     if let buildingData = document.data() as? [String: Any],
                        let id = buildingData["id"] as? String,
                        let name = buildingData["name"] as? String,
+                       let thumbnail = buildingData["thumbnail"] as? String,
                        let levelsIDs = buildingData["levelsIDs"] as? [String] {
                         let building = Building(id: id,
                                                 name: name,
+                                                thumbnail: thumbnail,
                                                 levelsIDs: levelsIDs)
                         buildings.append(building)
                     } else {

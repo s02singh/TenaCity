@@ -8,7 +8,7 @@
 import Foundation
 
 // User
-struct User: Hashable {
+struct User {
     let id: String
     let email: String
     let password: String
@@ -20,7 +20,7 @@ struct User: Hashable {
 }
 
 // Habit
-struct Habit: Hashable {
+struct Habit {
     let id: String
     let name: String
     let buildingID: String
@@ -35,7 +35,7 @@ struct Habit: Hashable {
 }
 
 // Post
-struct Post: Hashable {
+struct Post {
     let id: String
     let habitID: String
     let userID: String
@@ -48,11 +48,20 @@ struct Post: Hashable {
 struct Building: Hashable {
     let id: String
     let name: String
+    let thumbnail: String
     var levelsIDs: [String] // Skin ids
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: Building, rhs: Building) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 // Skin
-struct Skin: Hashable {
+struct Skin {
     let id: String
     let url: String
 }
