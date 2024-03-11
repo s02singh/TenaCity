@@ -81,7 +81,7 @@ struct FriendsView: View {
                         }) {
                             AddFriendView()
                         }
-            NavigationBar()
+            
         }
         
     }
@@ -471,6 +471,18 @@ struct FriendRequestsView: View {
                 print("Error removing friend request: \(error.localizedDescription)")
                 return
             }
+            
+            db.collection("users").document(request.id).updateData(["friendIDs": FieldValue.arrayUnion([currentUserID])]) { error in
+                if let error = error {
+                    print("Error accepting friend request: \(error.localizedDescription)")
+                    return
+                }
+                
+                print("Friend request accepted successfully!")
+               
+                
+            }
+
             
             // Add the requester's ID to the current user's friends list
             db.collection("users").document(currentUserID).updateData(["friendIDs": FieldValue.arrayUnion([request.id])]) { error in

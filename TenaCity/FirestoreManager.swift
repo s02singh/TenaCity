@@ -44,7 +44,7 @@ class FirestoreManager: ObservableObject {
 
     func createHabit(name: String, building: Building, goal: Int, identifier: String) -> Habit {
         let habitRef = db.collection("habits").document()
-        let newHabit = Habit(id: habitRef.documentID, name: name, buildingID: building.id, dates: [], streak: 0, note: "", isPublic: false, goal: goal, progress: 0, identifier: identifier)
+        let newHabit = Habit(id: habitRef.documentID, name: name, buildingID: building.id, dates: [], streak: 0, note: [:], contributions: [:], isPublic: false, goal: goal, progress: 0, identifier: identifier)
         habitRef.setData(newHabit.dictionary) { error in
             if let error = error {
                 print("Error adding document: \(error)")
@@ -154,7 +154,8 @@ class FirestoreManager: ObservableObject {
                let buildingID = habitData["buildingID"] as? String,
                let dates = habitData["dates"] as? [Date],
                let streak = habitData["streak"] as? Int,
-               let note = habitData["note"] as? String,
+               let note = habitData["note"] as? [String: String],
+               let contributions = habitData["contributions"] as? [String: Any],
                let isPublic = habitData["isPublic"] as? Bool,
                let goal = habitData["goal"] as? Int,
                let progress = habitData["progress"] as? Int,
@@ -165,6 +166,7 @@ class FirestoreManager: ObservableObject {
                                      dates: dates,
                                      streak: streak,
                                      note: note,
+                                     contributions: contributions,
                                      isPublic: isPublic,
                                      goal: goal,
                                      progress: progress,

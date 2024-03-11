@@ -54,7 +54,7 @@ struct GroupHabitView: View {
             }
             .padding()
             Spacer()
-            NavigationBar()
+            
         }
         .sheet(item: $selectedHabit, onDismiss: {
                        

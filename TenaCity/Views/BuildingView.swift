@@ -28,7 +28,7 @@ struct BuildingView: View {
                                         Text("Goal: \(habit.goal) \(habit.identifier)")
                                         Text("Progress: \(habit.progress) \(habit.identifier)")
                                         Text("Streak: \(habit.streak) days")
-                                        Text("Note: \(habit.note)")
+                                        //Text("Note: \(habit.note)")
                                         AsyncImage(
                                             url: URL(string: skin.url),
                                             content: { image in

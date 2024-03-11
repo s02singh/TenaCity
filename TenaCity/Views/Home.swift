@@ -49,11 +49,17 @@ struct Home: View {
                         }
                         .tag(3)
                     
+                    GroupHabitView()
+                        .tabItem() {
+                            Image(systemName: "person.3")
+                        }
+                        .tag(4)
+                    
                     SettingsView()
                         .tabItem() {
                             Image(systemName: "gearshape")
                         }
-                        .tag(4)
+                        .tag(5)
                 }
                 .toolbarBackground(.visible, for: .tabBar)
                 .toolbarBackground(Color("SageGreen"), for: .tabBar)
