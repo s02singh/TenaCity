@@ -9,6 +9,7 @@ struct TenaCity: App {
     @StateObject var authManager = AuthManager()
     @StateObject var firestoreManager = FirestoreManager()
     @StateObject var healthManager = HealthManager()
+    @StateObject var locationManager = LocationManager()
 
     
     var body: some Scene {

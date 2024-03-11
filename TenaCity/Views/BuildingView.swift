@@ -12,82 +12,97 @@ struct BuildingView: View {
     @ObservedObject var firestoreManager = FirestoreManager()
     @State var buildings: [(Habit?, Skin?)] = []
     @EnvironmentObject var healthManager: HealthManager
+    @State var isShowingCreateHabitView = false
     
     var body: some View {
-        VStack {
-            if let user = authManager.user {
-                let _ = print(user.habitIDs)
-                ScrollView {
-                    Text("Habits")
-                    if buildings.count == user.habitIDs.count {
-                        ForEach(user.habitIDs, id: \.self) { habitID in
-                            if let building = buildings.first(where: { $0.0?.id == habitID }) {
-                                if let habit = building.0, let skin = building.1 {
-                                    VStack {
-                                        Text("Habit Name: \(habit.name)")
-                                        Text("Goal: \(habit.goal) \(habit.identifier)")
-                                        Text("Progress: \(habit.progress) \(habit.identifier)")
-                                        Text("Streak: \(habit.streak) days")
-                                        Text("Note: \(habit.note)")
-                                        AsyncImage(
-                                            url: URL(string: skin.url),
-                                            content: { image in
-                                                image.resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                                    .frame(maxWidth: 100, maxHeight: 200)
-                                            },
-                                            placeholder: {
-                                                ProgressView()
-                                            }
-                                        )
-                                    }
-                                    .padding(10)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .stroke(Color.blue, lineWidth: 2)
+        if let user = authManager.user {
+            ScrollView {
+                Text("Habits")
+                if buildings.count == user.habitIDs.count {
+                    let _ = print("buildings count", buildings.count, user.habitIDs)
+                    ForEach(user.habitIDs, id: \.self) { habitID in
+                        if let building = buildings.first(where: { $0.0?.id == habitID }) {
+                            if let habit = building.0, let skin = building.1 {
+                                VStack {
+                                    Text("Habit Name: \(habit.name)")
+                                    Text("Goal: \(habit.goal) \(habit.identifier)")
+                                    Text("Progress: \(habit.progress) \(habit.identifier)")
+                                    Text("Streak: \(habit.streak) days")
+                                    Text("Note: \(habit.note)")
+                                    AsyncImage(
+                                        url: URL(string: skin.url),
+                                        content: { image in
+                                            image.resizable()
+                                                 .aspectRatio(contentMode: .fit)
+                                                 .frame(maxWidth: 100, maxHeight: 200)
+                                        },
+                                        placeholder: {
+                                            ProgressView()
+                                        }
                                     )
                                 }
+                                .padding(10)
+                                .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.blue, lineWidth: 2)
+                                )
                             }
                         }
-                    } else {
-                        ProgressView()
-                        ForEach(user.habitIDs, id: \.self) { habitID in
-                            let _ = firestoreManager.fetchHabit(id: habitID) { habit, error in
-                                if let habit = habit {
-                                    let _ = print(habit)
-                                    firestoreManager.fetchBuilding(id: habit.buildingID) { building, error in
-                                        if let building = building {
-                                            firestoreManager.fetchSkin(id: building.levelsIDs[0]) { skin, error in
-                                                if let skin = skin {
-                                                    buildings.append((habit, skin))
-                                                } else {
-                                                    print("Error fetching skin from building")
-                                                    buildings.append((nil, nil))
-                                                }
-                                            }
-                                        } else {
-                                            print("Error fetching building from habit")
-                                            buildings.append((nil, nil))
-                                        }
-                                    }
-                                } else {
-                                    print("Error fetching habit")
-                                    buildings.append((nil, nil))
-                                }
-                            }
-                        }
-                        
                     }
+                } else {
+                    ProgressView()
+                    ForEach(user.habitIDs, id: \.self) { habitID in
+                        let _ = firestoreManager.fetchHabit(id: habitID) { habit, error in
+                            if let habit = habit {
+                                let _ = print(habit)
+                                firestoreManager.fetchBuilding(id: habit.buildingID) { building, error in
+                                    if let building = building {
+                                        firestoreManager.fetchSkin(id: building.levelsIDs[0]) { skin, error in
+                                            if let skin = skin {
+                                                buildings.append((habit, skin))
+                                            } else {
+                                                print("Error fetching skin from building")
+                                                buildings.append((nil, nil))
+                                            }
+                                        }
+                                    } else {
+                                        print("Error fetching building from habit")
+                                        buildings.append((nil, nil))
+                                    }
+                                }
+                            } else {
+                                print("Error fetching habit: \(error)")
+                                buildings.append((nil, nil))
+                            }
+                        }
+                    }
+
                 }
-                .padding()
-            } else {
-                Text("User data not available")
+                Button(action: {
+                    isShowingCreateHabitView = true
+                }) {
+                    HStack {
+                        Image(systemName: "plus")
+                        Text("Create Habit")
+                            .font(.headline)
+                    }
                     .padding()
+                    .foregroundColor(.white)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+                }
             }
-            Spacer()
+            .padding()
+            .sheet(isPresented: $isShowingCreateHabitView) {
+                CreateHabitView()
+            }
+        } else {
+            Text("User data not available")
+                .padding()
         }
     }
 }
+
 
 #Preview {
     BuildingView()

@@ -8,7 +8,7 @@
 import Foundation
 
 // User
-struct User {
+struct User: Hashable {
     let id: String
     let email: String
     let password: String
@@ -20,13 +20,13 @@ struct User {
 }
 
 // Habit
-struct Habit {
+struct Habit: Hashable {
     let id: String
     let name: String
     let buildingID: String
     var dates: [Date]
     var streak: Int
-    var note: String
+    var note: [String: String]
     var isPublic: Bool
     var goal: Int           // # of progress user wants on habit
     var progress: Int       // # of progress towards goal for the day, resets daily
@@ -34,7 +34,7 @@ struct Habit {
 }
 
 // Post
-struct Post {
+struct Post: Hashable {
     let id: String
     let habitID: String
     let userID: String
@@ -44,17 +44,21 @@ struct Post {
 }
 
 // Building
-struct Building {
+struct Building: Hashable {
     let id: String
     let name: String
     var levelsIDs: [String] // Skin ids
 }
 
 // Skin
-struct Skin {
+struct Skin: Hashable {
     let id: String
     let url: String
 }
+
+let habitNames = ["Steps", "Distance", "Calories", "Gym Time", "Outside Time"]
+let habitIdentifiers = ["Steps", "Miles", "Calories", "Minutes", "Minutes"]
+let habitIcons = ["figure.walk", "figure.run", "flame.fill", "iphone", "message.fill"]
 
 // User Extension
 extension User {
