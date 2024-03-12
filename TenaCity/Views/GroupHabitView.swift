@@ -67,6 +67,13 @@ struct GroupHabitView: View {
             .padding()
             
         }
+        .background(
+            Image("testBackground")
+//                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+                .opacity(0.8)
+        )
         .sheet(item: $selectedHabit, onDismiss: {
             fetchPublicHabits {
                 numHabits = publicHabits.count

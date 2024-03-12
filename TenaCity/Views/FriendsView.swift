@@ -299,6 +299,13 @@ struct AddFriendView: View {
                 FriendRequestsView(friendRequests: friendRequests)
             }
         }
+        .background(
+            Image("testBackground")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+                .opacity(0.8)
+        )
         .onAppear{
             loadFriendRequests()
         }
@@ -569,12 +576,3 @@ extension View {
         }
     }
 }
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        FriendsView()
-    }
-}
-
-

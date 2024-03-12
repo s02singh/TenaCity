@@ -70,3 +70,9 @@ struct Home: View {
         .ignoresSafeArea(.keyboard)
     }
 }
+
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        Home()
+    }
+}
