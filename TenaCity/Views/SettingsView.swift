@@ -104,7 +104,7 @@ struct SettingsView: View {
             }
         }
         .background(
-            Image("testBackground")
+            Image("basicBackground")
                 .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)

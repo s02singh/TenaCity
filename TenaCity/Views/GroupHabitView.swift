@@ -68,8 +68,8 @@ struct GroupHabitView: View {
             
         }
         .background(
-            Image("testBackground")
-//                .resizable()
+            Image("basicBackground")
+                .resizable()
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
                 .opacity(0.8)

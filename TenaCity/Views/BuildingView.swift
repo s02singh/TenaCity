@@ -172,9 +172,9 @@ struct BuildingView: View {
             }
         }
         .background(
-            Image("testBackground")
-                .resizable()
-                .scaledToFill()
+            Image("basicBackground")
+//                .resizable()
+                .aspectRatio(contentMode: .fill)
                 .edgesIgnoringSafeArea(.all)
                 .opacity(0.8)
         )
