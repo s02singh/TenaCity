@@ -2,6 +2,7 @@ import SwiftUI
 import Firebase
 import FirebaseFirestore
 
+
 struct GroupHabitView: View {
     @State private var publicHabits = [GroupHabit]()
     @EnvironmentObject var authManager: AuthManager
@@ -19,75 +20,85 @@ struct GroupHabitView: View {
     ]
     
     var body: some View {
-        VStack {
-            VStack{
-                GroupHabitHeaderView()
-                    .onAppear {
-                        fetchPublicHabits(){
-                            numHabits = publicHabits.count
-                        }
-                    }
-                
-                if !publicHabits.isEmpty {
-                    ScrollView {
-                        LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(publicHabits) { habit in
-                                Button(action: {
-                                    print(habit.name)
-                                    selectedHabit = habit
-                                    isHabitDetailSheetPresented = true
-                                }) {
-                                    HabitView(habit: habit)
-                                }
-                                .buttonStyle(PlainButtonStyle())
+            VStack {
+                VStack{
+                    GroupHabitHeaderView()
+                        .onAppear {
+                            fetchPublicHabits(){
+                                numHabits = publicHabits.count
                             }
                         }
-                        .padding([.horizontal, .bottom])
+                    
+                    if !publicHabits.isEmpty {
+                        ScrollView {
+                            LazyVGrid(columns: columns, spacing: 20) {
+                                ForEach(publicHabits) { habit in
+                                    Button(action: {
+                                        print(habit.name)
+                                        selectedHabit = habit
+                                        isHabitDetailSheetPresented = true
+                                    }) {
+                                        HabitView(habit: habit)
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
+                                }
+                            }
+                            .padding([.horizontal, .bottom])
+                        }
+                    } else if isFetchingHabits {
+                        ProgressView()
+                            .padding()
+                    } else {
+                        Text("No public habits available")
+                            .foregroundColor(.gray)
                     }
-                } else if isFetchingHabits {
-                    ProgressView()
-                        .padding()
-                } else {
-                    Text("No public habits available")
-                        .foregroundColor(.gray)
+                    
                 }
+                .padding()
+                Spacer()
+                Button(action: {
+                    isCreateHabitPresented = true
+                }) {
+                    Text("Create Group Habit")
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+                .padding()
                 
             }
-            .padding()
-            Spacer()
-            Button(action: {
-                isCreateHabitPresented = true
+            .background(
+                Image("basicBackground")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+                    .opacity(0.8)
+            )
+            .sheet(item: $selectedHabit, onDismiss: {
+                fetchPublicHabits {
+                    numHabits = publicHabits.count
+                }
+                
+            }) { habit in
+                HabitDetailSheet(habit: habit)
+            }
+            
+            .sheet(isPresented: $isCreateHabitPresented, onDismiss: {
+                
             }) {
-                Text("Create Group Habit")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
+                CreateGroupHabitSheet()
             }
-            .padding()
-            
-        }
-        .background(
-            Image("basicBackground")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-                .opacity(0.8)
-        )
-        .sheet(item: $selectedHabit, onDismiss: {
-            fetchPublicHabits {
-                numHabits = publicHabits.count
+            .onAppear {
+                fetchPublicHabits() {
+                    numHabits = publicHabits.count
+                }
+                Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { timer in
+                    fetchPublicHabits() {
+                        numHabits = publicHabits.count
+                    }
+                })
             }
-                       
-        }) { habit in
-            HabitDetailSheet(habit: habit)
-        }
-        
-        .sheet(isPresented: $isCreateHabitPresented, onDismiss: {
-            
-        }) {
-            CreateGroupHabitSheet()
-        }
     }
     
     func fetchPublicHabits(completion: @escaping () -> Void) {
