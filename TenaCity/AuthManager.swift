@@ -13,6 +13,8 @@ class AuthManager: ObservableObject {
     @Published var userID: String?
     @Published var user: User?
     @ObservedObject var firestoreManager = FirestoreManager()
+    @ObservedObject var healthManager = HealthManager()
+    var timer: Timer?
     
     init() {
         if let savedUserID = UserDefaults.standard.string(forKey: "userID") {
@@ -26,7 +28,9 @@ class AuthManager: ObservableObject {
                     print("User not found.")
                 }
             }
-            
+            timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
+                self.updateHabits(userID: savedUserID)
+            }
         } else {
             print("No user saved")
         }
@@ -73,5 +77,10 @@ class AuthManager: ObservableObject {
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
+    }
+    
+    func updateHabits(userID: String) {
+        //print(Date())
+        //healthManager.fetchTodaySteps()
     }
 }
