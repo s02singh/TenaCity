@@ -93,11 +93,7 @@ struct GroupHabitView: View {
                 fetchPublicHabits() {
                     numHabits = publicHabits.count
                 }
-                Timer.scheduledTimer(withTimeInterval: 5, repeats: true, block: { timer in
-                    fetchPublicHabits() {
-                        numHabits = publicHabits.count
-                    }
-                })
+              
             }
     }
     
