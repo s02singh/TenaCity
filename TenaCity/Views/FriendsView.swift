@@ -620,13 +620,72 @@ struct QuickCreateGroupHabitSheet: View {
     @State private var buildingType: String = "Skyscraper" // Default selection
     @State private var friends: [String: String] = [:]
     let friend: Friend
-    
+    @State private var showCustomGoal: Bool = false
+
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("Habit Details").font(.headline)) {
                     TextField("Habit Name", text: $habitName)
-                    TextField("Goal", text: $goal)
+                    VStack {
+                        Text("Goal")
+                        HStack{
+                            Spacer()
+                            Button(action: {
+                                goal = "50"
+                            }) {
+                                Text("50")
+                                    .padding()
+                                    .foregroundColor(.white)
+                                    .background(Color.gray)
+                                    .cornerRadius(8)
+                            }
+                            .buttonStyle(PlainButtonStyle()) // Using PlainButtonStyle for better customization
+                            .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
+                            
+                            Button(action: {
+                                goal = "100"
+                            }) {
+                                Text("100")
+                                    .padding()
+                                    .foregroundColor(.white)
+                                    .background(Color.gray)
+                                    .cornerRadius(8)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
+                            
+                            Button(action: {
+                                goal = "10000"
+                            }) {
+                                Text("10000")
+                                    .padding()
+                                    .foregroundColor(.white)
+                                    .background(Color.gray)
+                                    .cornerRadius(8)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
+                            
+                            Button(action: {
+                                showCustomGoal.toggle()
+                            }) {
+                                Text("Custom")
+                                    .padding()
+                                    .foregroundColor(.white)
+                                    .background(Color.gray)
+                                    .cornerRadius(8)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
+                            
+                            Spacer()
+                        }
+                        
+                    }
+                    if showCustomGoal {
+                        TextField("Custom Goal", text: $goal)
+                    }
                     Picker("Identifier", selection: $selectedIdentifier) {
                         Text("Steps").tag("Steps")
                         Text("Hours").tag("Hours")
