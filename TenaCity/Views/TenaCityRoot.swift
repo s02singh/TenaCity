@@ -8,7 +8,6 @@ struct TenaCityRoot: View {
     @StateObject var authManager = AuthManager()
     @StateObject var firestoreManager = FirestoreManager()
     @StateObject var healthManager = HealthManager()
-
     
     var body: some View {
             if !isSignIn {

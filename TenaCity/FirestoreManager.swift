@@ -403,4 +403,34 @@ class FirestoreManager: ObservableObject {
             completion(nil)
         }
     }
+    
+    func updateSteps(userID: String, steps: Int, completion: @escaping (Error?) -> Void) {
+        fetchUser(id: userID) { user, error in
+            if let error = error {
+                print("Error fetching user: \(error.localizedDescription)")
+            } else if let user = user {
+                for habitID in user.habitIDs {
+                    self.fetchHabit(id: habitID) { habit, error in
+                        if var habit = habit {
+                            if habit.identifier == "Steps" {
+                                let habitDocument = self.db.collection("users").document(userID)
+                                habitDocument.updateData(["progress": steps]) { error in
+                                    if let error = error {
+                                        print("Error adjusting steps: \(error)")
+                                    } else {
+                                        print("Steps updated")
+                                    }
+                                }
+                            }
+                        }
+                        else {
+                            print("Habit error")
+                        }
+                    }
+                }
+            } else {
+                print("User not found.")
+            }
+        }
+    }
 }
