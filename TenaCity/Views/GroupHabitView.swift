@@ -63,7 +63,7 @@ struct GroupHabitView: View {
                 }) {
                     Text("Create Group Habit")
                         .padding()
-                        .background(Color("Orange"))
+                        .background(Color("SageGreen"))
                         .foregroundColor(.white)
                         .cornerRadius(8)
                 }
@@ -140,7 +140,7 @@ struct GroupHabitView: View {
                           let name = habitData["name"] as? String,
                           let isPublic = habitData["isPublic"] as? Bool,
                           let buildingID = habitData["buildingID"] as? String,
-                          let progress = habitData["progress"] as? Double,
+                          let progress = habitData["progress"] as? Int,
                           let goal = habitData["goal"] as? Int,
                           let noteData = habitData["note"] as? [String: String],
                           let contributionsData = habitData["contributions"] as? [String: Any] else {
@@ -148,9 +148,9 @@ struct GroupHabitView: View {
                         return
                     }
                     
-                    var contributions = [String: Double]()
+                    var contributions = [String: Int]()
                     for (userID, contribution) in contributionsData {
-                        if let contributionString = contribution as? Double {
+                        if let contributionString = contribution as? Int {
                             contributions[userID] = contributionString
                         }
                     }
@@ -276,7 +276,7 @@ struct GroupHabitHeaderView: View {
 }
 
 struct ProgressBar: View {
-    var progress: Double
+    var progress: Int
     var goal: Int
     
     @State private var progressBarWidth: CGFloat = 0
@@ -318,10 +318,10 @@ struct GroupHabit: Identifiable {
     let name: String
     let isPublic: Bool
     let buildingID: String
-    let progress: Double
+    let progress: Int
     let goal: Int
     let note: [String: String]
-    let contributions: [String: Double]
+    let contributions: [String: Int]
 }
 
 
@@ -346,13 +346,17 @@ struct HabitDetailSheet: View {
     var body: some View {
         VStack {
             Text("Habit Detail Sheet for \(habit.name)")
-                .font(.title)
+                .font(Font.custom("Avenir-Heavy", size: 24))
+                .multilineTextAlignment(.center)
                 .padding()
+                .fixedSize(horizontal: false, vertical: true)
             
             Text("Progress: \(habit.progress)")
+                .font(Font.custom("Avenir", size: 18))
                 .padding()
             
             Text("Goal: \(habit.goal)")
+                .font(Font.custom("Avenir", size: 18))
                 .padding()
             
             if !habit.note.isEmpty {
@@ -373,6 +377,75 @@ struct HabitDetailSheet: View {
             
             ContributionsDisplay(habit: habit, userNames: userNames)
                 .padding()
+            
+            ZStack {
+                Circle()
+                    .stroke(Color.gray.opacity(0.2), style: StrokeStyle(lineWidth: 15))
+                    .frame(width: 200, height: 200)
+                Circle()
+                    .trim(from: 0.0, to: CGFloat(habit.progress) / CGFloat(habit.goal))
+                    .stroke(Color.green, style: StrokeStyle(lineWidth: 15, lineCap: .round))
+                    .rotationEffect(.degrees(-90))
+                    .frame(width: 200, height: 200)
+                
+                VStack {
+                    Text("\(habit.progress) / \(habit.goal)")
+                        .font(Font.custom("Avenir", size: 20))
+                    Text("Progress")
+                        .font(Font.custom("Avenir", size: 18))
+                        .foregroundColor(.gray)
+                }
+            }
+            .padding()
+            
+//            Image(uiImage: habit.buildingID)
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
+//                .frame(width: 150, height: 150)
+//                .cornerRadius(12)
+//                .padding(.bottom, 7)
+        }
+        .onAppear {
+            fetchUserNames()
+            // y48In2E9PCMadOrhMqmy
+            print(habit)
+            let db = Firestore.firestore()
+            let habitRef = db.collection("habits").document(habit.id)
+
+            habitRef.getDocument { (document, error) in
+                if let error = error {
+                    print("Error getting habit document: \(error)")
+                    return
+                }
+                
+                guard let document = document, document.exists else {
+                    print("Habit document does not exist")
+                    return
+                }
+                
+                
+                
+                habitRef.updateData(["progress": 50]) { error in
+                    if let error = error {
+                        print("Error updating progress: \(error)")
+                    }
+                }
+                
+                var habitData = document.data() ?? [:]
+                
+                if var contributions = habitData["contributions"] as? [String: Any] {
+                    contributions["y48In2E9PCMadOrhMqmy"] = 50
+                    habitData["contributions"] = contributions
+                } else {
+                    print("Contributions is not a dictionary")
+                }
+
+                habitRef.updateData(["contributions": habitData["contributions"] ?? [:]]) { error in
+                    if let error = error {
+                        print("Error updating contribution: \(error)")
+                    }
+                }
+            }
         }
     }
     
@@ -418,7 +491,7 @@ struct ContributionsDisplay: View {
 
 struct ContributionRow: View {
     let userName: String
-    let contribution: Double
+    let contribution: Int
     let goal: Int
     
     var body: some View {
@@ -673,7 +746,7 @@ struct CreateGroupHabitSheet: View {
             "id": newDocument.documentID,
             "name": habitName,
             "buildingID": buildingID,
-            "progress": 0.0,
+            "progress": 0,
             "goal": goalValue,
             "note": [:],
             "contributions": contributions,
