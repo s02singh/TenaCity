@@ -1,7 +1,7 @@
 # Tenacity
 
 ## Overview
-On average, it typically requires 66 days for a behavior to solidify into a habit, with consistent daily practice often posing a challenge (such as maintaining a daily workout routine). In aiding users in the growth of daily habits, we propose TenaCity, an iOS application designed for tracking habit streaks. Each habit will be represented by a building, and users will find motivation through features like building a city of buildings, receiving push notifications as reminders for their tasks, and engaging with leaderboards to observe their friends' progress in their own cities.
+On average, it typically requires 66 days for a behavior to solidify into a habit, with consistent daily practice often posing a challenge (such as maintaining a daily workout routine). In aiding users in the growth of daily habits, we propose TenaCity, an iOS application designed for tracking habit streaks. Each habit will be represented by a building, and users will find motivation through features like creating a city of buildings and observing their friends' progress in their own cities, with the ability to create group habits with them.
 
 # Developers:
 - Shikhar Gupta: ShikharGupta77
@@ -34,7 +34,7 @@ On average, it typically requires 66 days for a behavior to solidify into a habi
 
 
 ### UI Design
-
+To match the city theme of the app, we created sets of skins for the buildings, each set containing a base log cabin view, a bigger house, and a skyscraper skin. These skins 
 
 ### Technical Implementation
 
@@ -44,9 +44,6 @@ On average, it typically requires 66 days for a behavior to solidify into a habi
 
 ### 2. LoginView
 
-### 3. SettingsView
-
-### 4. HomeView / BuildingView
 
 ## Contact
 For any questions, please contact Sahilbir Singh at scsingh@ucdavis.edu. 

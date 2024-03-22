@@ -63,7 +63,7 @@ struct GroupHabitView: View {
                 }) {
                     Text("Create Group Habit")
                         .padding()
-                        .background(Color.blue)
+                        .background(Color("Orange"))
                         .foregroundColor(.white)
                         .cornerRadius(8)
                 }
@@ -192,7 +192,7 @@ struct HabitView: View {
                 Image(uiImage: buildingImage)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 150, height: 150)
+                    .frame(width: 100, height: 150)
                     .cornerRadius(12)
                     .padding(.bottom, 7)
                     .onAppear {

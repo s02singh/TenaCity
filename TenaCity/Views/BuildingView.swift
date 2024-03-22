@@ -119,7 +119,7 @@ struct BuildingView: View {
                 }) {
                     Text("Create Habit")
                         .padding()
-                        .background(Color.blue)
+                        .background(Color("Orange"))
                         .foregroundColor(.white)
                         .cornerRadius(8)
                 }.padding()
