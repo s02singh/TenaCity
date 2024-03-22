@@ -140,7 +140,7 @@ struct GroupHabitView: View {
                           let name = habitData["name"] as? String,
                           let isPublic = habitData["isPublic"] as? Bool,
                           let buildingID = habitData["buildingID"] as? String,
-                          let progress = habitData["progress"] as? Int,
+                          let progress = habitData["progress"] as? Double,
                           let goal = habitData["goal"] as? Int,
                           let noteData = habitData["note"] as? [String: String],
                           let contributionsData = habitData["contributions"] as? [String: Any] else {
@@ -148,9 +148,9 @@ struct GroupHabitView: View {
                         return
                     }
                     
-                    var contributions = [String: Int]()
+                    var contributions = [String: Double]()
                     for (userID, contribution) in contributionsData {
-                        if let contributionString = contribution as? Int {
+                        if let contributionString = contribution as? Double {
                             contributions[userID] = contributionString
                         }
                     }
@@ -276,7 +276,7 @@ struct GroupHabitHeaderView: View {
 }
 
 struct ProgressBar: View {
-    var progress: Int
+    var progress: Double
     var goal: Int
     
     @State private var progressBarWidth: CGFloat = 0
@@ -318,10 +318,10 @@ struct GroupHabit: Identifiable {
     let name: String
     let isPublic: Bool
     let buildingID: String
-    let progress: Int
+    let progress: Double
     let goal: Int
     let note: [String: String]
-    let contributions: [String: Int]
+    let contributions: [String: Double]
 }
 
 
@@ -374,48 +374,6 @@ struct HabitDetailSheet: View {
             ContributionsDisplay(habit: habit, userNames: userNames)
                 .padding()
         }
-        .onAppear {
-            fetchUserNames()
-            // y48In2E9PCMadOrhMqmy
-            print(habit)
-            let db = Firestore.firestore()
-            let habitRef = db.collection("habits").document(habit.id)
-
-            habitRef.getDocument { (document, error) in
-                if let error = error {
-                    print("Error getting habit document: \(error)")
-                    return
-                }
-                
-                guard let document = document, document.exists else {
-                    print("Habit document does not exist")
-                    return
-                }
-                
-                
-                
-                habitRef.updateData(["progress": 50]) { error in
-                    if let error = error {
-                        print("Error updating progress: \(error)")
-                    }
-                }
-                
-                var habitData = document.data() ?? [:]
-                
-                if var contributions = habitData["contributions"] as? [String: Any] {
-                    contributions["y48In2E9PCMadOrhMqmy"] = 50
-                    habitData["contributions"] = contributions
-                } else {
-                    print("Contributions is not a dictionary")
-                }
-
-                habitRef.updateData(["contributions": habitData["contributions"] ?? [:]]) { error in
-                    if let error = error {
-                        print("Error updating contribution: \(error)")
-                    }
-                }
-            }
-        }
     }
     
     func fetchUserNames() {
@@ -460,7 +418,7 @@ struct ContributionsDisplay: View {
 
 struct ContributionRow: View {
     let userName: String
-    let contribution: Int
+    let contribution: Double
     let goal: Int
     
     var body: some View {
@@ -715,7 +673,7 @@ struct CreateGroupHabitSheet: View {
             "id": newDocument.documentID,
             "name": habitName,
             "buildingID": buildingID,
-            "progress": 0,
+            "progress": 0.0,
             "goal": goalValue,
             "note": [:],
             "contributions": contributions,

@@ -29,51 +29,53 @@ class HealthManager: ObservableObject {
         }
     }
     
-    func fetchTodaySteps() {
-        let steps = HKQuantityType(.stepCount)
+    func fetchTodaySteps(completion: @escaping (Double?, Error?) -> Void) {
+        let steps = HKQuantityType.quantityType(forIdentifier: .stepCount)!
         let predicate = HKQuery.predicateForSamples(withStart: Calendar.current.startOfDay(for: Date()), end: Date())
         let query = HKStatisticsQuery(quantityType: steps, quantitySamplePredicate: predicate) {_, result, error in
             guard let quantity = result?.sumQuantity(), error == nil else {
-                print("error getting todays step data")
+                completion(nil, error)
                 return
             }
             
             let stepCount = quantity.doubleValue(for: .count())
-            print(stepCount, "steps")
+            completion(stepCount, nil)
         }
         
         healthStore.execute(query)
     }
+
     
-    func fetchTodayDistance() {
-        let distance = HKQuantityType(.distanceWalkingRunning)
+    func fetchTodayDistance(completion: @escaping (Double?, Error?) -> Void) {
+        let distance = HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!
         let predicate = HKQuery.predicateForSamples(withStart: Calendar.current.startOfDay(for: Date()), end: Date())
         let query = HKStatisticsQuery(quantityType: distance, quantitySamplePredicate: predicate) {_, result, error in
             guard let quantity = result?.sumQuantity(), error == nil else {
-                print("error getting todays distance data")
+                completion(nil, error)
                 return
             }
             
-            //let mileCount = quantity / 1609.34      // convert meters to miles
-            print(quantity)
+            let distanceValue = quantity.doubleValue(for: .meter())
+            completion(distanceValue, nil)
         }
         
         healthStore.execute(query)
     }
-    
-    func fetchTodayCaloriesBurned() {
-        let calories = HKQuantityType(.activeEnergyBurned)
+
+    func fetchTodayCaloriesBurned(completion: @escaping (Double?, Error?) -> Void) {
+        let calories = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
         let predicate = HKQuery.predicateForSamples(withStart: Calendar.current.startOfDay(for: Date()), end: Date())
         let query = HKStatisticsQuery(quantityType: calories, quantitySamplePredicate: predicate) {_, result, error in
             guard let quantity = result?.sumQuantity(), error == nil else {
-                print("error getting todays calories data")
+                completion(nil, error)
                 return
             }
             
-            //let calorieCount = quantity.doubleValue(for: .count())
-            print(quantity, "calories")
+            let calorieCount = quantity.doubleValue(for: .kilocalorie())
+            completion(calorieCount, nil)
         }
         
         healthStore.execute(query)
     }
+
 }
