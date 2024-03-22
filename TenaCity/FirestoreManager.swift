@@ -521,10 +521,7 @@ class FirestoreManager: ObservableObject {
                         habitDocument.updateData([
                             "dates": FieldValue.arrayUnion([dateString])
                         ])
-                    } else {
-                        print("didn't update")
                     }
-                    
                 }
             } else {
                 print("Habit document does not exist")

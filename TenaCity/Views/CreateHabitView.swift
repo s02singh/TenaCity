@@ -19,6 +19,7 @@ struct CreateHabitView: View {
     @State var buildings: [Building]? = nil
     @Binding var isShowingCreateHabitView: Bool
     @State var user: User
+    @Binding var createdHabitIDs: [String]
     
     var body: some View {
         if let buildings = buildings {
@@ -83,7 +84,8 @@ struct CreateHabitView: View {
                     if let building = selectedBuilding,
                        let goal = Int(goal) {
                         let habit = firestoreManager.createHabit(name: name, building: building, user: user, goal: goal, identifier: habitIdentifiers[habitNames.firstIndex(of: selectedHabit) ?? 0])
-                        user.habitIDs.append(habit.id)
+                        createdHabitIDs.append(habit.id)
+                        print("just created", habit.id, user.habitIDs)
                         isShowingCreateHabitView = false
                     } else {
                         print("Error creating habit")
@@ -110,5 +112,5 @@ struct CreateHabitView: View {
 }
 
 #Preview {
-    CreateHabitView(isShowingCreateHabitView: .constant(false), user: User(id: "", email: "", password: "", username: "", accountCreationDate: Date(), userInvitedIDs: [], habitIDs: [], friendIDs: []))
+    CreateHabitView(isShowingCreateHabitView: .constant(false), user: User(id: "", email: "", password: "", username: "", accountCreationDate: Date(), userInvitedIDs: [], habitIDs: [], friendIDs: []), createdHabitIDs: .constant([]))
 }

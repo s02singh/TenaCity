@@ -15,10 +15,14 @@ struct BuildingView: View {
     @State var isShowingCreateHabitView = false
     @State var isHabitSheetPresented = false
     @State var selectedHabit: Habit? = nil
+    @State var createdHabitIDs: [String] = []
     
     func loadBuildings(user: User) {
         buildings = []
-        for habitID in user.habitIDs {
+        let allIDs = user.habitIDs + createdHabitIDs
+        print("all ids", allIDs)
+        print("user id", user.id)
+        for habitID in allIDs {
             firestoreManager.fetchHabit(id: habitID) { habit, error in
                 if let habit = habit {
                     firestoreManager.fetchBuilding(id: habit.buildingID) { building, error in
@@ -57,8 +61,9 @@ struct BuildingView: View {
                     if user.habitIDs.count == 0 {
                         Text("No habits created. Click the info button on top right to learn about this app!").foregroundColor(.gray)
                     }
-                    else if buildings.count == user.habitIDs.count {
-                        ForEach(user.habitIDs, id: \.self) { habitID in
+                    else if buildings.count >= user.habitIDs.count {
+                        let allIDs = user.habitIDs + createdHabitIDs
+                        ForEach(allIDs, id: \.self) { habitID in
                             if let building = buildings.first(where: { $0.0?.id == habitID }) {
                                 if let habit = building.0, let skin = building.1, habit.isPublic == false {
                                     VStack {
@@ -104,7 +109,7 @@ struct BuildingView: View {
                 }
                 .padding()
                 .sheet(isPresented: $isShowingCreateHabitView) {
-                    CreateHabitView(isShowingCreateHabitView: $isShowingCreateHabitView, user: user)
+                    CreateHabitView(isShowingCreateHabitView: $isShowingCreateHabitView, user: user, createdHabitIDs: $createdHabitIDs)
                 }
                 .onAppear(perform: {
                     loadBuildings(user: user)
