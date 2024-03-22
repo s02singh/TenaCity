@@ -33,6 +33,7 @@ struct SettingsView: View {
                     .padding()
                 Image("TenaCityLogo")
                     .resizable()
+                    .aspectRatio(contentMode: .fit)
                 Spacer()
                 TextField("Username", text: $username)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
