@@ -58,7 +58,7 @@ struct SettingsView: View {
                     Button(action: {
                         isPasswordVisible.toggle()
                     }) {
-                        Image(systemName: isPasswordVisible ? "eye.slash.fill" : "eye.fill")
+                        Image(systemName: isPasswordVisible ? "eye.fill" : "eye.slash.fill")
                             .foregroundColor(.blue)
                             .padding(.leading, 300)
                     }
@@ -91,6 +91,7 @@ struct SettingsView: View {
                                 print("Error updating username: \(error.localizedDescription)")
                             } else {
                                 authManager.userName = username
+                                print("successful username update")
                             }
                         }
                     }
@@ -100,7 +101,14 @@ struct SettingsView: View {
                         if (password.count < 6) {
                             wrongInput = true
                         }
-                        authManager.updatePassword(pswd: password)
+                        firestoreManager.updatePassword(userID: authManager.userID ?? "", newPassword: password) { error in
+                            if let error = error {
+                                print("Error updating username: \(error.localizedDescription)")
+                            } else {
+                                authManager.updatePassword(pswd: password)
+                                print("successful password update")
+                            }
+                        }
                     }
                 } label: {
                     Text("Save")
@@ -112,7 +120,6 @@ struct SettingsView: View {
                 }
                 .padding(50)
                 
-                Spacer()
                 SignOutButton()
                 Spacer()
                 

@@ -400,9 +400,12 @@ class FirestoreManager: ObservableObject {
     }
     
     func updatePassword(userID: String, newPassword: String, completion: @escaping (Error?) -> Void) {
-        Auth.auth().currentUser?.updatePassword(to: newPassword) { error in
+        let userDocument = db.collection("users").document(userID)
+        
+        userDocument.updateData(["password": newPassword]) { error in
             if let error = error {
                 completion(error)
+                return
             }
             
             completion(nil)
