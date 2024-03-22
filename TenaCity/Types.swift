@@ -66,9 +66,9 @@ struct Skin {
     let url: String
 }
 
-let habitNames = ["Steps", "Distance", "Calories", "Gym Time", "Outside Time"]
-let habitIdentifiers = ["Steps", "Miles", "Calories", "Minutes", "Minutes"]
-let habitIcons = ["figure.walk", "figure.run", "flame.fill", "iphone", "message.fill"]
+let habitNames = ["Steps", "Distance", "Calories"]
+let habitIdentifiers = ["Steps", "Miles", "Calories"]
+let habitIcons = ["figure.walk", "figure.run", "flame.fill"]
 
 // User Extension
 extension User {

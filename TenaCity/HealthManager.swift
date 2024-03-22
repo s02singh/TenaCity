@@ -27,6 +27,10 @@ class HealthManager: ObservableObject {
                 }
             }
         }
+        
+        fetchTodaySteps()
+        fetchTodayDistance()
+        fetchTodayCaloriesBurned()
     }
     
     func fetchTodaySteps() {
