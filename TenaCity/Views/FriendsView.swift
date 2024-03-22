@@ -77,9 +77,10 @@ struct FriendsView: View {
                 Text("Add Friend")
             }
             .padding()
-            .background(Color("SageGreen"))
+            .background(Color("Orange"))
             .foregroundColor(.white)
             .cornerRadius(8)
+            .padding()
             .sheet(isPresented: $showingAddFriend, onDismiss: {
                 // loads friends on dismiss
                 loadFriends()

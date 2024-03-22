@@ -31,6 +31,8 @@ struct SettingsView: View {
                 Text("\(authManager.userName ?? "User")'s City")
                     .font(.title)
                     .padding()
+                Image("TenaCityLogo")
+                    .resizable()
                 Spacer()
                 TextField("Username", text: $username)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -60,6 +62,9 @@ struct SettingsView: View {
                             .padding(.leading, 300)
                     }
                     .padding(.trailing, 20)
+                    .onChange(of: password){
+                        wrongInput = false
+                    }
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 10)
@@ -80,9 +85,6 @@ struct SettingsView: View {
                 
                 Button {
                     if !username.isEmpty {
-                        if (username.count < 6) {
-                            wrongInput = true
-                        }
                         firestoreManager.updateUsername(userID: authManager.userID ?? "", newUsername: username) { error in
                             if let error = error {
                                 print("Error updating username: \(error.localizedDescription)")
@@ -94,21 +96,17 @@ struct SettingsView: View {
                     
                     
                     if !password.isEmpty {
-                        firestoreManager.updatePassword(userID: authManager.userID ?? "", newPassword: password) { error in
-                            if let error = error {
-                                print("Error updating password \(error.localizedDescription)")
-                            } else {
-                                authManager.updatePassword(pswd: password)
-                            }
-                            
+                        if (password.count < 6) {
+                            wrongInput = true
                         }
+                        authManager.updatePassword(pswd: password)
                     }
                 } label: {
                     Text("Save")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
-                        .background(Color("SageGreen"))
+                        .background(Color("Orange"))
                         .cornerRadius(10)
                 }
                 .padding(50)
