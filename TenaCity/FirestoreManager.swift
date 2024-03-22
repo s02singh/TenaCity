@@ -404,7 +404,7 @@ class FirestoreManager: ObservableObject {
         }
     }
     
-    func updateSteps(userID: String, steps: Int, completion: @escaping (Error?) -> Void) {
+    func updateStats(userID: String, steps: Int, distance: Int, calories: Int, completion: @escaping (Error?) -> Void) {
         fetchUser(id: userID) { user, error in
             if let error = error {
                 print("Error fetching user: \(error.localizedDescription)")
@@ -415,6 +415,24 @@ class FirestoreManager: ObservableObject {
                             if habit.identifier == "Steps" {
                                 let habitDocument = self.db.collection("users").document(userID)
                                 habitDocument.updateData(["progress": steps]) { error in
+                                    if let error = error {
+                                        print("Error adjusting steps: \(error)")
+                                    } else {
+                                        print("Steps updated")
+                                    }
+                                }
+                            } else if habit.identifier == "Miles" {
+                                let habitDocument = self.db.collection("users").document(userID)
+                                habitDocument.updateData(["progress": distance]) { error in
+                                    if let error = error {
+                                        print("Error adjusting steps: \(error)")
+                                    } else {
+                                        print("Steps updated")
+                                    }
+                                }
+                            } else if habit.identifier == "Calories" {
+                                let habitDocument = self.db.collection("users").document(userID)
+                                habitDocument.updateData(["progress": calories]) { error in
                                     if let error = error {
                                         print("Error adjusting steps: \(error)")
                                     } else {

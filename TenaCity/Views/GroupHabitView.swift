@@ -12,6 +12,8 @@ struct GroupHabitView: View {
     @State private var isFetchingHabits = false
     @State private var isCreateHabitPresented = false
     
+    @State var opened = false
+    
     // Made a grid for the habits, we can change later
     let columns = [
         GridItem(.flexible(minimum: 100, maximum: 150)),
@@ -76,9 +78,11 @@ struct GroupHabitView: View {
                     .opacity(0.8)
             )
             .sheet(item: $selectedHabit, onDismiss: {
+                /*
                 fetchPublicHabits {
                     numHabits = publicHabits.count
                 }
+                 */
                 
             }) { habit in
                 HabitDetailSheet(habit: habit)
@@ -127,7 +131,6 @@ struct GroupHabitView: View {
                         print("Error getting habit document: \(error)")
                         return
                     }
-                    
                     guard let habitData = habitDocument?.data(),
                           let name = habitData["name"] as? String,
                           let isPublic = habitData["isPublic"] as? Bool,
@@ -148,7 +151,8 @@ struct GroupHabitView: View {
                     }
                     
                     if isPublic {
-                        let habit = GroupHabit(name: name,
+                        let habit = GroupHabit(id: habitID,
+                                               name: name,
                                                isPublic: isPublic,
                                                buildingID: buildingID,
                                                progress: progress,
@@ -309,7 +313,7 @@ struct ProgressBar: View {
 }
 
 struct GroupHabit: Identifiable {
-    let id = UUID()
+    let id: String
     let name: String
     let isPublic: Bool
     let buildingID: String
@@ -371,6 +375,45 @@ struct HabitDetailSheet: View {
         }
         .onAppear {
             fetchUserNames()
+            // y48In2E9PCMadOrhMqmy
+            print(habit)
+            let db = Firestore.firestore()
+            let habitRef = db.collection("habits").document(habit.id)
+
+            habitRef.getDocument { (document, error) in
+                if let error = error {
+                    print("Error getting habit document: \(error)")
+                    return
+                }
+                
+                guard let document = document, document.exists else {
+                    print("Habit document does not exist")
+                    return
+                }
+                
+                
+                
+                habitRef.updateData(["progress": 50]) { error in
+                    if let error = error {
+                        print("Error updating progress: \(error)")
+                    }
+                }
+                
+                var habitData = document.data() ?? [:]
+                
+                if var contributions = habitData["contributions"] as? [String: Any] {
+                    contributions["y48In2E9PCMadOrhMqmy"] = 50
+                    habitData["contributions"] = contributions
+                } else {
+                    print("Contributions is not a dictionary")
+                }
+
+                habitRef.updateData(["contributions": habitData["contributions"] ?? [:]]) { error in
+                    if let error = error {
+                        print("Error updating contribution: \(error)")
+                    }
+                }
+            }
         }
     }
     
@@ -454,7 +497,7 @@ struct CreateGroupHabitSheet: View {
     @State private var selectedBuilding: String = ""
     @State private var skyscraperImage: UIImage?
     @State private var houseImage: UIImage?
-    @State private var buildingType: String = "Skyscraper" // Default selection
+    @State private var buildingType: String = "Cabin" // Default selection
     @State private var friends: [String: String] = [:]
     
     var body: some View {
@@ -471,12 +514,12 @@ struct CreateGroupHabitSheet: View {
                     .pickerStyle(SegmentedPickerStyle())
                     
                     Picker("Building Type", selection: $buildingType) {
-                        Text("Skyscraper").tag("Skyscraper")
+                        Text("Cabin").tag("Cabin")
                         Text("House").tag("House")
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     
-                    if buildingType == "Skyscraper" {
+                    if buildingType == "Cabin" {
                         if let buildingImage = skyscraperImage {
                             HStack {
                                 Spacer()
@@ -489,7 +532,7 @@ struct CreateGroupHabitSheet: View {
                                 Spacer()
                             }
                             .onAppear {
-                                fetchBuildingImage(imageURL: "https://static.vecteezy.com/system/resources/previews/011/453/045/original/skyscraper-pixel-art-style-free-vector.jpg", index: 0)
+                                fetchBuildingImage(imageURL: "https://media.istockphoto.com/id/1358860685/vector/house-icon-pixel-art-front-view-a-small-hut-vector-simple-flat-graphic-illustration-the.jpg?s=612x612&w=0&k=20&c=qodGeD6HSaJKRrZhglbSjXnGnrdXVZsyAlwdlcPaDZw=", index: 0)
                             }
                         } else {
                             ProgressView()
@@ -556,7 +599,7 @@ struct CreateGroupHabitSheet: View {
         }
         .onAppear{
             fetchFriends()
-            fetchBuildingImage(imageURL: "https://static.vecteezy.com/system/resources/previews/011/453/045/original/skyscraper-pixel-art-style-free-vector.jpg", index: 0)
+            fetchBuildingImage(imageURL: "https://media.istockphoto.com/id/1358860685/vector/house-icon-pixel-art-front-view-a-small-hut-vector-simple-flat-graphic-illustration-the.jpg?s=612x612&w=0&k=20&c=qodGeD6HSaJKRrZhglbSjXnGnrdXVZsyAlwdlcPaDZw=", index: 0)
             fetchBuildingImage(imageURL: "https://media.istockphoto.com/id/1358860685/vector/house-icon-pixel-art-front-view-a-small-hut-vector-simple-flat-graphic-illustration-the.jpg?s=612x612&w=0&k=20&c=qodGeD6HSaJKRrZhglbSjXnGnrdXVZsyAlwdlcPaDZw=", index: 1)
         }
         .accentColor(.blue)
@@ -659,8 +702,8 @@ struct CreateGroupHabitSheet: View {
         
         contributions[currentUserID] = 0
         var buildingID = ""
-        if(buildingType == "Skyscraper"){
-            buildingID = "F0bfX9zU8KUmMh5tlnQ4"
+        if(buildingType == "Cabin"){
+            buildingID = "t61IP0alWTc4cIbUwcIL"
         }
         else{buildingID = "t61IP0alWTc4cIbUwcIL"}
         // habit data
