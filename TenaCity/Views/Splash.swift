@@ -2,9 +2,12 @@ import SwiftUI
 
 struct Splash: View {
     @State private var isActive = false
-
+    // This will trigger the homeview when active
     var body: some View {
+        
+        //
         VStack{
+            // Creates a clean animation for the splash screen of houses flying into place
             ZStack {
                 ForEach(0..<4) { index in
                     AnimatedHouse(index: index)
@@ -12,10 +15,12 @@ struct Splash: View {
                 
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        // Triggers after 3 seconds
                         self.isActive = true
                     }
                 }
                 .fullScreenCover(isPresented: $isActive, content: {
+                    // Calls the homeview
                     TenaCityRoot()
                 })
             }
@@ -44,6 +49,8 @@ struct Splash: View {
     }
 }
 
+
+// Defines the animation.
 struct AnimatedHouse: View {
     let index: Int
     @State private var isAnimating = false
@@ -56,6 +63,7 @@ struct AnimatedHouse: View {
         self.randomYOffset = CGFloat.random(in: -200...200)
     }
     
+    // uses the main logo to fly the house from random spawn points into the center.
     var body: some View {
         Image("TenaCityLogo")
             .resizable()
