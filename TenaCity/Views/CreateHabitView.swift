@@ -15,6 +15,7 @@ struct CreateHabitView: View {
     @State var goal: String = "10"
     @State var selectedBuilding: Building? = nil
     @State var selectedBuildingName: String = ""
+    @State var name: String = ""
     @State var buildings: [Building]? = nil
     @Binding var isShowingCreateHabitView: Bool
     @State var user: User
@@ -22,6 +23,9 @@ struct CreateHabitView: View {
     var body: some View {
         if let buildings = buildings {
             Form {
+                Section(header: Text("Name").font(.headline)) {
+                    TextField("My Habit Name", text: $name)
+                }
                 Section(header: Text("Habit Type").font(.headline)) {
                     List {
                         ForEach(habitNames, id: \.self) { habitName in
@@ -78,7 +82,7 @@ struct CreateHabitView: View {
                 Button(action: {
                     if let building = selectedBuilding,
                        let goal = Int(goal) {
-                        let habit = firestoreManager.createHabit(name: selectedHabit, building: building, user: user, goal: goal, identifier: selectedHabit)
+                        let habit = firestoreManager.createHabit(name: name, building: building, user: user, goal: goal, identifier: habitIdentifiers[habitNames.firstIndex(of: selectedHabit) ?? 0])
                         user.habitIDs.append(habit.id)
                         isShowingCreateHabitView = false
                     } else {

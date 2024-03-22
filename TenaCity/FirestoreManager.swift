@@ -165,7 +165,7 @@ class FirestoreManager: ObservableObject {
                let dates = habitData["dates"] as? [Date],
                let streak = habitData["streak"] as? Int,
                let note = habitData["note"] as? [String: String],
-               let contributions = habitData["contributions"] as? [String: Any],
+               let contributions = habitData["contributions"] as? [String: Int],
                let isPublic = habitData["isPublic"] as? Bool,
                let goal = habitData["goal"] as? Int,
                let progress = habitData["progress"] as? Int,
@@ -181,8 +181,7 @@ class FirestoreManager: ObservableObject {
                                      goal: goal,
                                      progress: progress,
                                      identifier: identifier)
-                   
-                   completion(habit, nil)
+                  completion(habit, nil)
             } else {
                 let dataError = NSError(domain: "DataUnwrapError", code: 1, userInfo: nil)
                 print("error getting habit with id \(id)")

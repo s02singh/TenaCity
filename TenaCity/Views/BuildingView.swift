@@ -55,12 +55,12 @@ struct BuildingView: View {
                         .padding(.bottom, 30)
                     
                     if user.habitIDs.count == 0 {
-                        Text("No habits created").foregroundColor(.gray)
+                        Text("No habits created. Click the info button on top right to learn about this app!").foregroundColor(.gray)
                     }
                     else if buildings.count == user.habitIDs.count {
                         ForEach(user.habitIDs, id: \.self) { habitID in
                             if let building = buildings.first(where: { $0.0?.id == habitID }) {
-                                if let habit = building.0, let skin = building.1 {
+                                if let habit = building.0, let skin = building.1, habit.isPublic == false {
                                     VStack {
                                         AsyncImage(
                                             url: URL(string: skin.url),

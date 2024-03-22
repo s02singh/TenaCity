@@ -227,14 +227,13 @@ struct HabitView: View {
             }
 
             guard let buildingData = document?.data(),
-                  let levelsIDs = buildingData["levelsIDs"] as? [String],
-                  let levelIndex = buildingData["level"] as? Int,
-                  levelIndex < levelsIDs.count else {
+                  let levelsIDs = buildingData["levelIDs"] as? [String]
+            else {
                 print("Invalid building document")
                 return
             }
 
-            let levelID = levelsIDs[levelIndex]
+            let levelID = levelsIDs[0]
 
             db.collection("skins").document(levelID).getDocument { document, error in
                 if let error = error {
@@ -705,11 +704,15 @@ struct CreateGroupHabitSheet: View {
         contributions[currentUserID] = 0
         var buildingID = ""
         if(buildingType == "Cabin"){
-            buildingID = "t61IP0alWTc4cIbUwcIL"
+            buildingID = "AhPawVNNtkPUzziZZvON"
         }
-        else{buildingID = "t61IP0alWTc4cIbUwcIL"}
+        else{buildingID = "AhPawVNNtkPUzziZZvON"}
+        
+        // Add the habit to Firestore
+        let newDocument = db.collection("habits").document()
         // habit data
         let habitData: [String: Any] = [
+            "id": newDocument.documentID,
             "name": habitName,
             "buildingID": buildingID,
             "progress": 0,
@@ -717,12 +720,10 @@ struct CreateGroupHabitSheet: View {
             "note": [:],
             "contributions": contributions,
             "isPublic": true,
-            "identifier": selectedIdentifier
+            "identifier": selectedIdentifier,
+            "dates": [],
+            "streak": 0,
         ]
-
-        // Add the habit to Firestore
-
-        let newDocument = db.collection("habits").document()
         newDocument.setData(habitData) { error in
             if let error = error {
                 print("Error adding habit: \(error.localizedDescription)")
