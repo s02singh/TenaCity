@@ -1,12 +1,12 @@
 # Tenacity
 
 ## Login Credentials
-username: Dummy  
-password: password  
+Username: Dummy  
+_assword: password  
 
 Note: you can create your own account using Google auth, but we suggest using this test account.
 
-Also, for optimal testing, please test after March 23 3pm to ensure you have a full quota Firebase to work with, but it should be fine to test either way.
+Also, for optimal testing, please test after March 23, 2024, 3pm to ensure you have a full quota Firebase to work with, but it should be fine to test either way.
 
 ## Overview
 On average, it typically requires 66 days for a behavior to solidify into a habit, with consistent daily practice often posing a challenge (such as maintaining a daily workout routine). In aiding users in the growth of daily habits, we propose TenaCity, an iOS application designed for tracking habit streaks. Each habit will be represented by a building, and users will find motivation through features like creating a city of buildings and observing their friends' progress in their own cities, with the ability to create group habits with them.
