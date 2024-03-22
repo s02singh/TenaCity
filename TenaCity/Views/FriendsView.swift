@@ -688,7 +688,7 @@ struct QuickCreateGroupHabitSheet: View {
     @State private var selectedBuilding: String = ""
     @State private var skyscraperImage: UIImage?
     @State private var houseImage: UIImage?
-    @State private var buildingType: String = "Cabin" // Default selection
+    @State private var buildingType: String = "Skyscraper" // Default selection
     @State private var friends: [String: String] = [:]
     let friend: Friend
     @State private var showCustomGoal: Bool = false
@@ -713,7 +713,6 @@ struct QuickCreateGroupHabitSheet: View {
                             }
                             .buttonStyle(PlainButtonStyle()) // Using PlainButtonStyle for better customization
                             .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
-                            .fixedSize()
                             
                             Button(action: {
                                 goal = "100"
@@ -726,7 +725,6 @@ struct QuickCreateGroupHabitSheet: View {
                             }
                             .buttonStyle(PlainButtonStyle())
                             .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
-                            .fixedSize()
                             
                             Button(action: {
                                 goal = "10000"
@@ -739,7 +737,6 @@ struct QuickCreateGroupHabitSheet: View {
                             }
                             .buttonStyle(PlainButtonStyle())
                             .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
-                            .fixedSize()
                             
                             Button(action: {
                                 showCustomGoal.toggle()
@@ -752,7 +749,6 @@ struct QuickCreateGroupHabitSheet: View {
                             }
                             .buttonStyle(PlainButtonStyle())
                             .shadow(color: Color.black.opacity(0.3), radius: 5, x: 0, y: 2)
-                            .fixedSize()
                             
                             Spacer()
                         }
@@ -769,12 +765,12 @@ struct QuickCreateGroupHabitSheet: View {
                     .pickerStyle(SegmentedPickerStyle())
                     
                     Picker("Building Type", selection: $buildingType) {
-                        Text("Cabin").tag("Cabin")
+                        Text("Skyscraper").tag("Skyscraper")
                         Text("House").tag("House")
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     
-                    if buildingType == "Cabin" {
+                    if buildingType == "Skyscraper" {
                         if let buildingImage = skyscraperImage {
                             HStack {
                                 Spacer()
@@ -787,7 +783,7 @@ struct QuickCreateGroupHabitSheet: View {
                                 Spacer()
                             }
                             .onAppear {
-                                fetchBuildingImage(imageURL: "https://media.istockphoto.com/id/1358860685/vector/house-icon-pixel-art-front-view-a-small-hut-vector-simple-flat-graphic-illustration-the.jpg?s=612x612&w=0&k=20&c=qodGeD6HSaJKRrZhglbSjXnGnrdXVZsyAlwdlcPaDZw=", index: 0)
+                                fetchBuildingImage(imageURL: "https://static.vecteezy.com/system/resources/previews/011/453/045/original/skyscraper-pixel-art-style-free-vector.jpg", index: 0)
                             }
                         } else {
                             ProgressView()
@@ -952,8 +948,8 @@ struct QuickCreateGroupHabitSheet: View {
         
         contributions[currentUserID] = 0
         var buildingID = ""
-        if(buildingType == "Cabin"){
-            buildingID = "t61IP0alWTc4cIbUwcIL"
+        if(buildingType == "Skyscraper"){
+            buildingID = "F0bfX9zU8KUmMh5tlnQ4"
         }
         else{buildingID = "t61IP0alWTc4cIbUwcIL"}
         // habit data
