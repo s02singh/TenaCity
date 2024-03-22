@@ -15,6 +15,7 @@ class AuthManager: ObservableObject {
     @Published var userName: String?
     @Published var userID: String?
     @Published var user: User?
+    @Published private var password: String?
     @ObservedObject var firestoreManager = FirestoreManager()
     @ObservedObject var healthManager = HealthManager()
     var timer: Timer?
@@ -29,6 +30,7 @@ class AuthManager: ObservableObject {
                 } else if let fetchedUser = user {
                     self.user = fetchedUser
                     self.userName = fetchedUser.username //username update
+                    self.password = fetchedUser.password
                 } else {
                     print("User not found.")
                 }
@@ -39,6 +41,11 @@ class AuthManager: ObservableObject {
         } else {
             print("No user saved")
         }
+    }
+    
+    // Allows user to update their password
+    func updatePassword(pswd: String) {
+        self.password = pswd
     }
     
     // Small function for easy check if signin

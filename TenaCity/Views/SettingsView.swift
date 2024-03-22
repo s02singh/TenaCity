@@ -19,6 +19,7 @@ struct SettingsView: View {
     @State private var isEditingPasswrod = false
     @FocusState private var focusedField: Field?
     @State private var isPasswordVisible = false
+    @State private var wrongInput: Bool = false
     
     enum Field {
         case username, password
@@ -72,8 +73,16 @@ struct SettingsView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal, 20)
                 
-                Button("Save") {
+                if (wrongInput) {
+                    Text("Please enter a password with more than 6 characters!")
+                        .foregroundColor(Color.red)
+                }
+                
+                Button {
                     if !username.isEmpty {
+                        if (username.count < 6) {
+                            wrongInput = true
+                        }
                         firestoreManager.updateUsername(userID: authManager.userID ?? "", newUsername: username) { error in
                             if let error = error {
                                 print("Error updating username: \(error.localizedDescription)")
@@ -89,13 +98,20 @@ struct SettingsView: View {
                             if let error = error {
                                 print("Error updating password \(error.localizedDescription)")
                             } else {
-                                //implement password updates here
+                                authManager.updatePassword(pswd: password)
                             }
                             
                         }
                     }
+                } label: {
+                    Text("Save")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color("SageGreen"))
+                        .cornerRadius(10)
                 }
-                .padding(30)
+                .padding(50)
                 
                 Spacer()
                 SignOutButton()

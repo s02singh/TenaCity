@@ -13,26 +13,46 @@ struct Home: View {
     @State private var newPassword: String = ""
     @EnvironmentObject var healthManager: HealthManager
     @State private var isNavigatingToFriends = false
+    
+    @State private var showingInfoSheet = false
         
     var body: some View {
         VStack {
-            Text("Hello \(displayName)!")
-                .padding()
-                .onAppear {
-                    if let currentUser = authManager.userName{
-                        self.displayName = currentUser
+            HStack {
+                Spacer()
+                Text("Hello \(displayName)!")
+                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 70))
+                    .onAppear {
+                        if let currentUser = authManager.userName{
+                            self.displayName = currentUser
+                        }
+                        else if let currentUser = Auth.auth().currentUser {
+                            self.displayName = currentUser.displayName ?? ""
+                            authManager.userName = currentUser.displayName
+                            authManager.userID = UserDefaults.standard.object(forKey: "userID") as? String
+                        }
                     }
-                    else if let currentUser = Auth.auth().currentUser {
-                        self.displayName = currentUser.displayName ?? ""
-                        authManager.userName = currentUser.displayName
-                        authManager.userID = UserDefaults.standard.object(forKey: "userID") as? String
-                    }
+                    
+                Button(action: {
+                    showingInfoSheet.toggle()
+                }) {
+                    Image(systemName: "info.circle")
+//                        .resizable()
+//                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(Color("SageGreen"))
+                        .background(Color.white)
+                        .clipShape(Circle())
+                        .shadow(radius: 5)
                 }
+                .sheet(isPresented: $showingInfoSheet) {
+                    InfoSheet()
+                }
+                .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+            }
             
             TabView (selection: $viewState) {
                 Group {
-                   
-                    
                     FriendsView()
                         .tabItem() {
                             Image(systemName: "person.2")
@@ -64,6 +84,13 @@ struct Home: View {
             
         }
         .ignoresSafeArea(.keyboard)
+    }
+}
+
+struct InfoSheet: View {
+    var body: some View {
+        Text("This is the info sheet")
+            .padding()
     }
 }
 
