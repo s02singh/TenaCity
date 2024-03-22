@@ -14,10 +14,10 @@ and ensure a working app during testing. Also, to test the Health linking, pleas
 On average, it typically requires 66 days for a behavior to solidify into a habit, with consistent daily practice often posing a challenge (such as maintaining a daily workout routine). In aiding users in the growth of daily habits, we propose TenaCity, an iOS application designed for tracking habit streaks. Each habit will be represented by a building, and users will find motivation through features like creating a city of buildings and observing their friends' progress in their own cities, with the ability to create group habits with them.
 
 # Developers:
-- Shikhar Gupta: ShikharGupta77
-- Sahilbir Singh: s02singh
-- Divya Raj: goldenfries100
-- Lena Ray: lenaray
+- Shikhar Gupta: [ShikharGupta77](https://github.com/ShikharGupta77)
+- Sahilbir Singh: [s02singh](https://github.com/s02singh)
+- Divya Raj: [goldenfries100](https://github.com/goldenfries100)
+- Lena Ray: [lenaray](https://github.com/lenaray)
 
 ## Features
 ### 1. Create and strengthen personal habits
