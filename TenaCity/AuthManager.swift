@@ -28,6 +28,7 @@ class AuthManager: ObservableObject {
                     print("Error fetching user: \(error.localizedDescription)")
                 } else if let fetchedUser = user {
                     self.user = fetchedUser
+                    self.userName = fetchedUser.username //username update
                 } else {
                     print("User not found.")
                 }

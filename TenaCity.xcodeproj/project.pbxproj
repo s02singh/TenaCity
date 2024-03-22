@@ -540,7 +540,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TenaCity/Preview Content\"";
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = FK7V74L7WY;
+=======
+				DEVELOPMENT_TEAM = V3G5XWB274;
+>>>>>>> main
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TenaCity/Info.plist;
@@ -574,7 +578,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TenaCity/Preview Content\"";
+<<<<<<< HEAD
 				DEVELOPMENT_TEAM = FK7V74L7WY;
+=======
+				DEVELOPMENT_TEAM = V3G5XWB274;
+>>>>>>> main
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TenaCity/Info.plist;

@@ -38,6 +38,9 @@ struct SettingsView: View {
                     .onAppear {
                         username = authManager.userName ?? ""
                     }
+                    .onChange(of: username) {
+                        authManager.userName = username
+                    }
                 ZStack {
                     if isPasswordVisible {
                         TextField("Password", text: $password)
@@ -86,7 +89,7 @@ struct SettingsView: View {
                             if let error = error {
                                 print("Error updating password \(error.localizedDescription)")
                             } else {
-                                
+                                //implement password updates here
                             }
                             
                         }
