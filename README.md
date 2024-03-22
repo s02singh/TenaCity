@@ -44,6 +44,13 @@ To match the city theme of the app, we created sets of skins for the buildings, 
 
 ### 2. LoginView
 
+### 3. SettingsView
+
+### 4. BuildingView
+
+### 5. FriendsView
+
+### 6. GroupHabitsView
 
 ## Contact
 For any questions, please contact Sahilbir Singh at scsingh@ucdavis.edu. 
