@@ -142,17 +142,40 @@ struct HabitDetailView: View {
     let habit: Habit
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("Habit Name: \(habit.name)")
-                .font(.headline)
-            Text("ID: \(habit.id)")
-            Text("Building ID: \(habit.buildingID)")
-            Text("Streak: \(habit.streak) days")
-            Text("Is Public: \(habit.isPublic ? "Yes" : "No")")
+        VStack {
+            Text("Habit Detail Sheet for \(habit.name)")
+                .font(Font.custom("Avenir-Heavy", size: 24))
+                .multilineTextAlignment(.center)
+                .padding()
+                .fixedSize(horizontal: false, vertical: true)
+            
+            Text("Progress: \(Int(habit.progress)) \(habit.identifier)")
+                .font(Font.custom("Avenir", size: 18))
+                .padding()
+            
             Text("Goal: \(habit.goal) \(habit.identifier)")
-            Text("Progress: \(habit.progress) \(habit.identifier)")
-            Text("Note: \(habit.note.description)") 
+                .font(Font.custom("Avenir", size: 18))
+                .padding()
+            
+            ZStack {
+                Circle()
+                    .stroke(Color.gray.opacity(0.2), style: StrokeStyle(lineWidth: 15))
+                    .frame(width: 200, height: 200)
+                Circle()
+                    .trim(from: 0.0, to: CGFloat(habit.progress) / CGFloat(habit.goal))
+                    .stroke(Color.green, style: StrokeStyle(lineWidth: 15, lineCap: .round))
+                    .rotationEffect(.degrees(-90))
+                    .frame(width: 200, height: 200)
+                
+                VStack {
+                    Text("\(Int(habit.progress)) / \(habit.goal) \(habit.identifier)")
+                        .font(Font.custom("Avenir", size: 16))
+                    Text("Progress")
+                        .font(Font.custom("Avenir", size: 14))
+                        .foregroundColor(.gray)
+                }
+            }
+            .padding()
         }
-        .padding()
     }
 }
