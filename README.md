@@ -2,7 +2,7 @@
 
 ## Login Credentials
 Username: Dummy  
-_assword: password  
+Password: password  
 
 Note: you can create your own account using Google auth, but we suggest using this test account.
 
