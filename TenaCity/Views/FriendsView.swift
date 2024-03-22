@@ -2,12 +2,17 @@ import SwiftUI
 import Firebase
 import FirebaseFirestore
 
+
+// Define the friendHabit struct
+// We want to know the habit they have and the building they chsoe.
 struct friendHabit: Identifiable {
     let id: String
     let name: String
     let buildingID: String
 }
 
+// Define a Friend struct.
+// We want to know their id, username, and their habits.
 struct Friend: Identifiable {
     let id: String
     let username: String
@@ -24,11 +29,13 @@ struct FriendsView: View {
     var body: some View {
         VStack {
             VStack {
+                // Simple header
                 Text("My Friends")
                     .font(.system(size: 24, weight: .bold, design: .default))
                     .foregroundColor(Color.blue)
                     .padding(.top, 20)
                 
+                // Displays number of friends
                 Text("\(friends.count) friends")
                     .font(.caption)
                     .foregroundColor(.gray)
@@ -37,6 +44,8 @@ struct FriendsView: View {
                 ScrollView {
                     LazyVStack {
                         ForEach(friends) { friend in
+                            // Displays each friend in a stylized row design with a quick button to show habits
+                            // when you click your friends row.
                             FriendRow(friend: friend, selectedFriend: $selectedFriend)
                                 .onTapGesture {
                                     selectedFriend = friend
@@ -46,22 +55,28 @@ struct FriendsView: View {
                 }
             }
             .padding()
+            // the friend view opens when you click their row.
             .sheet(item: $selectedFriend, onDismiss: {
+                // on dismiss we reload friends.
                 loadFriends()
             }) { friend in
+                // opens friend view with the selected friend
                 MenuView(friend: friend, isPresented: $selectedFriend)
             }
             .onAppear {
+                // when the view opens we load our friends
                 print("loading friends")
                 loadFriends()
             }
             
             Spacer()
+            // button to open add friend view
             Button("Add Friend") {
                 showingAddFriend.toggle()
             }
             .padding()
             .sheet(isPresented: $showingAddFriend, onDismiss: {
+                // loads friends on dismiss
                 loadFriends()
             }) {
                 AddFriendView()
@@ -77,10 +92,12 @@ struct FriendsView: View {
     }
 
     
+    // main function to load friends.
     func loadFriends() {
         let db = Firestore.firestore()
         guard let myUserID = authManager.userID else {return}
         
+        // retireves current users list of friends
         db.collection("users").document(myUserID).getDocument { (document, error) in
             if let document = document, document.exists {
                 if let friendIDs = document.data()?["friendIDs"] as? [String] {
@@ -93,10 +110,13 @@ struct FriendsView: View {
                             if let friendDocument = friendDocument, friendDocument.exists {
                                 let friendData = friendDocument.data()
                                 if let username = friendData?["username"] as? String {
+                                    // create a friend object with the firebase data
                                     let friend = Friend(id: friendID, username: username, houseIconURL: "https://media.istockphoto.com/id/1358860685/vector/house-icon-pixel-art-front-view-a-small-hut-vector-simple-flat-graphic-illustration-the.jpg?s=612x612&w=0&k=20&c=qodGeD6HSaJKRrZhglbSjXnGnrdXVZsyAlwdlcPaDZw=", habits: [])
+                                    
+                                    // add new friend object to our list of friends
                                     friends.append(friend)
                                     print(friend.username)
-                                    
+                                    // Loads the friends habits as well.
                                     loadHabits(for: friend)
                                 }
                             } else {
@@ -105,6 +125,7 @@ struct FriendsView: View {
                         }
                     }
                    
+                    // If a friend is deleted, we make sure to remove them from the view.
                     let friendsToRemove = friends.filter { friend in
                         !friendIDs.contains(friend.id)
                     }
@@ -120,21 +141,26 @@ struct FriendsView: View {
     }
 
     
+    // main function for loading friends views.
     func loadHabits(for friend: Friend) {
         let db = Firestore.firestore()
         let userDocRef = db.collection("users").document(friend.id)
         
+        // uses the friendId to find document.
         userDocRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 if let habitIDs = document.data()?["habitIDs"] as? [String] {
                     for habitID in habitIDs {
                         db.collection("habits").document(habitID).getDocument { (habitDocument, error) in
+                            
+                            // Collect all information of the habit and make a friendHabit object.
                             if let habitDocument = habitDocument, habitDocument.exists {
                                 if let habitData = habitDocument.data(),
                                    let id = habitData["id"] as? String,
                                    let name = habitData["name"] as? String,
                                    let buildingID = habitData["buildingID"] as? String {
                                     let habit = friendHabit(id: id, name: name, buildingID: buildingID)
+                                    // append the new habbit to list of habits
                                     friends[getIndex(for: friend)].habits.append(habit)
                                 }
                             } else {
@@ -150,6 +176,7 @@ struct FriendsView: View {
     }
 
     
+    // quick function to find the index of the friend selected from friendsrow
     func getIndex(for friend: Friend) -> Int {
         if let index = friends.firstIndex(where: { $0.id == friend.id }) {
             return index
@@ -157,6 +184,8 @@ struct FriendsView: View {
         return 0
     }
 }
+
+// A friendrow is a stylized way to show each friend.
 struct FriendRow: View {
     @State var friend: Friend
     @State private var isShowingSheet = false
@@ -164,6 +193,8 @@ struct FriendRow: View {
     @State var checker: Friend?
     
     var body: some View {
+        
+        // A nice house icon to represent the friend.
         HStack {
             AsyncImage(url: URL(string: friend.houseIconURL)) { image in
                 image
@@ -175,12 +206,15 @@ struct FriendRow: View {
             .frame(width: 50, height: 50)
             .cornerRadius(12)
             
+            // Displays their name
             HStack() {
                 Text(friend.username)
                     .font(.headline)
                 Spacer()
+                
+                // A quick button to make a group habit with the friend.
                 HStack {
-                    
+                    // It will open a new sheet to create the habit.
                     Button("Group") {
                         print(friend.id)
                         isShowingSheet.toggle()
@@ -203,6 +237,8 @@ struct FriendRow: View {
         .padding(.horizontal)
     }
 }
+
+// menuview will show a friends habits.
 struct MenuView: View {
     let friend: Friend
     @Binding var isPresented: Friend?
@@ -210,14 +246,18 @@ struct MenuView: View {
     @EnvironmentObject var authManager: AuthManager
 
     var body: some View {
+        
+        // Simple header
         VStack {
             Text("Habits of \(friend.username)")
                 .font(.title)
                 .padding()
             
+            // This scroll view will create a nice way to look through your friends habits.
             ScrollView {
                 ForEach(friend.habits) { habit in
                     VStack {
+                        // Shows the image of the habit.
                         AsyncImage(url: URL(string: "https://static.vecteezy.com/system/resources/previews/011/453/045/original/skyscraper-pixel-art-style-free-vector.jpg")) { image in
                             image.resizable()
                         } placeholder: {
@@ -226,6 +266,7 @@ struct MenuView: View {
                         .frame(width: 150, height: 150)
                         .cornerRadius(12)
                         
+                        // Displays the name of the habit.
                         Text(habit.name)
                             .font(.headline)
                             .padding(.bottom, 10)
@@ -237,6 +278,7 @@ struct MenuView: View {
                 }
             }
 
+            // This button allows you to remove your friend.
             Button(action: {
                 showingAlert = true
             }) {
@@ -253,6 +295,7 @@ struct MenuView: View {
         }
     }
 
+    // function to remove friend from your friends list.
     func removeFriend() {
         // Remove friend from Firestore and update UI
         let db = Firestore.firestore()
@@ -275,12 +318,16 @@ struct MenuView: View {
 }
 
 
+// Simple struct to store friend requests
 struct FriendRequest: Identifiable {
     let id: String
     let username: String
 }
 
+// This struct defines the sheet that opens when wanting to add a newfriend
 struct AddFriendView: View {
+    
+    // Set up our variables
     @State private var searchText = ""
     @State private var searchResults = [Friend]()
     @State private var friendRequests = [FriendRequest]()
@@ -290,13 +337,17 @@ struct AddFriendView: View {
     @State private var sentFriendRequests = [String: Bool]() // Dictionary to track sent requests
 
     var body: some View {
+        // Simple header
         VStack {
             TextField("Search username", text: $searchText)
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
 
+            
+            // Will list 5 matching results at max
             List(searchResults.prefix(5), id: \.id) { friend in
                 HStack {
+                    // Displays the user with a simple box using their username, icon and a button to add
                     Text(friend.username)
                     AsyncImage(url: URL(string: friend.houseIconURL)) { image in
                         image.resizable()
@@ -309,6 +360,7 @@ struct AddFriendView: View {
                     Button(action: {
                         sendFriendRequest(to: friend)
                     }) {
+                        // if we send a request, disable the Add button and change text
                         Text(sentFriendRequests[friend.id, default: false] ? "Sent!" : "Add")
                     }
                     .padding()
@@ -316,31 +368,37 @@ struct AddFriendView: View {
                 }
             }
 
+            // Opens sheet to see current friend requests
             Button("View Friend Requests (\(numRequests))") {
                 showingFriendRequests.toggle()
             }
             .sheet(isPresented: $showingFriendRequests, onDismiss: {
+                // on dismiss we want to reload our friend requests
                 loadFriendRequests()
             }) {
                 FriendRequestsView(friendRequests: friendRequests)
             }
         }
         .onAppear {
+            // load requests on appear
             loadFriendRequests()
         }
         .padding()
 
+        // dynamic search by checking searchtext
         .onChange(of: searchText) { newValue in
             searchUser()
         }
     }
 
+    // function to load friend requests
     func loadFriendRequests() {
         guard let currentUserID = authManager.userID else {
             return
         }
         let db = Firestore.firestore()
         
+        // checks the firestore document to see if anything is in the requestsIDs array.
         db.collection("users").document(currentUserID).getDocument { snapshot, error in
             if let error = error {
                 print("Error fetching friend requests: \(error.localizedDescription)")
@@ -369,6 +427,7 @@ struct AddFriendView: View {
                         return
                     }
                     
+                    // If there is an ID, we create a friend request object and append it to our list
                     let friendRequest = FriendRequest(id: requestID, username: username)
                     friendRequests.append(friendRequest)
                     numRequests = friendRequests.count
@@ -377,12 +436,16 @@ struct AddFriendView: View {
         }
     }
 
+    
+    // function to send a friend request.
     func sendFriendRequest(to friend: Friend) {
         guard let currentUserID = authManager.userID else {
             return
         }
         let db = Firestore.firestore()
         
+        
+        // this simply appends the current users id to the other users requests list.
         let requestedUserRef = db.collection("users").document(friend.id)
         requestedUserRef.updateData(["requests": FieldValue.arrayUnion([currentUserID])]) { error in
             if let error = error {
@@ -394,6 +457,7 @@ struct AddFriendView: View {
         }
     }
 
+    // function to dynamically search users.
     func searchUser() {
         let db = Firestore.firestore()
         searchResults.removeAll()
@@ -402,6 +466,9 @@ struct AddFriendView: View {
             return
         }
 
+        // we make to sure to allow search of all matching texts. this means
+        // partial input will work.
+        // If we search for Je, it would show Jeff, Jean, Jeremy, etc.
         db.collection("users")
             .whereField("username", isGreaterThanOrEqualTo: searchText)
             .whereField("username", isLessThan: searchText + "z") // Ensures only results starting with searchText are returned
@@ -421,6 +488,7 @@ struct AddFriendView: View {
                     if let username = data["username"] as? String,
                        let id = data["id"] as? String {
                         let friend = Friend(id: id, username: username, houseIconURL: "https://media.istockphoto.com/id/1358860685/vector/house-icon-pixel-art-front-view-a-small-hut-vector-simple-flat-graphic-illustration-the.jpg?s=612x612&w=0&k=20&c=qodGeD6HSaJKRrZhglbSjXnGnrdXVZsyAlwdlcPaDZw=", habits: [])
+                        // We create a object for the searched user and append to searchresults
                         searchResults.append(friend)
                     }
                 }
@@ -444,6 +512,7 @@ struct FriendRequestsView: View {
                     .foregroundColor(.gray)
                     .padding()
             } else {
+                // Simple Accept and Decline options
                 List(friendRequests) { request in
                     HStack {
                         Text(request.username)
@@ -480,6 +549,7 @@ struct FriendRequestsView: View {
         .toast(isShowing: $isToastShowing, message: toastMessage)
     }
     
+    // Function to accept request
     func acceptFriendRequest(_ request: FriendRequest) {
         guard let currentUserID = authManager.userID else {
             return
@@ -493,6 +563,7 @@ struct FriendRequestsView: View {
                 return
             }
             
+            // append the new friends id to friendIDs list.
             db.collection("users").document(request.id).updateData(["friendIDs": FieldValue.arrayUnion([currentUserID])]) { error in
                 if let error = error {
                     print("Error accepting friend request: \(error.localizedDescription)")
@@ -525,6 +596,7 @@ struct FriendRequestsView: View {
         }
     }
     
+    // creates a nice message letting you know a friend is added.
     func showToast(message: String) {
         let duration: TimeInterval = 2
         
@@ -540,13 +612,14 @@ struct FriendRequestsView: View {
         }
     }
     
+    // function to decline requests
     func declineFriendRequest(_ request: FriendRequest) {
         guard let currentUserID = authManager.userID else {
             return
         }
         let db = Firestore.firestore()
         
-        // Remove friend request
+        // Remove friend request from requests
         db.collection("users").document(currentUserID).updateData(["requests": FieldValue.arrayRemove([request.id])]) { error in
             if let error = error {
                 print("Error removing friend request: \(error.localizedDescription)")
@@ -564,6 +637,7 @@ struct FriendRequestsView: View {
 
 
 
+// a view extension to overlay the toast and play for 2 seconds.
 extension View {
     func toast(isShowing: Binding<Bool>, message: String) -> some View {
         ZStack {
@@ -591,6 +665,18 @@ extension View {
     }
 }
 
+
+/**
+ A view for creating a group habit with customizable details such as habit name, habit goal and building.
+
+ - Parameters:
+    - friend: The friend for whom the habit is being created.
+
+ - Functions:
+    - fetchBuildingImage(imageURL:index:): Asynchronously fetches an image from the provided URL and assigns it to the appropriate image state variable.
+    - fetchFriends(): Fetches the list of friends associated with the authenticated user and updates the 'friends' dictionary.
+    - saveGroupHabit(): Saves the created habit data to Firestore, including habit name, goal, contributions, and identifier type.
+*/
 
 struct QuickCreateGroupHabitSheet: View {
     @Environment(\.presentationMode) var presentationMode
@@ -752,6 +838,14 @@ struct QuickCreateGroupHabitSheet: View {
         .accentColor(.blue)
     }
     
+    /**
+         Asynchronously fetches an image from the provided URL and assigns it to the appropriate image state variable.
+         
+         - Parameters:
+            - imageURL: The URL of the image to be fetched.
+            - index: The index indicating which image state variable to update.
+        */
+    
     func fetchBuildingImage(imageURL: String, index: Int) {
         guard let url = URL(string: imageURL) else {
             print("Invalid URL")
@@ -776,6 +870,9 @@ struct QuickCreateGroupHabitSheet: View {
         }.resume()
     }
 
+    /**
+        Fetches the list of friends associated with the authenticated user and updates the 'friends' dictionary.
+       */
     func fetchFriends() {
         guard let currentUserID = authManager.userID else {
             return
@@ -827,6 +924,8 @@ struct QuickCreateGroupHabitSheet: View {
 
         
     
+    
+    // create and store the new grouphabit
     func saveGroupHabit() {
         guard let currentUserID = authManager.userID else {
             print("Current user ID not available")
