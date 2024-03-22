@@ -63,7 +63,7 @@ struct GroupHabitView: View {
                 }) {
                     Text("Create Group Habit")
                         .padding()
-                        .background(Color.blue)
+                        .background(Color("SageGreen"))
                         .foregroundColor(.white)
                         .cornerRadius(8)
                 }

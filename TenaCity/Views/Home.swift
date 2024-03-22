@@ -92,7 +92,7 @@ struct InfoSheet: View {
         ScrollView {
             VStack {
                 Text("Welcome to TenaCity!")
-                    .padding()
+                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
                     .bold()
                     .font(.largeTitle)
                 
@@ -105,13 +105,11 @@ struct InfoSheet: View {
                         Text("1. Navigate to the Building View")
                         Image(systemName: "building.2")
                     }
-                    Text("2. Select 'Create Habit'")
+                    Text("2. Select the 'Create Habit' button")
                     Text("3. Select your Habit type")
                     Text("4. Select your Goal amount for your Habit")
                     Text("5. Select the building you want to represent your Habit")
                     Text("6. Select 'Save'")
-                    Text("7. Start working on your Habit!")
-                    
                 }
                 .padding()
                 
@@ -131,12 +129,37 @@ struct InfoSheet: View {
                 }
                 .padding()
                 
-                Text("Add a Friend")
+                Text("Request a Friend")
                     .font(.title)
                     .frame(alignment: .leading)
                 //steps
-                Text("1. alsdkfjaldf")
-                    .frame(alignment: .center)
+                VStack(alignment: .leading) {
+                    HStack() {
+                        Text("1. Navigate to the Friends View")
+                        Image(systemName: "person.2")
+                    }
+                    Text("2. Select the 'Add Friend' button")
+                    Text("3. Select the 'Search username' text field")
+                    Text("4. Enter your Friend's name or username")
+                    Text("5. Select your desired Friend to send a Friend Request!")
+                }
+                .padding()
+                
+                Text("Accept a Friend Request")
+                    .font(.title)
+                    .frame(alignment: .leading)
+                //steps
+                VStack(alignment: .leading) {
+                    HStack() {
+                        Text("1. Navigate to the Friends View")
+                        Image(systemName: "person.2")
+                    }
+                    Text("2. Select the 'Add Friend' button")
+                    Text("3. Select the 'View Friend Requests (_)' button at the bottom of the page")
+                    Text("4. 'Accept' or 'Decline' your Friend Requests!")
+                    Text("5. Swipe down twice to exit out of both sheets")
+                }
+                .padding()
                 
                 Text("Create a Group Habit")
                     .font(.title)
@@ -150,14 +173,39 @@ struct InfoSheet: View {
                         Image(systemName: "person.2")
                         Text("\n")
                     }
-                    VStack() {
+                    VStack(alignment: .leading) {
                         Text("a. Select the 'Group' button next to the friend that you'd like to create a Habit with")
                         Text("b. Enter the name of your Habit")
+                        Text("c. Select your Goal Value")
+                        Text("d. Select the Units of your Goal Value")
+                        Text("e. Select the building that you would like to represent your Group Habit")
+                        Text("f. Select 'Save'")
+                        Text("")
+                    }
+                    .padding(.leading, 20)
+                    
+                    HStack() {
+                        Text("2. Through the Group Habits View")
+                        Image(systemName: "person.3")
+                        Text("\n")
+                    }
+                    VStack(alignment: .leading) {
+                        Text("a. Select the 'Create Group Habit' Button")
+                        Text("b. Enter your Group Habit Name")
+                        Text("c. Enter your Goal Value")
+                        Text("d. Select your Goal Value Type")
+                        Text("e. Select the building that you would like to represnt your Group Habit")
+                        Text("f. Select your Friends")
+                        Text("g. Select 'Save'")
                     }
                     .padding(.leading, 20)
                     
                 }
                 .padding()
+                
+                Text("Be Tenacious!")
+                    .font(.title)
+                    .frame(alignment: .leading)
             }
             .frame(alignment: .center)
             

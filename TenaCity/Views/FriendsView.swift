@@ -71,10 +71,15 @@ struct FriendsView: View {
             
             Spacer()
             // button to open add friend view
-            Button("Add Friend") {
+            Button {
                 showingAddFriend.toggle()
+            } label: {
+                Text("Add Friend")
             }
             .padding()
+            .background(Color("SageGreen"))
+            .foregroundColor(.white)
+            .cornerRadius(8)
             .sheet(isPresented: $showingAddFriend, onDismiss: {
                 // loads friends on dismiss
                 loadFriends()
