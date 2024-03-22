@@ -425,6 +425,7 @@ class FirestoreManager: ObservableObject {
                                     habitDocument.updateData(["progress": steps])
                                 }
                             }
+                            self.updateHabitProgress(habit: habit)
                         } else {
                             print("Habit error")
                         }
@@ -452,6 +453,7 @@ class FirestoreManager: ObservableObject {
                                     habitDocument.updateData(["progress": distance])
                                 }
                             }
+                            self.updateHabitProgress(habit: habit)
                         } else {
                             print("Habit error")
                         }
@@ -479,6 +481,7 @@ class FirestoreManager: ObservableObject {
                                     habitDocument.updateData(["progress": calories])
                                 }
                             }
+                            self.updateHabitProgress(habit: habit)
                         } else {
                             print("Habit error")
                         }
@@ -491,7 +494,19 @@ class FirestoreManager: ObservableObject {
     }
     
     
-    func updatePublicHabitProgress() {
-        
+    func updateHabitProgress(habit: Habit) {
+        let habitDocument = self.db.collection("habits").document(habit.id)
+        habitDocument.getDocument { document, error in
+            if let document = document, document.exists {
+                if let data = document.data() {
+                    if habit.isPublic, let contributions = data["contributions"] as? [String: Double] {
+                        let contributionsSum = contributions.values.reduce(0, +)
+                        habitDocument.updateData(["progress": contributionsSum])
+                    }
+                }
+            } else {
+                print("Habit document does not exist")
+            }
+        }
     }
 }
