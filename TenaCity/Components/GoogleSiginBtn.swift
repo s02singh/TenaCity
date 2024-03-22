@@ -1,6 +1,8 @@
 
 import SwiftUI
 
+
+// Simple view struct to style and display the actual Google signin button
 struct GoogleSiginBtn: View {
     var action: () -> Void
     

@@ -123,10 +123,15 @@ struct GroupHabitView: View {
             isFetchingHabits = true
             
             var habits = [GroupHabit]()
-            var fetchedHabitsCount = 0
+            let dispatchGroup = DispatchGroup() // Create DispatchGroup
             
             for habitID in habitIDs {
+                dispatchGroup.enter() // Enter DispatchGroup before starting each task
                 db.collection("habits").document(habitID).getDocument { habitDocument, error in
+                    defer {
+                        dispatchGroup.leave() // Leave DispatchGroup after finishing each task
+                    }
+                    
                     if let error = error {
                         print("Error getting habit document: \(error)")
                         return
@@ -161,20 +166,17 @@ struct GroupHabitView: View {
                                                contributions: contributions)
                         habits.append(habit)
                     }
-                    
-                    fetchedHabitsCount += 1
-                    
-                    if fetchedHabitsCount == habitIDs.count {
-                        DispatchQueue.main.async {
-                            self.publicHabits = habits
-                            completion()
-                            isFetchingHabits = false
-                        }
-                    }
                 }
+            }
+            
+            dispatchGroup.notify(queue: .main) {
+                self.publicHabits = habits
+                isFetchingHabits = false
+                completion() // Call completion handler after all tasks are done
             }
         }
     }
+
 }
 
 

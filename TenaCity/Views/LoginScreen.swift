@@ -15,6 +15,9 @@ import Firebase
 import SwiftUI
 import FirebaseFirestore
 
+
+// LoginScreen: A view struct for the entire login process.
+
 struct LoginScreen: View {
     @State var username: String = ""
     @State var password: String = ""
@@ -24,14 +27,18 @@ struct LoginScreen: View {
     var body: some View {
         VStack {
             VStack {
+                
+                // Display logo
                 Image("TenaCityLogo")
                      .resizable()
                      .aspectRatio(contentMode: .fit)
                      .frame(width: 200, height: 200)
                 
+                // Displays the header, a nice welcome message..
                 LoginHeader()
                     .padding(.bottom)
                 
+                // Prompt to enter username
                 TextField("Username", text: $username)
                     .padding(16)
                     .overlay(
@@ -41,6 +48,7 @@ struct LoginScreen: View {
                     .padding(.horizontal, 24)
                     .padding(.vertical, 12)
                 
+                // Prompt to enter password
                 TextField("Password", text: $password)
                     .padding(16)
                     .overlay(
@@ -50,6 +58,8 @@ struct LoginScreen: View {
                     .padding(.horizontal, 24)
                     .padding(.vertical, 12)
                 
+                // Button for forgot password - in progress.
+                /*
                 HStack {
                     Spacer()
                     Button(action: {}) {
@@ -57,12 +67,16 @@ struct LoginScreen: View {
                     }
                 }
                 .padding(.trailing, 24)
+                */
                 
+                // Login button
                 Button(action: {
                     
                     Task {
                         
                         do {
+                            // if successful, it will set the user's appropriate firebalses
+                            // after retrieving them from the firebase.
                             if let (userId, userName) = try await authManager.signIn(username: username, password: password) {
                              
                                 UserDefaults.standard.set(userId, forKey: "userID")
@@ -94,13 +108,17 @@ struct LoginScreen: View {
             
                 
                 
+                // Google signin button
                 GoogleSiginBtn {
+                    
+                    // Google sigin functionality
                     guard let clientID = FirebaseApp.app()?.options.clientID else { return }
                     
                     let config = GIDConfiguration(clientID: clientID)
                     
                     GIDSignIn.sharedInstance.configuration = config
                     
+                    // Opens window to login
                     GIDSignIn.sharedInstance.signIn(withPresenting: getRootViewController()) { signResult, error in
                         
                         if let error = error {
@@ -108,6 +126,9 @@ struct LoginScreen: View {
                             return
                         }
                         
+                        
+                        // Retrieves all information from Google account to make a TenaCity account
+                        // Also sets the authManager variables
                         guard let user = signResult?.user,
                               let idToken = user.idToken else { return }
                         
@@ -120,6 +141,7 @@ struct LoginScreen: View {
                         Auth.auth().signIn(with: credential) { authResult, error in
                            
                         }
+                        // Checks if email is already linked to a user
                         let db = Firestore.firestore()
                         let usersRef = db.collection("users")
                         
