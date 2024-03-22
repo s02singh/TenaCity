@@ -81,7 +81,7 @@ struct BuildingView: View {
                                             .padding(.bottom, 10)
                                             .bold()
                                         
-                                        ProgressBar(progress: min(habit.progress, Double(habit.goal)), goal: habit.goal)
+                                        ProgressBar(progress: min(Int(habit.progress), Int(habit.goal)), goal: Int(habit.goal))
                                             .frame(height: 10)
                                             .padding()
                                     }
