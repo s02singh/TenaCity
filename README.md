@@ -54,7 +54,7 @@ Our goal was the keep each view very clean and simple so that it's easy for any 
 To match the city theme of the app, we created sets of skins for the buildings, each set containing a base log cabin view, a bigger house, and a skyscraper skin. These skins 
 
 ### Technical Implementation
-We are using 
+We are using Firebase to store user profile and habit data as well as Apple Health Kit to obtain Step counts, Distance, and Calories for automatic habit tracking. We integrated Google Auth to enable sign-in with Google.
 
 ## Views
 ### 1. SplashScreen
