@@ -37,13 +37,11 @@ struct Home: View {
                     showingInfoSheet.toggle()
                 }) {
                     Image(systemName: "info.circle")
-//                        .resizable()
-//                        .aspectRatio(contentMode: .fill)
                         .frame(width: 20, height: 20)
                         .foregroundColor(Color("SageGreen"))
                         .background(Color.white)
                         .clipShape(Circle())
-                        .shadow(radius: 5)
+                        .shadow(radius: 1)
                 }
                 .sheet(isPresented: $showingInfoSheet) {
                     InfoSheet()
@@ -92,10 +90,11 @@ struct InfoSheet: View {
         ScrollView {
             VStack {
                 Text("Welcome to TenaCity!")
-                    .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0))
+                    .padding(EdgeInsets(top: 20, leading: 0, bottom: 10, trailing: 0))
                     .bold()
                     .font(.largeTitle)
                 
+                //personal habit
                 Text("Create a Personal Habit")
                     .font(.title)
                     .frame(alignment: .leading)
@@ -111,8 +110,9 @@ struct InfoSheet: View {
                     Text("5. Select the building you want to represent your Habit")
                     Text("6. Select 'Save'")
                 }
-                .padding()
+                .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 20))
                 
+                //update account
                 Text("Update Your Account Info")
                     .font(.title)
                     .frame(alignment: .leading)
@@ -127,8 +127,9 @@ struct InfoSheet: View {
                     Text("3. Enter your desired information")
                     Text("4. Select 'Save'")
                 }
-                .padding()
+                .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 20))
                 
+                //request friend
                 Text("Request a Friend")
                     .font(.title)
                     .frame(alignment: .leading)
@@ -143,8 +144,9 @@ struct InfoSheet: View {
                     Text("4. Enter your Friend's name or username")
                     Text("5. Select your desired Friend to send a Friend Request!")
                 }
-                .padding()
+                .padding(EdgeInsets(top: 10, leading: -10, bottom: 10, trailing: 20))
                 
+                //accept friend
                 Text("Accept a Friend Request")
                     .font(.title)
                     .frame(alignment: .leading)
@@ -159,8 +161,10 @@ struct InfoSheet: View {
                     Text("4. 'Accept' or 'Decline' your Friend Requests!")
                     Text("5. Swipe down twice to exit out of both sheets")
                 }
-                .padding()
+                .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+                .frame(alignment: .center)
                 
+                //create group habit
                 Text("Create a Group Habit")
                     .font(.title)
                     .frame(alignment: .leading)
@@ -201,7 +205,7 @@ struct InfoSheet: View {
                     .padding(.leading, 20)
                     
                 }
-                .padding()
+                .padding(EdgeInsets(top: 10, leading: 25, bottom: 10, trailing: 25))
                 
                 Text("Be Tenacious!")
                     .font(.title)
