@@ -44,7 +44,7 @@ class FirestoreManager: ObservableObject {
 
     func createHabit(name: String, building: Building, user: User, goal: Int, identifier: String) -> Habit {
         let habitRef = db.collection("habits").document()
-        let newHabit = Habit(id: habitRef.documentID, name: name, buildingID: building.id, dates: [], streak: 0, note: [:], contributions: [:], isPublic: false, goal: goal, progress: 0, identifier: identifier)
+        let newHabit = Habit(id: habitRef.documentID, name: name, buildingID: building.id, dates: [], streak: 0, note: [:], contributions: [:], isPublic: false, goal: goal, progress: 0.0, identifier: identifier)
         print(newHabit.dictionary)
         habitRef.setData(newHabit.dictionary) { error in
             if let error = error {
@@ -168,7 +168,7 @@ class FirestoreManager: ObservableObject {
                let contributions = habitData["contributions"] as? [String: Int],
                let isPublic = habitData["isPublic"] as? Bool,
                let goal = habitData["goal"] as? Int,
-               let progress = habitData["progress"] as? Int,
+               let progress = habitData["progress"] as? Double,
                let identifier = habitData["identifier"] as? String {
                    let habit = Habit(id: id,
                                      name: name,
@@ -409,44 +409,23 @@ class FirestoreManager: ObservableObject {
         }
     }
     
-    func updateStats(userID: String, steps: Int, distance: Int, calories: Int, completion: @escaping (Error?) -> Void) {
+    func updateSteps(userID: String, steps: Double) {
         fetchUser(id: userID) { user, error in
             if let error = error {
                 print("Error fetching user: \(error.localizedDescription)")
             } else if let user = user {
                 for habitID in user.habitIDs {
                     self.fetchHabit(id: habitID) { habit, error in
-                        if var habit = habit {
+                        if let habit = habit {
+                            let habitDocument = self.db.collection("habits").document(habitID)
                             if habit.identifier == "Steps" {
-                                let habitDocument = self.db.collection("users").document(userID)
-                                habitDocument.updateData(["progress": steps]) { error in
-                                    if let error = error {
-                                        print("Error adjusting steps: \(error)")
-                                    } else {
-                                        print("Steps updated")
-                                    }
-                                }
-                            } else if habit.identifier == "Miles" {
-                                let habitDocument = self.db.collection("users").document(userID)
-                                habitDocument.updateData(["progress": distance]) { error in
-                                    if let error = error {
-                                        print("Error adjusting steps: \(error)")
-                                    } else {
-                                        print("Steps updated")
-                                    }
-                                }
-                            } else if habit.identifier == "Calories" {
-                                let habitDocument = self.db.collection("users").document(userID)
-                                habitDocument.updateData(["progress": calories]) { error in
-                                    if let error = error {
-                                        print("Error adjusting steps: \(error)")
-                                    } else {
-                                        print("Steps updated")
-                                    }
+                                if habit.isPublic {
+                                    habitDocument.updateData(["contributions.\(userID)": steps])
+                                } else {
+                                    habitDocument.updateData(["progress": steps])
                                 }
                             }
-                        }
-                        else {
+                        } else {
                             print("Habit error")
                         }
                     }
@@ -455,5 +434,64 @@ class FirestoreManager: ObservableObject {
                 print("User not found.")
             }
         }
+    }
+
+    func updateDistance(userID: String, distance: Double) {
+        fetchUser(id: userID) { user, error in
+            if let error = error {
+                print("Error fetching user: \(error.localizedDescription)")
+            } else if let user = user {
+                for habitID in user.habitIDs {
+                    self.fetchHabit(id: habitID) { habit, error in
+                        if let habit = habit {
+                            let habitDocument = self.db.collection("habits").document(habitID)
+                            if habit.identifier == "Miles" {
+                                if habit.isPublic {
+                                    habitDocument.updateData(["contributions.\(userID)": distance])
+                                } else {
+                                    habitDocument.updateData(["progress": distance])
+                                }
+                            }
+                        } else {
+                            print("Habit error")
+                        }
+                    }
+                }
+            } else {
+                print("User not found.")
+            }
+        }
+    }
+
+    func updateCalories(userID: String, calories: Double) {
+        fetchUser(id: userID) { user, error in
+            if let error = error {
+                print("Error fetching user: \(error.localizedDescription)")
+            } else if let user = user {
+                for habitID in user.habitIDs {
+                    self.fetchHabit(id: habitID) { habit, error in
+                        if let habit = habit {
+                            let habitDocument = self.db.collection("habits").document(habitID)
+                            if habit.identifier == "Calories" {
+                                if habit.isPublic {
+                                    habitDocument.updateData(["contributions.\(userID)": calories])
+                                } else {
+                                    habitDocument.updateData(["progress": calories])
+                                }
+                            }
+                        } else {
+                            print("Habit error")
+                        }
+                    }
+                }
+            } else {
+                print("User not found.")
+            }
+        }
+    }
+    
+    
+    func updatePublicHabitProgress() {
+        
     }
 }

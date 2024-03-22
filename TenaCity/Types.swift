@@ -30,7 +30,7 @@ struct Habit {
     var contributions: [String: Any]
     var isPublic: Bool
     var goal: Int           // # of progress user wants on habit
-    var progress: Int       // # of progress towards goal for the day, resets daily
+    var progress: Double       // # of progress towards goal for the day, resets daily
     var identifier: String  // eg. "Steps", "Hours", "etc"
 }
 

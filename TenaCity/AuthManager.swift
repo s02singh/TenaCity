@@ -34,7 +34,7 @@ class AuthManager: ObservableObject {
                     print("User not found.")
                 }
             }
-            timer = Timer.scheduledTimer(withTimeInterval: 20, repeats: true) { _ in
+            timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
                 self.updateHabits(userID: savedUserID)
             }
         } else {
@@ -97,7 +97,29 @@ class AuthManager: ObservableObject {
     }
     
     func updateHabits(userID: String) {
-        print(Date())
-        //healthManager.fetchTodaySteps()
+        healthManager.fetchTodaySteps { stepCount, error in
+            if let steps = stepCount {
+                self.firestoreManager.updateSteps(userID: userID, steps: steps)
+            } else if let error = error {
+                print("Error fetching steps:", error)
+            }
+        }
+
+        healthManager.fetchTodayDistance { distanceAmt, error in
+            if let distanceAmt = distanceAmt {
+                let distance = distanceAmt / 1609.34   // convert to miles
+                self.firestoreManager.updateDistance(userID: userID, distance: distance)
+            } else if let error = error {
+                print("Error fetching distance:", error)
+            }
+        }
+
+        healthManager.fetchTodayCaloriesBurned { calorieCount, error in
+            if let calories = calorieCount {
+                self.firestoreManager.updateCalories(userID: userID, calories: calories)
+            } else if let error = error {
+                print("Error fetching calories:", error)
+            }
+        }
     }
 }
