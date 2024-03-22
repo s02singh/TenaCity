@@ -63,7 +63,7 @@ struct GroupHabitView: View {
                 }) {
                     Text("Create Group Habit")
                         .padding()
-                        .background(Color("Orange"))
+                        .background(Color("SageGreen"))
                         .foregroundColor(.white)
                         .cornerRadius(8)
                 }
@@ -143,7 +143,8 @@ struct GroupHabitView: View {
                           let progress = habitData["progress"] as? Int,
                           let goal = habitData["goal"] as? Int,
                           let noteData = habitData["note"] as? [String: String],
-                          let contributionsData = habitData["contributions"] as? [String: Any] else {
+                          let contributionsData = habitData["contributions"] as? [String: Any],
+                          let identifier = habitData["identifier"] as? String else {
                         print("Incomplete habit data")
                         return
                     }
@@ -163,7 +164,8 @@ struct GroupHabitView: View {
                                                progress: progress,
                                                goal: goal,
                                                note: noteData,
-                                               contributions: contributions)
+                                               contributions: contributions,
+                                               identifier: identifier)
                         habits.append(habit)
                     }
                 }
@@ -208,7 +210,8 @@ struct HabitView: View {
                     .font(.headline)
                     .padding(.bottom, 10)
                 
-                ProgressBar(progress: min(Int(habit.progress * 100), habit.goal * 100), goal: habit.goal * 100)                    .frame(height: 10)
+                ProgressBar(progress: min(Int(habit.progress), Int(habit.goal)), goal: Int(habit.goal))
+                    .frame(height: 10)
                     .padding()
             }
         }
@@ -321,6 +324,7 @@ struct GroupHabit: Identifiable {
     let goal: Int
     let note: [String: String]
     let contributions: [String: Int]
+    let identifier: String
 }
 
 
@@ -350,11 +354,11 @@ struct HabitDetailSheet: View {
                 .padding()
                 .fixedSize(horizontal: false, vertical: true)
             
-            Text("Progress: \(habit.progress)")
+            Text("Progress: \(habit.progress) \(habit.identifier)")
                 .font(Font.custom("Avenir", size: 18))
                 .padding()
             
-            Text("Goal: \(habit.goal)")
+            Text("Goal: \(habit.goal) \(habit.identifier)")
                 .font(Font.custom("Avenir", size: 18))
                 .padding()
             
@@ -388,25 +392,17 @@ struct HabitDetailSheet: View {
                     .frame(width: 200, height: 200)
                 
                 VStack {
-                    Text("\(habit.progress) / \(habit.goal)")
-                        .font(Font.custom("Avenir", size: 20))
+                    Text("\(habit.progress) / \(habit.goal) \(habit.identifier)")
+                        .font(Font.custom("Avenir", size: 16))
                     Text("Progress")
-                        .font(Font.custom("Avenir", size: 18))
+                        .font(Font.custom("Avenir", size: 14))
                         .foregroundColor(.gray)
                 }
             }
             .padding()
-            
-//            Image(uiImage: habit.buildingID)
-//                .resizable()
-//                .aspectRatio(contentMode: .fit)
-//                .frame(width: 150, height: 150)
-//                .cornerRadius(12)
-//                .padding(.bottom, 7)
         }
         .onAppear {
             fetchUserNames()
-            // y48In2E9PCMadOrhMqmy
             print(habit)
             let db = Firestore.firestore()
             let habitRef = db.collection("habits").document(habit.id)
