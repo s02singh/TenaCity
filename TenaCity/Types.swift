@@ -99,7 +99,8 @@ extension Habit {
             "isPublic": isPublic,
             "goal": goal,
             "progress": progress,
-            "identifier": identifier
+            "identifier": identifier,
+            "contributions": contributions
         ]
     }
 }

@@ -7,7 +7,6 @@ import FirebaseFirestore
 import FirebaseCore
 
 class AuthManager: ObservableObject {
-    
     // records various auth variables
     // this includes a signin bool, the username, userID, and the User struct.
     @Published var isSignIn = false
@@ -33,7 +32,7 @@ class AuthManager: ObservableObject {
                     print("User not found.")
                 }
             }
-            timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
+            timer = Timer.scheduledTimer(withTimeInterval: 20, repeats: true) { _ in
                 self.updateHabits(userID: savedUserID)
             }
         } else {
@@ -91,7 +90,7 @@ class AuthManager: ObservableObject {
     }
     
     func updateHabits(userID: String) {
-        //print(Date())
+        print(Date())
         //healthManager.fetchTodaySteps()
     }
 }

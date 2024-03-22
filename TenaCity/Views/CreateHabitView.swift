@@ -12,10 +12,12 @@ struct CreateHabitView: View {
     @EnvironmentObject var authManager: AuthManager
     @ObservedObject var firestoreManager = FirestoreManager()
     @State var selectedHabit: String = habitNames[0]
-    @State var goal: String = ""
+    @State var goal: String = "10"
     @State var selectedBuilding: Building? = nil
     @State var selectedBuildingName: String = ""
     @State var buildings: [Building]? = nil
+    @Binding var isShowingCreateHabitView: Bool
+    @State var user: User
     
     var body: some View {
         if let buildings = buildings {
@@ -73,34 +75,19 @@ struct CreateHabitView: View {
                     }
                 }
                 
-                // todo: delete this and figure out navigation thing
                 Button(action: {
                     if let building = selectedBuilding,
                        let goal = Int(goal) {
-                        firestoreManager.createHabit(name: selectedHabit, building: building, goal: goal, identifier: selectedHabit)
+                        let habit = firestoreManager.createHabit(name: selectedHabit, building: building, user: user, goal: goal, identifier: selectedHabit)
+                        user.habitIDs.append(habit.id)
+                        isShowingCreateHabitView = false
+                    } else {
+                        print("Error creating habit")
                     }
                 }) {
                     Text("Save")
                 }
             }
-            .navigationBarTitle("Create Group Habit", displayMode: .inline)
-            .navigationBarItems(
-                leading:
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Text("Cancel").foregroundColor(.red)
-                    },
-                trailing:
-                    Button(action: {
-                        if let building = selectedBuilding,
-                           let goal = Int(goal) {
-                            firestoreManager.createHabit(name: selectedHabit, building: building, goal: goal, identifier: selectedHabit)
-                        }
-                    }) {
-                        Text("Save")
-                    }
-            )
         } else {
             ProgressView()
             let _ = firestoreManager.fetchAllBuildings { buildings, error in
@@ -119,5 +106,5 @@ struct CreateHabitView: View {
 }
 
 #Preview {
-    CreateHabitView()
+    CreateHabitView(isShowingCreateHabitView: .constant(false), user: User(id: "", email: "", password: "", username: "", accountCreationDate: Date(), userInvitedIDs: [], habitIDs: [], friendIDs: []))
 }

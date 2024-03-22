@@ -42,7 +42,7 @@ class FirestoreManager: ObservableObject {
         return newUser
     }
 
-    func createHabit(name: String, building: Building, goal: Int, identifier: String) -> Habit {
+    func createHabit(name: String, building: Building, user: User, goal: Int, identifier: String) -> Habit {
         let habitRef = db.collection("habits").document()
         let newHabit = Habit(id: habitRef.documentID, name: name, buildingID: building.id, dates: [], streak: 0, note: [:], contributions: [:], isPublic: false, goal: goal, progress: 0, identifier: identifier)
         print(newHabit.dictionary)
@@ -51,6 +51,15 @@ class FirestoreManager: ObservableObject {
                 print("Error adding document: \(error)")
             } else {
                 print("Habit added with ID: \(String(describing: newHabit.id))")
+            }
+        }
+        
+        let userDocument = db.collection("users").document(user.id)
+        userDocument.updateData(["habitIDs": FieldValue.arrayUnion([habitRef.documentID])]) { error in
+            if let error = error {
+                print("Error adding habit: \(error)")
+            } else {
+                print("Habit added to user's habit list")
             }
         }
         return newHabit
@@ -239,7 +248,7 @@ class FirestoreManager: ObservableObject {
                let id = buildingData["id"] as? String,
                let name = buildingData["name"] as? String,
                let thumbnail = buildingData["thumbnail"] as? String,
-               let levelsIDs = buildingData["levelsIDs"] as? [String] {
+               let levelsIDs = buildingData["levelIDs"] as? [String] {
                    let building = Building(id: id,
                                            name: name,
                                            thumbnail: thumbnail,
@@ -331,7 +340,7 @@ class FirestoreManager: ObservableObject {
                        let id = buildingData["id"] as? String,
                        let name = buildingData["name"] as? String,
                        let thumbnail = buildingData["thumbnail"] as? String,
-                       let levelsIDs = buildingData["levelsIDs"] as? [String] {
+                       let levelsIDs = buildingData["levelIDs"] as? [String] {
                         let building = Building(id: id,
                                                 name: name,
                                                 thumbnail: thumbnail,
@@ -363,8 +372,8 @@ class FirestoreManager: ObservableObject {
 
         
         // Create habits
-        let habit1 = createHabit(name: "Gym", building: building1, goal: 1, identifier: "minutes")
-        let habit2 = createHabit(name: "Steps", building: building2, goal: 10000, identifier: "steps")
+        let habit1 = createHabit(name: "Gym", building: building1, user: user1, goal: 1, identifier: "minutes")
+        let habit2 = createHabit(name: "Steps", building: building2, user: user1, goal: 10000, identifier: "steps")
         
         // Make user1 and user2 friends
         //addFriend(user: user1, friend: user2)
