@@ -1,5 +1,13 @@
 # Tenacity
 
+## Login Credentials
+username: Dummy
+password: password
+
+Note: you can create your own account using Google auth, but we suggest using this test account.
+
+Also, for optimal testing, please test after March 23 3pm to ensure you have a full quota Firebase to work with, but it should be fine to test either way.
+
 ## Overview
 On average, it typically requires 66 days for a behavior to solidify into a habit, with consistent daily practice often posing a challenge (such as maintaining a daily workout routine). In aiding users in the growth of daily habits, we propose TenaCity, an iOS application designed for tracking habit streaks. Each habit will be represented by a building, and users will find motivation through features like creating a city of buildings and observing their friends' progress in their own cities, with the ability to create group habits with them.
 
@@ -44,7 +52,7 @@ Our goal was the keep each view very clean and simple so that it's easy for any 
 To match the city theme of the app, we created sets of skins for the buildings, each set containing a base log cabin view, a bigger house, and a skyscraper skin. These skins 
 
 ### Technical Implementation
-
+We are using 
 
 ## Views
 ### 1. SplashScreen
