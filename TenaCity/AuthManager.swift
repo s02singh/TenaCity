@@ -17,7 +17,6 @@ class AuthManager: ObservableObject {
     @Published private var password: String?
     @ObservedObject var firestoreManager = FirestoreManager()
     @ObservedObject var healthManager = HealthManager()
-    var timer: Timer?
     
     init() {
         // If we were signed in already, we pull the authmanager data from firebase and store it locally
@@ -34,9 +33,8 @@ class AuthManager: ObservableObject {
                     print("User not found.")
                 }
             }
-            timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
-                self.updateHabits(userID: savedUserID)
-            }
+            
+            self.updateHabits(userID: savedUserID)
         } else {
             print("No user saved")
         }

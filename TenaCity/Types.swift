@@ -24,7 +24,7 @@ struct Habit {
     let id: String
     let name: String
     let buildingID: String
-    var dates: [Date]
+    var dates: [String]
     var streak: Int
     var note: [String: String]
     var contributions: [String: Any]

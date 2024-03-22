@@ -208,8 +208,7 @@ struct HabitView: View {
                     .font(.headline)
                     .padding(.bottom, 10)
                 
-                ProgressBar(progress: min(habit.progress, Double(habit.goal)), goal: habit.goal)
-                    .frame(height: 10)
+                ProgressBar(progress: min(Int(habit.progress * 100), habit.goal * 100), goal: habit.goal * 100)                    .frame(height: 10)
                     .padding()
             }
         }

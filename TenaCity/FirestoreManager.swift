@@ -162,7 +162,7 @@ class FirestoreManager: ObservableObject {
                let id = habitData["id"] as? String,
                let name = habitData["name"] as? String,
                let buildingID = habitData["buildingID"] as? String,
-               let dates = habitData["dates"] as? [Date],
+               let dates = habitData["dates"] as? [String],
                let streak = habitData["streak"] as? Int,
                let note = habitData["note"] as? [String: String],
                let contributions = habitData["contributions"] as? [String: Int],
@@ -503,6 +503,25 @@ class FirestoreManager: ObservableObject {
                         let contributionsSum = contributions.values.reduce(0, +)
                         habitDocument.updateData(["progress": contributionsSum])
                     }
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MM/dd/yy"
+                    let currentDate = Date()
+                    let dateString = dateFormatter.string(from: currentDate)
+
+                    if let dates = data["dates"] as? [String],
+                       let progress = data["progress"] as? Double,
+                       let goal = data["goal"] as? Int,
+                       dates.last != dateString,
+                       progress >= Double(goal)
+                    {
+                        habitDocument.updateData([
+                            "dates": FieldValue.arrayUnion([dateString])
+                        ])
+                    } else {
+                        print("didn't update")
+                    }
+                    
                 }
             } else {
                 print("Habit document does not exist")

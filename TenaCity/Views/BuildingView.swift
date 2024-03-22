@@ -81,7 +81,7 @@ struct BuildingView: View {
                                             .padding(.bottom, 10)
                                             .bold()
                                         
-                                        ProgressBar(progress: min(habit.progress, Double(habit.goal)), goal: habit.goal)
+                                        ProgressBar(progress: min(Int(habit.progress * 100), habit.goal * 100), goal: habit.goal * 100)
                                             .frame(height: 10)
                                             .padding()
                                     }
@@ -151,7 +151,7 @@ struct HabitDetailView: View {
             Text("Is Public: \(habit.isPublic ? "Yes" : "No")")
             Text("Goal: \(habit.goal) \(habit.identifier)")
             Text("Progress: \(habit.progress) \(habit.identifier)")
-            Text("Note: \(habit.note.description)") // Assuming note is a dictionary
+            Text("Note: \(habit.note.description)") 
         }
         .padding()
     }
