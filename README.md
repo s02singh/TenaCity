@@ -12,6 +12,8 @@ and ensure a working app during testing. Also, to test the Health linking, pleas
 
 Please note, when building, you may have to assign the personal team (to yourself) and create a unique bundle identifier.
 
+Please note, that although this should not happen, if the app ever freezes (on the splash screen view), or if it ever says "User data not available", restart the application and it should work as expected.
+
 ## Overview
 On average, it typically requires 66 days for a behavior to solidify into a habit, with consistent daily practice often posing a challenge (such as maintaining a daily workout routine). In aiding users in the growth of daily habits, we propose TenaCity, an iOS application designed for tracking habit streaks. Each habit will be represented by a building, and users will find motivation through features like creating a city of buildings and observing their friends' progress in their own cities, with the ability to create group habits with them.
 
