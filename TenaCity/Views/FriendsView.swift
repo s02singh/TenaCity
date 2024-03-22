@@ -287,8 +287,7 @@ struct AddFriendView: View {
     @State private var showingFriendRequests = false
     @EnvironmentObject var authManager: AuthManager
     @State private var numRequests = 0
-    
-    @State private var isRequestSent = false
+    @State private var sentFriendRequests = [String: Bool]() // Dictionary to track sent requests
 
     var body: some View {
         VStack {
@@ -296,17 +295,9 @@ struct AddFriendView: View {
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
 
-            Button("Search") {
-                isRequestSent = false
-                searchUser()
-                
-            }
-            .padding()
-
-            List(searchResults) { friend in
+            List(searchResults.prefix(5), id: \.id) { friend in
                 HStack {
                     Text(friend.username)
-                    // All of the profile info
                     AsyncImage(url: URL(string: friend.houseIconURL)) { image in
                         image.resizable()
                     } placeholder: {
@@ -318,15 +309,14 @@ struct AddFriendView: View {
                     Button(action: {
                         sendFriendRequest(to: friend)
                     }) {
-                        Text(isRequestSent ? "Sent!" : "Add")
+                        Text(sentFriendRequests[friend.id, default: false] ? "Sent!" : "Add")
                     }
                     .padding()
-                    .disabled(isRequestSent)
+                    .disabled(sentFriendRequests[friend.id, default: false]) // Disable based on dictionary
                 }
             }
 
             Button("View Friend Requests (\(numRequests))") {
-                
                 showingFriendRequests.toggle()
             }
             .sheet(isPresented: $showingFriendRequests, onDismiss: {
@@ -335,114 +325,109 @@ struct AddFriendView: View {
                 FriendRequestsView(friendRequests: friendRequests)
             }
         }
-        .onAppear{
+        .onAppear {
             loadFriendRequests()
         }
         .padding()
+
+        .onChange(of: searchText) { newValue in
+            searchUser()
+        }
     }
-        
+
     func loadFriendRequests() {
-            guard let currentUserID = authManager.userID else {
+        guard let currentUserID = authManager.userID else {
+            return
+        }
+        let db = Firestore.firestore()
+        
+        db.collection("users").document(currentUserID).getDocument { snapshot, error in
+            if let error = error {
+                print("Error fetching friend requests: \(error.localizedDescription)")
                 return
             }
-            let db = Firestore.firestore()
             
-            // Fetch friend requests for the current user
-            db.collection("users").document(currentUserID).getDocument { snapshot, error in
-                if let error = error {
-                    print("Error fetching friend requests: \(error.localizedDescription)")
-                    return
+            guard let data = snapshot?.data(),
+                  let requests = data["requests"] as? [String] else {
+                print("No friend requests found")
+                return
+            }
+            
+            for requestID in requests {
+                if friendRequests.contains(where: { $0.id == requestID }) {
+                    continue // Skip if already present
                 }
-                
-                guard let data = snapshot?.data(),
-                      let requests = data["requests"] as? [String] else {
-                    print("No friend requests found")
-                    return
-                }
-                
-                // Fetch usernames of users who sent friend requests
-                for requestID in requests {
-                    if friendRequests.contains(where: { $0.id == requestID }) {
-                        continue // Skip if already present
+                db.collection("users").document(requestID).getDocument { snapshot, error in
+                    if let error = error {
+                        print("Error fetching request: \(error.localizedDescription)")
+                        return
                     }
-                    db.collection("users").document(requestID).getDocument { snapshot, error in
-                        if let error = error {
-                            print("Error fetching request: \(error.localizedDescription)")
-                            return
-                        }
-                        
-                        guard let data = snapshot?.data(),
-                              let username = data["username"] as? String else {
-                            print("No username found for request")
-                            return
-                        }
-                       
-                        let friendRequest = FriendRequest(id: requestID, username: username)
-                        friendRequests.append(friendRequest)
-                        numRequests = friendRequests.count
+                    
+                    guard let data = snapshot?.data(),
+                          let username = data["username"] as? String else {
+                        print("No username found for request")
+                        return
                     }
+                    
+                    let friendRequest = FriendRequest(id: requestID, username: username)
+                    friendRequests.append(friendRequest)
+                    numRequests = friendRequests.count
                 }
             }
         }
-    
-    // Function to send friend request
+    }
+
     func sendFriendRequest(to friend: Friend) {
         guard let currentUserID = authManager.userID else {
             return
         }
         let db = Firestore.firestore()
         
-        // Add our id to the other user's requests
         let requestedUserRef = db.collection("users").document(friend.id)
         requestedUserRef.updateData(["requests": FieldValue.arrayUnion([currentUserID])]) { error in
             if let error = error {
                 print("Error updating requests: \(error.localizedDescription)")
             } else {
                 print("Friend request sent successfully!")
-                // Update UI to show request is sent
-                isRequestSent = true
+                sentFriendRequests[friend.id] = true // Update dictionary
             }
         }
     }
-    
+
     func searchUser() {
         let db = Firestore.firestore()
-        
-    
         searchResults.removeAll()
-        print(searchText)
-        
+
+        if searchText.isEmpty {
+            return
+        }
+
         db.collection("users")
-            .whereField("username", isEqualTo: searchText)
-            .getDocuments { (querySnapshot, error) in
+            .whereField("username", isGreaterThanOrEqualTo: searchText)
+            .whereField("username", isLessThan: searchText + "z") // Ensures only results starting with searchText are returned
+            .getDocuments { querySnapshot, error in
                 if let error = error {
                     print("Error searching users: \(error.localizedDescription)")
                     return
                 }
-                
+
                 guard let documents = querySnapshot?.documents else {
                     print("No documents found")
                     return
                 }
-                
+
                 for document in documents {
                     let data = document.data()
                     if let username = data["username"] as? String,
                        let id = data["id"] as? String {
-                        // Create Friend object with the retrieved data
                         let friend = Friend(id: id, username: username, houseIconURL: "https://media.istockphoto.com/id/1358860685/vector/house-icon-pixel-art-front-view-a-small-hut-vector-simple-flat-graphic-illustration-the.jpg?s=612x612&w=0&k=20&c=qodGeD6HSaJKRrZhglbSjXnGnrdXVZsyAlwdlcPaDZw=", habits: [])
-                   
                         searchResults.append(friend)
                     }
                 }
             }
     }
-    
-
-
-
-
 }
+
 
 // FriendRequestsView for displaying current friend requests
 struct FriendRequestsView: View {

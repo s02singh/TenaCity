@@ -24,15 +24,8 @@ struct NavigationBar: View {
     var body: some View {
         VStack {
             HStack {
-                Spacer()
-                Button {
-                    store = true
-                } label: {
-                    Image(systemName: "storefront")
-                    //                            .resizable()
-                        .foregroundColor(.white)
-                        .padding(EdgeInsets(top: top_space, leading: left_space, bottom: bottom_space, trailing: right_space))
-                }
+         
+                
                 Spacer()
                 Button {
                     friends = true

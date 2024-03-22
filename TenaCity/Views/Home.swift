@@ -31,11 +31,7 @@ struct Home: View {
             
             TabView (selection: $viewState) {
                 Group {
-                    Text("Store")
-                        .tabItem() {
-                            Image(systemName: "storefront")
-                        }
-                        .tag(1)
+                   
                     
                     FriendsView()
                         .tabItem() {
