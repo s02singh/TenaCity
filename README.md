@@ -1,8 +1,8 @@
 # Tenacity
 
 ## Login Credentials
-username: Dummy
-password: password
+username: Dummy  
+password: password  
 
 Note: you can create your own account using Google auth, but we suggest using this test account.
 
