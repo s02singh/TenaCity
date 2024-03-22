@@ -44,6 +44,9 @@ On average, it typically requires 66 days for a behavior to solidify into a habi
 
 ### 2. LoginView
 
+### 3. SettingsView
+
+### 4. HomeView / BuildingView
 
 ## Contact
 For any questions, please contact Sahilbir Singh at scsingh@ucdavis.edu. 
