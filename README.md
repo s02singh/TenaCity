@@ -10,7 +10,10 @@ On average, it typically requires 66 days for a behavior to solidify into a habi
 - Lena Ray: lenaray
 
 ## Features
-### 1. 
+### 1. Create and strengthen personal habits
+### 2. Set up habits with friends
+### 3. Sync your health app with your habits
+### 4. View your friends habits
 
 
 ## Implementation Details
