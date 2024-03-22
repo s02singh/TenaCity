@@ -314,7 +314,6 @@ class FirestoreManager: ObservableObject {
                 print("Habit added to user's habit list")
             }
         }
-
     }
     
     // Fetch all buildings
@@ -349,8 +348,6 @@ class FirestoreManager: ObservableObject {
             completion(nil, nil)
         }
     }
-
-    
     
     func populateFirestore() {
         // Create users
