@@ -16,6 +16,11 @@
 		5AA3BB472B97E3F700E64B93 /* CustomTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3E62B81B65700A7ED66 /* CustomTextfield.swift */; };
 		5AA3BB482B97E3FA00E64B93 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E7D3E52B81B65700A7ED66 /* CustomButton.swift */; };
 		5AA3BB4A2B97E89E00E64B93 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA3BB492B97E89E00E64B93 /* NavigationBar.swift */; };
+		5AF0732F2BAE037800D5363A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5AF0732E2BAE037800D5363A /* FirebaseAnalytics */; };
+		5AF073312BAE037800D5363A /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 5AF073302BAE037800D5363A /* FirebaseAnalyticsOnDeviceConversion */; };
+		5AF073332BAE037800D5363A /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5AF073322BAE037800D5363A /* FirebaseAnalyticsSwift */; };
+		5AF073352BAE037800D5363A /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 5AF073342BAE037800D5363A /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		5AF073372BAE037800D5363A /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 5AF073362BAE037800D5363A /* FirebaseAppCheck */; };
 		66814C222B9A91C400664B50 /* GroupHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66814C212B9A91C400664B50 /* GroupHabitView.swift */; };
 		66CBD3EC2B9EAE7D0091E141 /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CBD3EB2B9EAE7D0091E141 /* Splash.swift */; };
 		66CBD3EE2B9EAFC40091E141 /* TenaCityRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CBD3ED2B9EAFC40091E141 /* TenaCityRoot.swift */; };
@@ -101,8 +106,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AF073372BAE037800D5363A /* FirebaseAppCheck in Frameworks */,
+				5AF073332BAE037800D5363A /* FirebaseAnalyticsSwift in Frameworks */,
 				66E7D3BC2B81998A00A7ED66 /* FirebaseAuth in Frameworks */,
 				66E7D3BF2B819A1F00A7ED66 /* GoogleSignIn in Frameworks */,
+				5AF073312BAE037800D5363A /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				5AF073352BAE037800D5363A /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				5AF0732F2BAE037800D5363A /* FirebaseAnalytics in Frameworks */,
 				6A5800622B87EEE200917BAC /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,6 +250,11 @@
 				66E7D3BB2B81998A00A7ED66 /* FirebaseAuth */,
 				66E7D3BE2B819A1F00A7ED66 /* GoogleSignIn */,
 				6A5800612B87EEE200917BAC /* FirebaseFirestore */,
+				5AF0732E2BAE037800D5363A /* FirebaseAnalytics */,
+				5AF073302BAE037800D5363A /* FirebaseAnalyticsOnDeviceConversion */,
+				5AF073322BAE037800D5363A /* FirebaseAnalyticsSwift */,
+				5AF073342BAE037800D5363A /* FirebaseAnalyticsWithoutAdIdSupport */,
+				5AF073362BAE037800D5363A /* FirebaseAppCheck */,
 			);
 			productName = TenaCity;
 			productReference = 66E254672B807B7B00495CF2 /* TenaCity.app */;
@@ -540,7 +555,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TenaCity/Preview Content\"";
-				DEVELOPMENT_TEAM = FK7V74L7WY;
+				DEVELOPMENT_TEAM = V3G5XWB274;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TenaCity/Info.plist;
@@ -574,7 +589,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TenaCity/Preview Content\"";
-				DEVELOPMENT_TEAM = FK7V74L7WY;
+				DEVELOPMENT_TEAM = V3G5XWB274;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TenaCity/Info.plist;
@@ -736,6 +751,31 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5AF0732E2BAE037800D5363A /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66E7D3BA2B81998A00A7ED66 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		5AF073302BAE037800D5363A /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66E7D3BA2B81998A00A7ED66 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		5AF073322BAE037800D5363A /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66E7D3BA2B81998A00A7ED66 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		5AF073342BAE037800D5363A /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66E7D3BA2B81998A00A7ED66 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		5AF073362BAE037800D5363A /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66E7D3BA2B81998A00A7ED66 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
 		66E7D3BB2B81998A00A7ED66 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 66E7D3BA2B81998A00A7ED66 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
