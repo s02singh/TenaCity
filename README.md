@@ -34,6 +34,10 @@ On average, it typically requires 66 days for a behavior to solidify into a habi
 
 
 ### UI Design
+The application UI is based on a city-skyline theme to play along with the app's name. Each view has a basic skyline background to invoke the feeling that one is working hard to achieve their goals in the city.
+
+Our goal was the keep each view very clean and simple so that it's easy for any user to use the app well. We also implemented an info button at the top of every view so that the user has a place that explicitly explains the usage of each page. The navigation bar also plays a large role in aiding smoother page changes, since it allows the user to see the main views that they can interact with.
+
 To match the city theme of the app, we created sets of skins for the buildings, each set containing a base log cabin view, a bigger house, and a skyscraper skin. These skins 
 
 ### Technical Implementation
@@ -41,16 +45,22 @@ To match the city theme of the app, we created sets of skins for the buildings, 
 
 ## Views
 ### 1. SplashScreen
+Displays an animation of the app name and logo.
 
 ### 2. LoginView
+Allows the user to sign-in with Google or with a username & password.
 
 ### 3. SettingsView
+Allows the user to modify their username & password, and sign out of the application entirely.
 
 ### 4. BuildingView
+Allows the user to view all of their habits in a scrollable list format, create new habits, monitor the progress of each current habit, and view more in-depth details about each habit.
 
 ### 5. FriendsView
+Allows the user to view all of their friends in a scrollable list format, add new friends, create group habits, and accept or deny friend requests.
 
 ### 6. GroupHabitsView
+Allows the user to view the progress of all of their group habits in a scrollable grid format and create new group habits. 
 
 ## Contact
 For any questions, please contact Sahilbir Singh at scsingh@ucdavis.edu. 
